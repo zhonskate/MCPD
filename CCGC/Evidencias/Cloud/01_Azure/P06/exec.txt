@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------
+[[53535,1],1]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: ccgc02MasterMPI
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+Hello world!  I am process number: 1 on host ccgc02MasterMPI
+Hello world!  I am process number: 0 on host ccgc02NodoMPI

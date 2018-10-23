@@ -1,0 +1,50 @@
+1.- Sumatorio de ai de 0 a p/2-1
+
+S = recursiveDoubling(a,pr)
+
+    x[pr]=a[pr*2] + a[pr*2+1]
+
+    if pr < 2
+
+    y[pr] = x[pr*2] + x[pr*2+1]
+
+    if pr == 0
+
+    z = y[pr]+y[pr+1]
+
+    return z
+
+log2(p)
+
+good version:
+
+S = recursiveDoubling(a,pr)
+    b[pr] = a[pr]
+    for j = 1,2,...,log2(p)
+        if pr mod 2^j == 0
+            b(pr) = b(pr)+b(pr+2^(j-1))
+        endif
+    endfor
+    S = b(0)
+
+coste: 1+log2(P)(1+1)+1 = 2+2log2(P)
+
+-----------------------------------------
+
+2 .-
+
+S = Sumatorio(a,pr)
+    b[pr]=0
+    k=n/p
+    for j = 0,1,...,k-1
+        b[pr]=b[pr]+a[pr*k+j]
+    endfor
+    S = recursiveDoubling(b,pr)
+
+coste 1 + n/p + O(log2(P)) = O(n/p+log2(P))
+
+------------------------------------------
+
+ej. 4
+
+S = a'b = a1*b1+a2*b2....

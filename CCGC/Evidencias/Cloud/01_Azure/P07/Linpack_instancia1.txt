@@ -1,0 +1,19 @@
+Unrolled Double Precision Linpack (1000)
+
+Wed Oct 17 14:23:39 2018
+
+     norm. resid      resid           machep         x[0]-1        x[n-1]-1
+       5.8        1.27986510e-12  2.22044605e-16  5.59552404e-14  3.39728246e-14
+    times are reported for matrices of order   500
+      dgefa      dgesl      total       kflops     unit      ratio
+ times for array with leading dimension of 1001
+       0.15       0.00       0.15     568824       0.00       2.63
+       0.14       0.00       0.14     598532       0.00       2.50
+       0.13       0.00       0.13     631232       0.00       2.37
+       0.14       0.00       0.14     587400       0.00       2.55
+ times for array with leading dimension of1000
+       0.11       0.00       0.11     737931       0.00       2.03
+       0.13       0.01       0.13     637327       0.00       2.35
+       0.13       0.00       0.13     630662       0.00       2.37
+       0.13       0.00       0.13     664927       0.00       2.25
+Unrolled Double  Precision 587400 Kflops ; 1000 Reps 
