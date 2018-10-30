@@ -6,7 +6,7 @@
 #include "ctimer.h"
 
 int * sumaVectores(int *m1, int *m2, int size1, int size2) {
-    static int sol[8];
+    static int * sol = malloc(size1+size2 * sizeof(int));
     int i;
     for(i=0;i < 8; i++){
         sol[i] = 0;
