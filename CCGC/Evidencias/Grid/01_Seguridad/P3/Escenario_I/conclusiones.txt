@@ -1,0 +1,7 @@
+a. Autenticaci√n del emisor
+
+b. Autenticaci√n del receptor
+
+c. Confidencialidad de los datos
+
+d. Integridad de los datos
