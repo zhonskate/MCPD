@@ -81,7 +81,7 @@ main(int argc, char**argv)
 {
     //printf("%s\n", argv[1]);
     int len1 = strlen(argv[1]);
-    //printf("%d\n",len1);
+    printf("%d\n",len1);
     //printf("%s\n", argv[2]);
     int len2 = strlen(argv[2]);
     //printf("%d\n",len2);
@@ -125,14 +125,10 @@ main(int argc, char**argv)
     printf("]\n");
 
     // PARALELO
-
-    int* D;
-    D = malloc(8 * N * sizeof(int));
-
     int E[N];
-    for(int i=0;i < N; i++){
-            E[i] = 0;
-        }
+    for(int i=0;i < N; i++)
+        E[i] = 0;
+
     //multiply
     printf("---PARALELO---\n");
 
@@ -147,17 +143,21 @@ main(int argc, char**argv)
     //printf("]\nC  [ ");
     printf("]\n");
 
+    omp_set_dynamic(0); 
+    omp_set_num_threads(4);
+
+    int D[4*N];
     int n, i, carry,j,sum, P[N], tid, nthreads;
     
     #pragma omp parallel private(i,n, carry, j, sum, P, C, tid)
     {
-        for(i=0;i < N; i++){
-            C[i] = 0;
-        }
         nthreads = omp_get_num_threads();
+        for(i=0;i < N*nthreads; i++){
+            D[i] = 0;
+        }
         tid = omp_get_thread_num();
-        // printf("soy el thread %u de %u \n", tid, nthreads);
-        for (i=tid; i<N; i=i+nthreads) {
+        printf("soy el thread %u de %u \n", tid, nthreads);
+        for (i=tid; i<len1; i=i+nthreads) {
             
             //printf("\nthread %d i %d\n",tid,i);
         
@@ -202,7 +202,7 @@ main(int argc, char**argv)
 
             for (j=0; j<N; j++) {
 
-                sum = C[j] + P[j] + carry;
+                sum = D[tid*N+j] + P[j] + carry;
 
                 if (sum >= 10) {
                     carry = 1;
@@ -210,19 +210,16 @@ main(int argc, char**argv)
                 } else
                     carry = 0;
 
-                C[j] = sum;
+                D[tid*N+j] = sum;
             }
 
             if (carry) printf ("overflow in addition!\n");
         }
-        D[tid*N*sizeof(int)] = *C;
+        #pragma omp barrier
         if(tid==0){
-            for(int i=0;i<nthreads; i++){
-                    add (E, &D[i*N*sizeof(int)], E, N);
-            }
-            printf("E0  [ ");
-            for(int loop = N-1; loop >= 0; loop--)
-                printf("%d ", E[loop]);
+            printf("D0  [ ");
+            for(int loop = N*nthreads-1; loop >= 0; loop--)
+                printf("%d ", D[loop]);
             printf("]\n");
         }
     }
