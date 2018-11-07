@@ -126,13 +126,13 @@ main(int argc, char**argv)
 
     // PARALELO
 
-    int D[N];
+    int* D;
+    D = malloc(8 * N * sizeof(int));
 
+    int E[N];
     for(int i=0;i < N; i++){
-        C[i] = 0;
-        D[i] = 0;
-    }
-
+            E[i] = 0;
+        }
     //multiply
     printf("---PARALELO---\n");
 
@@ -153,12 +153,10 @@ main(int argc, char**argv)
     {
         for(i=0;i < N; i++){
             C[i] = 0;
-            D[i] = 0;
         }
         nthreads = omp_get_num_threads();
         tid = omp_get_thread_num();
         // printf("soy el thread %u de %u \n", tid, nthreads);
-
         for (i=tid; i<N; i=i+nthreads) {
             
             //printf("\nthread %d i %d\n",tid,i);
@@ -217,10 +215,14 @@ main(int argc, char**argv)
 
             if (carry) printf ("overflow in addition!\n");
         }
+        D[tid*N*sizeof(int)] = *C;
         if(tid==0){
-            printf("C0  [ ");
+            for(int i=0;i<nthreads; i++){
+                    add (E, &D[i*N*sizeof(int)], E, N);
+            }
+            printf("E0  [ ");
             for(int loop = N-1; loop >= 0; loop--)
-                printf("%d ", C[loop]);
+                printf("%d ", E[loop]);
             printf("]\n");
         }
     }
