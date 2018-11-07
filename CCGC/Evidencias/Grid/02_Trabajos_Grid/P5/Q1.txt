@@ -1,0 +1,5 @@
+Se ha generado en el ordenador de mi compañero
+Lo he comprobado ejecutando:
+globus-job-run oscar.ccgc.mastercpd.upv.es /bin/cat /home/ccgc/Evidencias/Grid/02_Trabajos_Grid/P5/salida_javier_ejemplo_CCGC
+Lo que devuelve
+Hello World

@@ -1,0 +1,1 @@
+path     : /home/ccgc/.globus/job/oscar/16722354570435733631.9871890383202431160/x509_user_proxy

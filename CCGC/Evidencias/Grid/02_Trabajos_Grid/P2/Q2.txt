@@ -1,0 +1,1 @@
+Funciona, ya que el flag -s permite enviar el ejcutable.
