@@ -80,7 +80,7 @@ void multiply (int A[], int B[], int C[], int N) {
 
 main(int argc, char**argv)
 {
-    double t1,t2,tucpu,tscpu;
+    double t1,t2,tucpu,tscpu,tt1;
     //printf("%s\n", argv[1]);
     int len1 = strlen(argv[1]);
     //printf("%d\n",len1);
@@ -112,25 +112,7 @@ main(int argc, char**argv)
     multiply(A,B,C,N);
     ctimer(&t2,&tucpu,&tscpu);
 
-    printf("---SECUENCIAL---\n");
-
-    printf("A  [ ");
-    for(int loop = N-1; loop >= 0; loop--)
-        printf("%d ", A[loop]);
-    printf("]\n");
-
-    printf("B  [ ");
-    for(int loop = N-1; loop >= 0; loop--)
-        printf("%d ", B[loop]);
-    printf("]\nC  [ ");
-
-    for(int loop = N-1; loop >= 0; loop--)
-        printf("%d ", C[loop]);
-    printf("]\n");
-
-    printf(" ------- \n");
-    printf("Tiempo %f segundos \n",(float) (t2-t1));
-    printf(" ------- \n");
+    tt1 = t2-t1;
     // PARALELO
 
     
@@ -138,20 +120,6 @@ main(int argc, char**argv)
     int E[N];
     for(int i=0;i < N; i++)
         E[i] = 0;
-
-    //multiply
-    printf("---PARALELO---\n");
-
-    printf("A  [ ");
-    for(int loop = N-1; loop >= 0; loop--)
-        printf("%d ", A[loop]);
-    printf("]\n");
-
-    printf("B  [ ");
-    for(int loop = N-1; loop >= 0; loop--)
-        printf("%d ", B[loop]);
-    //printf("]\nC  [ ");
-    printf("]\n");
 
     //omp_set_dynamic(0); 
     omp_set_num_threads(4);
@@ -264,19 +232,19 @@ main(int argc, char**argv)
                 if (carry) printf ("overflow in addition!\n");
             }
 
-            printf("C  [ ");
+            /*printf("C  [ ");
             for(int loop = N-1; loop >= 0; loop--)
                 printf("%d ", E[loop]);
-            printf("]\n");
+            printf("]\n");*/
 
         }
         
     }
     ctimer(&t2,&tucpu,&tscpu);
 
-    printf(" ------- \n");
-    printf("Tiempo %f segundos \n",(float) (t2-t1));
-    printf(" ------- \n");
+    
+    printf("%d \t %f \t %f \n",N,(float) tt1, (float) (t2-t1));
+
     /*for(int loop = N-1; loop >= 0; loop--)
         printf("%d ", C[loop]);
     printf("]\n");*/
