@@ -125,6 +125,9 @@ main(int argc, char**argv)
     printf("]\n");
 
     // PARALELO
+
+    
+
     int E[N];
     for(int i=0;i < N; i++)
         E[i] = 0;
