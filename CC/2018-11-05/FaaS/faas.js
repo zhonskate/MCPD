@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.get('/registerfunction', function (req, res) {
     // receive from http
     // build
-    var df_path = "/Users/zhon/Documents/MCPD/CC/05-11-2018/FaaS";
+    var df_path = "/Users/zhon/Documents/MCPD/CC/2018-11-05/FaaS";
     var commandline = `\
     docker \
     build \
@@ -29,7 +29,7 @@ app.get('/registerfunction', function (req, res) {
 
 app.post('/invokefunction', function (req, res) {
     console.log(req.body);
-    var df_path = "/Users/zhon/Documents/MCPD/CC/05-11-2018/FaaS";
+    var df_path = "/Users/zhon/Documents/MCPD/CC/2018-11-05/FaaS";
     fs.writeFile(`${df_path}/params.json`, JSON.stringify(req.body), function(err) {
         if (err) {
             console.log(err);
