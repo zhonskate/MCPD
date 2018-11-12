@@ -7,3 +7,5 @@ id_rsa*
 *.pem
 node_modules/
 ej9-bis
+requests/
+uploads/
