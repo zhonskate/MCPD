@@ -1,0 +1,10 @@
+&
+(count = 1)
+(executable = /bin/sort)
+(arguments = Entrada1.txt Entrada2.txt -o Salida.txt )
+(rsl_substitution = (GASS_URL https://javier.ccgc.mastercpd.upv.es:33175))
+(stdout = $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P2/miStdOut)
+(stderr = $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P2/miStdErr)
+(file_stage_in = ($(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P2/Entrada1.txt Entrada1.txt)
+($(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P2/Entrada2.txt Entrada2.txt))
+(file_stage_out = (Salida.txt $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P2/Salida.txt))

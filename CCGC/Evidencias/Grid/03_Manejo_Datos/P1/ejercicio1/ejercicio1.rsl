@@ -1,0 +1,7 @@
+&
+(count = 1)
+(executable = /bin/cat)
+(rsl_substitution = (GASS_URL https://javier.ccgc.mastercpd.upv.es:51978))
+(stdin = $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P1/miStdIn)
+(stdout = $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P1/miStdOut)
+(stderr = $(GASS_URL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P1/miStdErr)

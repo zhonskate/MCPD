@@ -1,0 +1,8 @@
+&
+(count = 1)
+(executable = /bin/sh)
+(arguments = compila_y_ejecuta.sh)
+(rsl_substitution = (GASS_LOCAL http://javier.ccgc.mastercpd.upv.es:60097))
+(file_stage_in = ($(GASS_LOCAL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P3/compila_y_ejecuta.sh compila_y_ejecuta.sh) ($(GASS_LOCAL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P3/cpi.c cpi.c))
+(stdout = $(GASS_LOCAL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P3/miStdOut)
+(stderr = $(GASS_LOCAL)/home/ccgc/Evidencias/Grid/03_Manejo_Datos/P3/miStdErr)
