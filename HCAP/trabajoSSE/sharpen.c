@@ -88,15 +88,15 @@ void printCpuType(IppCpuType cpuType)
 
 void printCpuCapability(pStatus)
 {
-printf("pStatus=%d\n",(UINT32)pStatus);
-if((UINT32)pStatus & ippCPUID_MMX) printf("Intel Architecture MMX technology supported\n");
-if((UINT32)pStatus & ippCPUID_SSE) printf("Streaming SIMD Extensions\n");
-if((UINT32)pStatus & ippCPUID_SSE2) printf("Streaming SIMD Extensions 2\n");
-if((UINT32)pStatus & ippCPUID_SSE3) printf("Streaming SIMD Extensions 3\n");
-if((UINT32)pStatus & ippCPUID_SSSE3) printf("Supplemental Streaming SIMD Extensions 3\n");
-if((UINT32)pStatus & ippCPUID_MOVBE) printf("The processor supports MOVBE instruction\n");
-if((UINT32)pStatus & ippCPUID_SSE41) printf("Streaming SIMD Extensions 4.1\n");
-if((UINT32)pStatus & ippCPUID_SSE42) printf("Streaming SIMD Extensions 4.2\n");
+    printf("pStatus=%d\n",(UINT32)pStatus);
+    if((UINT32)pStatus & ippCPUID_MMX) printf("Intel Architecture MMX technology supported\n");
+    if((UINT32)pStatus & ippCPUID_SSE) printf("Streaming SIMD Extensions\n");
+    if((UINT32)pStatus & ippCPUID_SSE2) printf("Streaming SIMD Extensions 2\n");
+    if((UINT32)pStatus & ippCPUID_SSE3) printf("Streaming SIMD Extensions 3\n");
+    if((UINT32)pStatus & ippCPUID_SSSE3) printf("Supplemental Streaming SIMD Extensions 3\n");
+    if((UINT32)pStatus & ippCPUID_MOVBE) printf("The processor supports MOVBE instruction\n");
+    if((UINT32)pStatus & ippCPUID_SSE41) printf("Streaming SIMD Extensions 4.1\n");
+    if((UINT32)pStatus & ippCPUID_SSE42) printf("Streaming SIMD Extensions 4.2\n");
 }
 #endif
 
