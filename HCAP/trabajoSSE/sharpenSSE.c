@@ -7,7 +7,7 @@
 
 
 
-typedef double FLOAT;
+typedef float FLOAT;
 //typedef float FLOAT;
 
 // Cycle Counter Code
@@ -91,7 +91,8 @@ int main(int argc, char *argv[])
         read(fdin, (void *)&G[i], 1); convG[i]=G[i];
         read(fdin, (void *)&B[i], 1); convB[i]=B[i];
     }
-
+    __m128 temp;
+    int z;
     //float *pResult = (float*) _aligned_malloc(318 * sizeof(float), 16);
     //__m128 *pResultSSE = (__m128*) pResult;
 
@@ -109,89 +110,68 @@ int main(int argc, char *argv[])
 
             for(j=1; j<319; j=j+4)
             {
-#define TIME_SSE
-#ifdef TIME_SSE
-                __m128 temp, temp2;
+//#define TIME_SSE
+//#ifdef TIME_SSE
 
                 temp = _mm_set_ps(
                     (PSF[0] * (FLOAT)R[((i-1)*320)+j-1]), 
                     (PSF[0] * (FLOAT)R[((i-1)*320)+j+1-1]), 
                     (PSF[0] * (FLOAT)R[((i-1)*320)+j+2-1]),
                     (PSF[0] * (FLOAT)R[((i-1)*320)+j+3-1]));
-                
-                //temp = _mm_rcp_ps(temp);
 
-                temp2 = _mm_set_ps(
+                temp= _mm_add_ps(temp, _mm_set_ps(
                     (PSF[1] * (FLOAT)R[((i-1)*320)+j]), 
                     (PSF[1] * (FLOAT)R[((i-1)*320)+j+1]), 
                     (PSF[1] * (FLOAT)R[((i-1)*320)+j+2]),
-                    (PSF[1] * (FLOAT)R[((i-1)*320)+j+3]));
-                
-                //temp2 = _mm_rcp_ps(temp2);
+                    (PSF[1] * (FLOAT)R[((i-1)*320)+j+3])));
 
-                temp= _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[2] * (FLOAT)R[((i-1)*320)+j+1]), 
                     (PSF[2] * (FLOAT)R[((i-1)*320)+j+1+1]), 
                     (PSF[2] * (FLOAT)R[((i-1)*320)+j+1+2]),
-                    (PSF[2] * (FLOAT)R[((i-1)*320)+j+1+3]));
+                    (PSF[2] * (FLOAT)R[((i-1)*320)+j+1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[3] * (FLOAT)R[((i)*320)+j-1]), 
                     (PSF[3] * (FLOAT)R[((i)*320)+j-1+1]), 
                     (PSF[3] * (FLOAT)R[((i)*320)+j-1+2]),
-                    (PSF[3] * (FLOAT)R[((i)*320)+j-1+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[3] * (FLOAT)R[((i)*320)+j-1+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[4] * (FLOAT)R[((i)*320)+j]), 
                     (PSF[4] * (FLOAT)R[((i)*320)+j+1]), 
                     (PSF[4] * (FLOAT)R[((i)*320)+j+2]),
-                    (PSF[4] * (FLOAT)R[((i)*320)+j+3]));
+                    (PSF[4] * (FLOAT)R[((i)*320)+j+3])));
                 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[5] * (FLOAT)R[((i)*320)+j+1]), 
                     (PSF[5] * (FLOAT)R[((i)*320)+j+1+1]), 
                     (PSF[5] * (FLOAT)R[((i)*320)+j+1+2]),
-                    (PSF[5] * (FLOAT)R[((i)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[5] * (FLOAT)R[((i)*320)+j+1+3])));
 
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[6] * (FLOAT)R[((i+1)*320)+j-1]), 
                     (PSF[6] * (FLOAT)R[((i+1)*320)+j-1+1]), 
                     (PSF[6] * (FLOAT)R[((i+1)*320)+j-1+2]),
-                    (PSF[6] * (FLOAT)R[((i+1)*320)+j-1+3]));
+                    (PSF[6] * (FLOAT)R[((i+1)*320)+j-1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[7] * (FLOAT)R[((i+1)*320)+j]), 
                     (PSF[7] * (FLOAT)R[((i+1)*320)+j+1]), 
                     (PSF[7] * (FLOAT)R[((i+1)*320)+j+2]),
-                    (PSF[7] * (FLOAT)R[((i+1)*320)+j+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[7] * (FLOAT)R[((i+1)*320)+j+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[8] * (FLOAT)R[((i+1)*320)+j+1]), 
                     (PSF[8] * (FLOAT)R[((i+1)*320)+j+1+1]), 
                     (PSF[8] * (FLOAT)R[((i+1)*320)+j+1+2]),
-                    (PSF[8] * (FLOAT)R[((i+1)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[8] * (FLOAT)R[((i+1)*320)+j+1+3])));
                 
                 _mm_storeu_ps (conversion, temp);
 
                 //if(j==1 && i==1 && vuelta ==1){printf ("%f\n",conversion[0]);}
 
-                for (int z=0;z<4;z++){
+                for (z=0;z<4;z++){
                     if(conversion[z]<0.0) conversion[z]=0.0;
                     if(conversion[z]>255.0) conversion[z]=255.0;
                     convR[(i*320)+j+(3-z)]=(UINT8)conversion[z];
@@ -202,80 +182,60 @@ int main(int argc, char *argv[])
                     (PSF[0] * (FLOAT)G[((i-1)*320)+j+1-1]), 
                     (PSF[0] * (FLOAT)G[((i-1)*320)+j+2-1]),
                     (PSF[0] * (FLOAT)G[((i-1)*320)+j+3-1]));
-                
-                //temp = _mm_rcp_ps(temp);
 
-                temp2 = _mm_set_ps(
+                temp= _mm_add_ps(temp, _mm_set_ps(
                     (PSF[1] * (FLOAT)G[((i-1)*320)+j]), 
                     (PSF[1] * (FLOAT)G[((i-1)*320)+j+1]), 
                     (PSF[1] * (FLOAT)G[((i-1)*320)+j+2]),
-                    (PSF[1] * (FLOAT)G[((i-1)*320)+j+3]));
-                
-                //temp2 = _mm_rcp_ps(temp2);
+                    (PSF[1] * (FLOAT)G[((i-1)*320)+j+3])));
 
-                temp= _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[2] * (FLOAT)G[((i-1)*320)+j+1]), 
                     (PSF[2] * (FLOAT)G[((i-1)*320)+j+1+1]), 
                     (PSF[2] * (FLOAT)G[((i-1)*320)+j+1+2]),
-                    (PSF[2] * (FLOAT)G[((i-1)*320)+j+1+3]));
+                    (PSF[2] * (FLOAT)G[((i-1)*320)+j+1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[3] * (FLOAT)G[((i)*320)+j-1]), 
                     (PSF[3] * (FLOAT)G[((i)*320)+j-1+1]), 
                     (PSF[3] * (FLOAT)G[((i)*320)+j-1+2]),
-                    (PSF[3] * (FLOAT)G[((i)*320)+j-1+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[3] * (FLOAT)G[((i)*320)+j-1+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[4] * (FLOAT)G[((i)*320)+j]), 
                     (PSF[4] * (FLOAT)G[((i)*320)+j+1]), 
                     (PSF[4] * (FLOAT)G[((i)*320)+j+2]),
-                    (PSF[4] * (FLOAT)G[((i)*320)+j+3]));
+                    (PSF[4] * (FLOAT)G[((i)*320)+j+3])));
                 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[5] * (FLOAT)G[((i)*320)+j+1]), 
                     (PSF[5] * (FLOAT)G[((i)*320)+j+1+1]), 
                     (PSF[5] * (FLOAT)G[((i)*320)+j+1+2]),
-                    (PSF[5] * (FLOAT)G[((i)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[5] * (FLOAT)G[((i)*320)+j+1+3])));
 
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[6] * (FLOAT)G[((i+1)*320)+j-1]), 
                     (PSF[6] * (FLOAT)G[((i+1)*320)+j-1+1]), 
                     (PSF[6] * (FLOAT)G[((i+1)*320)+j-1+2]),
-                    (PSF[6] * (FLOAT)G[((i+1)*320)+j-1+3]));
+                    (PSF[6] * (FLOAT)G[((i+1)*320)+j-1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[7] * (FLOAT)G[((i+1)*320)+j]), 
                     (PSF[7] * (FLOAT)G[((i+1)*320)+j+1]), 
                     (PSF[7] * (FLOAT)G[((i+1)*320)+j+2]),
-                    (PSF[7] * (FLOAT)G[((i+1)*320)+j+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[7] * (FLOAT)G[((i+1)*320)+j+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[8] * (FLOAT)G[((i+1)*320)+j+1]), 
                     (PSF[8] * (FLOAT)G[((i+1)*320)+j+1+1]), 
                     (PSF[8] * (FLOAT)G[((i+1)*320)+j+1+2]),
-                    (PSF[8] * (FLOAT)G[((i+1)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[8] * (FLOAT)G[((i+1)*320)+j+1+3])));
                 
                 _mm_storeu_ps (conversion, temp);
 
                 //if(j==1 && i==1 && vuelta ==1){printf ("%f\n",conversion[0]);}
 
-                for (int z=0;z<4;z++){
+                for (z=0;z<4;z++){
                     if(conversion[z]<0.0) conversion[z]=0.0;
                     if(conversion[z]>255.0) conversion[z]=255.0;
                     convG[(i*320)+j+(3-z)]=(UINT8)conversion[z];
@@ -286,87 +246,67 @@ int main(int argc, char *argv[])
                     (PSF[0] * (FLOAT)B[((i-1)*320)+j+1-1]), 
                     (PSF[0] * (FLOAT)B[((i-1)*320)+j+2-1]),
                     (PSF[0] * (FLOAT)B[((i-1)*320)+j+3-1]));
-                
-                //temp = _mm_rcp_ps(temp);
 
-                temp2 = _mm_set_ps(
+                temp= _mm_add_ps(temp, _mm_set_ps(
                     (PSF[1] * (FLOAT)B[((i-1)*320)+j]), 
                     (PSF[1] * (FLOAT)B[((i-1)*320)+j+1]), 
                     (PSF[1] * (FLOAT)B[((i-1)*320)+j+2]),
-                    (PSF[1] * (FLOAT)B[((i-1)*320)+j+3]));
-                
-                //temp2 = _mm_rcp_ps(temp2);
+                    (PSF[1] * (FLOAT)B[((i-1)*320)+j+3])));
 
-                temp= _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[2] * (FLOAT)B[((i-1)*320)+j+1]), 
                     (PSF[2] * (FLOAT)B[((i-1)*320)+j+1+1]), 
                     (PSF[2] * (FLOAT)B[((i-1)*320)+j+1+2]),
-                    (PSF[2] * (FLOAT)B[((i-1)*320)+j+1+3]));
+                    (PSF[2] * (FLOAT)B[((i-1)*320)+j+1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[3] * (FLOAT)B[((i)*320)+j-1]), 
                     (PSF[3] * (FLOAT)B[((i)*320)+j-1+1]), 
                     (PSF[3] * (FLOAT)B[((i)*320)+j-1+2]),
-                    (PSF[3] * (FLOAT)B[((i)*320)+j-1+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[3] * (FLOAT)B[((i)*320)+j-1+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[4] * (FLOAT)B[((i)*320)+j]), 
                     (PSF[4] * (FLOAT)B[((i)*320)+j+1]), 
                     (PSF[4] * (FLOAT)B[((i)*320)+j+2]),
-                    (PSF[4] * (FLOAT)B[((i)*320)+j+3]));
+                    (PSF[4] * (FLOAT)B[((i)*320)+j+3])));
                 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[5] * (FLOAT)B[((i)*320)+j+1]), 
                     (PSF[5] * (FLOAT)B[((i)*320)+j+1+1]), 
                     (PSF[5] * (FLOAT)B[((i)*320)+j+1+2]),
-                    (PSF[5] * (FLOAT)B[((i)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[5] * (FLOAT)B[((i)*320)+j+1+3])));
 
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[6] * (FLOAT)B[((i+1)*320)+j-1]), 
                     (PSF[6] * (FLOAT)B[((i+1)*320)+j-1+1]), 
                     (PSF[6] * (FLOAT)B[((i+1)*320)+j-1+2]),
-                    (PSF[6] * (FLOAT)B[((i+1)*320)+j-1+3]));
+                    (PSF[6] * (FLOAT)B[((i+1)*320)+j-1+3])));
 
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[7] * (FLOAT)B[((i+1)*320)+j]), 
                     (PSF[7] * (FLOAT)B[((i+1)*320)+j+1]), 
                     (PSF[7] * (FLOAT)B[((i+1)*320)+j+2]),
-                    (PSF[7] * (FLOAT)B[((i+1)*320)+j+3]));
-
-                temp = _mm_add_ps(temp, temp2);
-
-                temp2 = _mm_set_ps(
+                    (PSF[7] * (FLOAT)B[((i+1)*320)+j+3])));
+                
+                temp = _mm_add_ps(temp, _mm_set_ps(
                     (PSF[8] * (FLOAT)B[((i+1)*320)+j+1]), 
                     (PSF[8] * (FLOAT)B[((i+1)*320)+j+1+1]), 
                     (PSF[8] * (FLOAT)B[((i+1)*320)+j+1+2]),
-                    (PSF[8] * (FLOAT)B[((i+1)*320)+j+1+3]));
-                
-                temp = _mm_add_ps(temp, temp2);
+                    (PSF[8] * (FLOAT)B[((i+1)*320)+j+1+3])));
                 
                 _mm_storeu_ps (conversion, temp);
 
                 //if(j==1 && i==1 && vuelta ==1){printf ("%f\n",conversion[0]);}
 
-                for (int z=0;z<4;z++){
+                for (z=0;z<4;z++){
                     if(conversion[z]<0.0) conversion[z]=0.0;
                     if(conversion[z]>255.0) conversion[z]=255.0;
                     convB[(i*320)+j+(3-z)]=(UINT8)conversion[z];
                 }
                 
 //#endif	// USE_DIVISION_METHOD
-#endif	// TIME_SSE
+//#endif	// TIME_SSE
 
                 /*temp=0;
                 temp += (PSF[0] * (FLOAT)R[((i-1)*320)+j-1]);
