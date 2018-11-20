@@ -1,0 +1,11 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 500,400 enhanced fname 'arial' 
+set output 'out3.svg'
+
+# Key means label...
+set key inside top left
+set ylabel 'time(s)'
+set xlabel 'Iterations'
+set title 'SSE Optimization'
+plot  "results-t-noflag.txt" using 2:4 title 't no flag' with lines, "results-t-o0.txt" using 2:4 title 't o0' with lines, "results-t-o2.txt" using 2:4 title 't o2' with lines, "results-t-o3.txt" using 2:4 title 't o3' with lines
+#plot  "results-sse-o3.txt" using 2:4 title 'sse o3' with lines, "results-t-o3.txt" using 2:4 title 't o3' with lines
