@@ -134,6 +134,8 @@ int run_parallel(double *A, double *b, double *x, double *xtmp)
 
 int main(int argc, char *argv[])
 {
+
+  int verbose=1;
   parse_arguments(argc, argv);
 
   double *A    = malloc(N*N*sizeof(double));
@@ -141,11 +143,13 @@ int main(int argc, char *argv[])
   double *x    = malloc(N*sizeof(double));
   double *xtmp = malloc(N*sizeof(double));
 
-  printf(SEPARATOR);
-  printf("Matrix size:            %dx%d\n", N, N);
-  printf("Maximum iterations:     %d\n", MAX_ITERATIONS);
-  printf("Convergence threshold:  %lf\n", CONVERGENCE_THRESHOLD);
-  printf(SEPARATOR);
+  if(verbose == 1){
+    printf(SEPARATOR);
+    printf("Matrix size:            %dx%d\n", N, N);
+    printf("Maximum iterations:     %d\n", MAX_ITERATIONS);
+    printf("Convergence threshold:  %lf\n", CONVERGENCE_THRESHOLD);
+    printf(SEPARATOR);
+  }
 
   double total_start = get_timestamp();
 
@@ -187,14 +191,16 @@ int main(int argc, char *argv[])
 
   double total_end = get_timestamp();
 
-  printf("SEQUENTIAL\n");
-  printf("Solution error = %lf\n", err);
-  printf("Iterations     = %d\n", itr);
-  printf("Total runtime  = %lf seconds\n", (total_end-total_start));
-  printf("Solver runtime = %lf seconds\n", (solve_end-solve_start));
-  if (itr == MAX_ITERATIONS)
-    printf("WARNING: solution did not converge\n");
-  printf(SEPARATOR);
+  if(verbose == 1){
+    printf("SEQUENTIAL\n");
+    printf("Solution error = %lf\n", err);
+    printf("Iterations     = %d\n", itr);
+    printf("Total runtime  = %lf seconds\n", (total_end-total_start));
+    printf("Solver runtime = %lf seconds\n", (solve_end-solve_start));
+    if (itr == MAX_ITERATIONS)
+      printf("WARNING: solution did not converge\n");
+    printf(SEPARATOR);
+  }
 
   // PARALLEL
 
@@ -234,14 +240,16 @@ int main(int argc, char *argv[])
 
   total_end = get_timestamp();
 
-  printf("PARALLEL\n");
-  printf("Solution error = %lf\n", err);
-  printf("Iterations     = %d\n", itr);
-  printf("Total runtime  = %lf seconds\n", (total_end-total_start));
-  printf("Solver runtime = %lf seconds\n", (solve_end-solve_start));
-  if (itr == MAX_ITERATIONS)
-    printf("WARNING: solution did not converge\n");
-  printf(SEPARATOR);
+  if(verbose == 1){
+    printf("PARALLEL\n");
+    printf("Solution error = %lf\n", err);
+    printf("Iterations     = %d\n", itr);
+    printf("Total runtime  = %lf seconds\n", (total_end-total_start));
+    printf("Solver runtime = %lf seconds\n", (solve_end-solve_start));
+    if (itr == MAX_ITERATIONS)
+      printf("WARNING: solution did not converge\n");
+    printf(SEPARATOR);
+  }
 
   free(A);
   free(b);

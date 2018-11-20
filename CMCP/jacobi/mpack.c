@@ -43,16 +43,19 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <mpi.h>
-#define  MAX_ITERATIONS 100
+#include <sys/time.h>
+#define  MAX_ITERATIONS 1000
 
 double Distance(double *X_Old, double *X_New, int n_size);
+
+double get_timestamp();
 
 main(int argc, char** argv) {
 
   /* .......Variables Initialisation ......*/
   MPI_Status status;     
   int n_size, NoofRows_Bloc, NoofRows, NoofCols;
-  int Numprocs, MyRank, Root=0;
+  int Numprocs, MyRank, Root=0, verbose=1;
   int irow, jrow, icol, index, Iteration, GlobalRowNo;
 
   double **Matrix_A, *Input_A, *Input_B, *ARecv, *BRecv;
@@ -105,6 +108,8 @@ main(int argc, char** argv) {
 			  Input_A[index++] = Matrix_A[irow][icol];
 
   }
+
+  double solve_start = get_timestamp();
 
   MPI_Bcast(&NoofRows, 1, MPI_INT, Root, MPI_COMM_WORLD); 
   MPI_Bcast(&NoofCols, 1, MPI_INT, Root, MPI_COMM_WORLD); 
@@ -177,9 +182,11 @@ main(int argc, char** argv) {
       Iteration++;
   }while( (Iteration < MAX_ITERATIONS) && (Distance(X_Old, X_New, n_size) >= 1.0E-24)); 
   
+  double solve_end = get_timestamp();
+
   /* .......Output vector .....*/
 
-  if (MyRank == 0) {
+  if (MyRank == 0 && verbose == 1) {
 
      printf ("\n");
      printf(" ------------------------------------------- \n");
@@ -205,6 +212,8 @@ main(int argc, char** argv) {
      printf ("\n");
      for(irow = 0; irow < n_size; irow++)
         printf("%.12lf\n",X_New[irow]);
+     printf(" --------------------------------------------------- \n\n");
+     printf("Solver runtime = %lf seconds\n\n", (solve_end-solve_start));
      printf(" --------------------------------------------------- \n");
   }
   
@@ -221,6 +230,13 @@ double Distance(double *X_Old, double *X_New, int n_size)
 		 Sum += (X_New[index] - X_Old[index])*(X_New[index]-X_Old[index]);
 
    return(Sum);
+}
+
+double get_timestamp()
+{
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv.tv_sec + tv.tv_usec*1e-6;
 }
 
 
