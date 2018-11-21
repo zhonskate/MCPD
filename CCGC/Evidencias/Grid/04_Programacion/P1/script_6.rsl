@@ -1,0 +1,9 @@
+&
+(count = 1)
+(executable = /usr/bin/convert)
+(arguments = -paint 5 img06.jpg img06_f.jpg )
+(rsl_substitution = (GASS_URL https://javier.ccgc.mastercpd.upv.es:38648/home/ccgc/Evidencias/Grid/04_Programacion/P1))
+(stdout = $(GASS_URL)/miStdout)
+(stderr = $(GASS_URL)/miStderr)
+(file_stage_in=( $(GASS_URL)/input_images/img06.jpg img06.jpg ) )
+(file_stage_out=(img06_f.jpg $(GASS_URL)/output_images/img06_f.jpg) )
