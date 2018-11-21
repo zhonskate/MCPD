@@ -44,7 +44,7 @@
 #include <assert.h>
 #include <mpi.h>
 #include <sys/time.h>
-#define  MAX_ITERATIONS 1000
+//#define  MAX_ITERATIONS 1000
 
 double Distance(double *X_Old, double *X_New, int n_size);
 
@@ -55,12 +55,13 @@ main(int argc, char** argv) {
   /* .......Variables Initialisation ......*/
   MPI_Status status;     
   int n_size, NoofRows_Bloc, NoofRows, NoofCols;
-  int Numprocs, MyRank, Root=0, verbose=1;
+  int Numprocs, MyRank, Root=0, verbose=atoi(argv[2]);
   int irow, jrow, icol, index, Iteration, GlobalRowNo;
 
   double **Matrix_A, *Input_A, *Input_B, *ARecv, *BRecv;
   double *X_New, *X_Old, *Bloc_X, tmp;
 
+  int MAX_ITERATIONS = atoi(argv[1]);
   FILE *fp;
 
   /* ........MPI Initialisation .......*/
@@ -216,7 +217,10 @@ main(int argc, char** argv) {
      printf("Solver runtime = %lf seconds\n\n", (solve_end-solve_start));
      printf(" --------------------------------------------------- \n");
   }
-  
+
+  if (MyRank == 0 && verbose == 2) {
+    printf("size: \t %d \t iterations: \t %d \t threads \t %d \t time: \t %lf \t seconds\n\n", n_size, MAX_ITERATIONS, Numprocs, (solve_end-solve_start));
+  }
   MPI_Finalize(); 
 }
 

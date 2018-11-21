@@ -28,6 +28,7 @@
 static int N;
 static int MAX_ITERATIONS;
 static int SEED;
+static int verbose, threads;
 static double CONVERGENCE_THRESHOLD;
 
 #define SEPARATOR "------------------------------------\n"
@@ -84,7 +85,7 @@ int run(double *A, double *b, double *x, double *xtmp)
   return itr;
 }
 
-int run_parallel(double *A, double *b, double *x, double *xtmp)
+int run_parallel(double *A, double *b, double *x, double *xtmp, int threads)
 {
   int itr;
   int row, col;
@@ -98,6 +99,7 @@ int run_parallel(double *A, double *b, double *x, double *xtmp)
   do
   {
     // Perfom Jacobi iteration
+    omp_set_num_threads(threads);
     #pragma omp parallel private (row,col,dot)
     {
       #pragma omp for
@@ -135,7 +137,7 @@ int run_parallel(double *A, double *b, double *x, double *xtmp)
 int main(int argc, char *argv[])
 {
 
-  int verbose=1;
+  //int verbose=1;
   parse_arguments(argc, argv);
 
   double *A    = malloc(N*N*sizeof(double));
@@ -151,45 +153,55 @@ int main(int argc, char *argv[])
     printf(SEPARATOR);
   }
 
-  double total_start = get_timestamp();
+  double err;
+  double total_start;
+  double total_end;
+  double solve_end;
+  int itr;
+  double solve_start;
 
-  // SEQUENTIAL
+  if(verbose == 1 || verbose == 3 || verbose == 0){
+    printf("SEQUENTIAL\n");
+    total_start = get_timestamp();
 
-  // Initialize data
-  srand(SEED);
-  for (int row = 0; row < N; row++)
-  {
-    double rowsum = 0.0;
-    for (int col = 0; col < N; col++)
+    // SEQUENTIAL
+
+    // Initialize data
+    srand(SEED);
+    for (int row = 0; row < N; row++)
     {
-      double value = rand()/(double)RAND_MAX;
-      A[row + col*N] = value;
-      rowsum += value;
+      double rowsum = 0.0;
+      for (int col = 0; col < N; col++)
+      {
+        double value = rand()/(double)RAND_MAX;
+        A[row + col*N] = value;
+        rowsum += value;
+      }
+      A[row + row*N] += rowsum;
+      b[row] = rand()/(double)RAND_MAX;
+      x[row] = 0.0;
     }
-    A[row + row*N] += rowsum;
-    b[row] = rand()/(double)RAND_MAX;
-    x[row] = 0.0;
-  }
-  // Run Jacobi solver
-  double solve_start = get_timestamp();
-  int itr = run(A, b, x, xtmp);
-  double solve_end = get_timestamp();
+    // Run Jacobi solver
+    solve_start = get_timestamp();
+    itr = run(A, b, x, xtmp);
+    solve_end = get_timestamp();
 
-  // Check error of final solution
-  double err = 0.0;
-  for (int row = 0; row < N; row++)
-  {
-    double tmp = 0.0;
-    for (int col = 0; col < N; col++)
+    // Check error of final solution
+    err = 0.0;
+    for (int row = 0; row < N; row++)
     {
-      tmp += A[row + col*N] * x[col];
+      double tmp = 0.0;
+      for (int col = 0; col < N; col++)
+      {
+        tmp += A[row + col*N] * x[col];
+      }
+      tmp = b[row] - tmp;
+      err += tmp*tmp;
     }
-    tmp = b[row] - tmp;
-    err += tmp*tmp;
-  }
-  err = sqrt(err);
+    err = sqrt(err);
 
-  double total_end = get_timestamp();
+    total_end = get_timestamp();
+  }
 
   if(verbose == 1){
     printf("SEQUENTIAL\n");
@@ -201,44 +213,50 @@ int main(int argc, char *argv[])
       printf("WARNING: solution did not converge\n");
     printf(SEPARATOR);
   }
+  if (verbose == 3) {
+    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n\n", N, itr, threads, (solve_end-solve_start));
+  }
 
   // PARALLEL
 
   // Initialize data
-  srand(SEED);
-  for (int row = 0; row < N; row++)
-  {
-    double rowsum = 0.0;
-    for (int col = 0; col < N; col++)
+  if(verbose == 1 || verbose == 2 || verbose == 0){
+    printf("PARALLEL\n");
+    srand(SEED);
+    for (int row = 0; row < N; row++)
     {
-      double value = rand()/(double)RAND_MAX;
-      A[row + col*N] = value;
-      rowsum += value;
+      double rowsum = 0.0;
+      for (int col = 0; col < N; col++)
+      {
+        double value = rand()/(double)RAND_MAX;
+        A[row + col*N] = value;
+        rowsum += value;
+      }
+      A[row + row*N] += rowsum;
+      b[row] = rand()/(double)RAND_MAX;
+      x[row] = 0.0;
     }
-    A[row + row*N] += rowsum;
-    b[row] = rand()/(double)RAND_MAX;
-    x[row] = 0.0;
-  }
-  // Run Jacobi solver
-  solve_start = get_timestamp();
-  itr = run_parallel(A, b, x, xtmp);
-  solve_end = get_timestamp();
+    // Run Jacobi solver
+    solve_start = get_timestamp();
+    itr = run_parallel(A, b, x, xtmp, threads);
+    solve_end = get_timestamp();
 
-  // Check error of final solution
-  err = 0.0;
-  for (int row = 0; row < N; row++)
-  {
-    double tmp = 0.0;
-    for (int col = 0; col < N; col++)
+    // Check error of final solution
+    err = 0.0;
+    for (int row = 0; row < N; row++)
     {
-      tmp += A[row + col*N] * x[col];
+      double tmp = 0.0;
+      for (int col = 0; col < N; col++)
+      {
+        tmp += A[row + col*N] * x[col];
+      }
+      tmp = b[row] - tmp;
+      err += tmp*tmp;
     }
-    tmp = b[row] - tmp;
-    err += tmp*tmp;
-  }
-  err = sqrt(err);
+    err = sqrt(err);
 
-  total_end = get_timestamp();
+    total_end = get_timestamp();
+  }
 
   if(verbose == 1){
     printf("PARALLEL\n");
@@ -249,6 +267,9 @@ int main(int argc, char *argv[])
     if (itr == MAX_ITERATIONS)
       printf("WARNING: solution did not converge\n");
     printf(SEPARATOR);
+  }
+  if (verbose == 2) {
+    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n", N, itr, threads, (solve_end-solve_start));
   }
 
   free(A);
@@ -287,6 +308,8 @@ void parse_arguments(int argc, char *argv[])
   MAX_ITERATIONS = 20000;
   CONVERGENCE_THRESHOLD = 0.0001;
   SEED = 0;
+  verbose = 1;
+  threads = 4;
 
   for (int i = 1; i < argc; i++)
   {
@@ -322,6 +345,22 @@ void parse_arguments(int argc, char *argv[])
         exit(1);
       }
     }
+    else if (!strcmp(argv[i], "--verbose") || !strcmp(argv[i], "-v"))
+    {
+      if (++i >= argc || (verbose = parse_int(argv[i])) < 0)
+      {
+        printf("Invalid verbose\n");
+        exit(1);
+      }
+    }
+    else if (!strcmp(argv[i], "--threads") || !strcmp(argv[i], "-t"))
+    {
+      if (++i >= argc || (threads = parse_int(argv[i])) < 0)
+      {
+        printf("Invalid threads\n");
+        exit(1);
+      }
+    }
     else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-h"))
     {
       printf("\n");
@@ -332,6 +371,8 @@ void parse_arguments(int argc, char *argv[])
       printf("  -i  --iterations   I     Set maximum number of iterations\n");
       printf("  -n  --norder       N     Set maxtrix order\n");
       printf("  -s  --seed         S     Set random number seed\n");
+      printf("  -v  --verbose      V     Set verbose level\n");
+      printf("  -t  --threads      T     Set threads\n");
       printf("\n");
       exit(0);
     }
