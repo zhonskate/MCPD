@@ -1,0 +1,5 @@
+
+size: 	 16 	 iterations: 	 100 	 threads: 	 1 	 time: 	 0.000083 	 seconds
+size: 	 16 	 iterations: 	 100 	 threads: 	 2 	 time: 	 0.000328 	 seconds
+size: 	 16 	 iterations: 	 100 	 threads: 	 4 	 time: 	 0.000451 	 seconds
+size: 	 16 	 iterations: 	 100 	 threads: 	 8 	 time: 	 0.005745 	 seconds

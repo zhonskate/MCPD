@@ -28,7 +28,7 @@
    E-mail                   : hpcfte@cdac.in     
 ******************************************************************************
 */
-#include <math.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -44,11 +44,11 @@ main(int argc, char** argv) {
 
   /* .......Variables Initialisation ......*/
   MPI_Status status;     
-  int n_size=atoi(argv[3]), NoofRows_Bloc, NoofRows=atoi(argv[3]), NoofCols=atoi(argv[3]);
+  int n_size, NoofRows_Bloc, NoofRows, NoofCols;
   int Numprocs, MyRank, Root=0, verbose=atoi(argv[2]);
   int irow, jrow, icol, index, Iteration, GlobalRowNo;
 
-  double *Matrix_A, *Input_A, *Input_B, *ARecv, *BRecv;
+  double **Matrix_A, *Input_A, *Input_B, *ARecv, *BRecv;
   double *X_New, *X_Old, *Bloc_X, tmp;
 
   int MAX_ITERATIONS = atoi(argv[1]);
@@ -62,58 +62,41 @@ main(int argc, char** argv) {
   /* .......Read the Input file ......*/
   if(MyRank == Root) {
 
-     /*if ((fp = fopen ("./matrix-data-jacobi.inp", "r")) == NULL) {
+     if ((fp = fopen ("./matrix-data-jacobi.inp", "r")) == NULL) {
        printf("Can't open input matrix file");
        exit(-1);
      }
      fscanf(fp, "%d %d", &NoofRows,&NoofCols);     
-     n_size=NoofRows;*/
+     n_size=NoofRows;
 
      /* ...Allocate memory and read data .....*/
-	  /*Matrix_A = (double **) malloc(n_size*sizeof(double *));
+	  Matrix_A = (double **) malloc(n_size*sizeof(double *));
 
      for(irow = 0; irow < n_size; irow++){
 		  Matrix_A[irow] = (double *) malloc(n_size * sizeof(double));
         for(icol = 0; icol < n_size; icol++)
 	        fscanf(fp, "%lf", &Matrix_A[irow][icol]);
-	  }*/
-     /*fclose(fp);
+	  }
+     fclose(fp);
 
      if ((fp = fopen ("./vector-data-jacobi.inp", "r")) == NULL){
         printf("Can't open input vector file");
         exit(-1);
-     }*/
+     }
 
-     /*fscanf(fp, "%d", &NoofRows);     
-     n_size=NoofRows;*/
-     //Input_B    = malloc(n_size*sizeof(double));
+     fscanf(fp, "%d", &NoofRows);     
+     n_size=NoofRows;
      Input_B  = (double *)malloc(n_size*sizeof(double));
-     /*for (irow = 0; irow<n_size; irow++)
+     for (irow = 0; irow<n_size; irow++)
         fscanf(fp, "%lf",&Input_B[irow]);
-     fclose(fp);*/ 
-     Matrix_A  = (double *)malloc(n_size*n_size*sizeof(double));
-    
-    index    = 0;
-    for (irow = 0; irow < n_size; irow++)
-    {
-      double rowsum = 0.0;
-      for (icol = 0; icol < n_size; icol++)
-      {
-        double value = rand()/(double)RAND_MAX;
-        Matrix_A[irow + icol*n_size] = value;
-        rowsum += value;
-      }
-      Matrix_A[irow + irow*n_size] += rowsum;
-      Input_B[irow] = rand()/(double)RAND_MAX;
-    }
+     fclose(fp); 
+
 	  /* ...Convert Matrix_A into 1-D array Input_A ......*/
-    //*Input_A    = malloc(n_size*n_size*sizeof(double));
-    Input_A  = (double *)malloc(n_size*n_size*sizeof(double));
+     Input_A  = (double *)malloc(n_size*n_size*sizeof(double));
 	  index    = 0;
 	  for(irow=0; irow<n_size; irow++)
 	  	  for(icol=0; icol<n_size; icol++)
-			  Input_A[index++] = Matrix_A[irow + icol*n_size];
-    
+			  Input_A[index++] = Matrix_A[irow][icol];
 
   }
 
@@ -206,7 +189,7 @@ main(int argc, char** argv) {
      printf ("\n");
      for (irow = 0; irow < n_size; irow++) {
         for (icol = 0; icol < n_size; icol++)
-	        printf("%.3lf  ", Matrix_A[irow + icol*n_size]);
+	        printf("%.3lf  ", Matrix_A[irow][icol]);
         printf("\n");
      }
      printf ("\n");
@@ -250,5 +233,3 @@ double get_timestamp()
   gettimeofday(&tv, NULL);
   return tv.tv_sec + tv.tv_usec*1e-6;
 }
-
-

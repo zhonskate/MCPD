@@ -1,0 +1,5 @@
+
+size: 	 4 	 iterations: 	 29 	 threads: 	 1 	 time: 	 0.000036 	 seconds
+size: 	 4 	 iterations: 	 29 	 threads: 	 2 	 time: 	 0.000145 	 seconds
+size: 	 4 	 iterations: 	 29 	 threads: 	 4 	 time: 	 0.000194 	 seconds
+size: 	 4 	 iterations: 	 29 	 threads: 	 8 	 time: 	 0.001930 	 seconds

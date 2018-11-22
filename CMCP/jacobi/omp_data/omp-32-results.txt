@@ -1,0 +1,5 @@
+
+size: 	 1024 	 iterations: 	 566 	 threads: 	 1 	 time: 	 0.005003 	 seconds
+size: 	 1024 	 iterations: 	 566 	 threads: 	 2 	 time: 	 0.004091 	 seconds
+size: 	 1024 	 iterations: 	 566 	 threads: 	 4 	 time: 	 0.003245 	 seconds
+size: 	 1024 	 iterations: 	 566 	 threads: 	 8 	 time: 	 0.034456 	 seconds
