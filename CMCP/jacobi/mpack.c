@@ -1,41 +1,31 @@
 /*
 **************************************************************************
-
 		C-DAC Tech Workshop : hyPACK-2013
                            October 15-18, 2013
-
        Example 6.1: 	    : jacobi-mpi-code-clang.c
-
        Objective            : Jacobi method to solve AX = b matrix system 
                               of linear equations.
-
        Input                : Real Symmetric Positive definite Matrix
                               and the real vector - Input_A and Vector_B
                               Read files (mdatjac.inp) for Matrix A
                               and (vdatjac.inp) for Vector b
-
        Description          : Input matrix is stored in n by n format.
                               Diagonal preconditioning matrix is used.
                               Rowwise block striped partitioning matrix 
                               is used.Maximum iterations is given by
                               MAX_ITERATIONS.Tolerance value is given by
                               EPSILON.
-
        Output               : The solution of  Ax=b on process with Rank 0
                               and the number of iterations for convergence
                               of the method.
-
        Necessary conditions : Number of Processes should be less than or
                               equal to 8 Input Matrix Should be Square Matrix.
                               Matrix size for Matrix A and vector size for
                               vector b should be equally striped, that is
                               Matrix size and Vector Size should be dividible
                               by the number of processes used.
-
    Created                  : August-2013
-
    E-mail                   : hpcfte@cdac.in     
-
 ******************************************************************************
 */
 
@@ -152,7 +142,7 @@ main(int argc, char** argv) {
 
   /* Initailize X[i] = B[i] */
   for(irow=0; irow<NoofRows_Bloc; irow++)
-	  Bloc_X[irow] = BRecv[irow];
+	  Bloc_X[irow] = 0.0;
 
   MPI_Allgather(Bloc_X, NoofRows_Bloc, MPI_DOUBLE, X_New, NoofRows_Bloc, 
 					 MPI_DOUBLE, MPI_COMM_WORLD);
@@ -181,7 +171,8 @@ main(int argc, char** argv) {
   		MPI_Allgather(Bloc_X, NoofRows_Bloc, MPI_DOUBLE, X_New, 
 						  NoofRows_Bloc, MPI_DOUBLE, MPI_COMM_WORLD);
       Iteration++;
-  }while( (Iteration < MAX_ITERATIONS) && (Distance(X_Old, X_New, n_size) >= 1.0E-24)); 
+  }while( (Iteration < MAX_ITERATIONS)); 
+  //&& (Distance(X_Old, X_New, n_size) >= 1.0E-24)
   
   double solve_end = get_timestamp();
 
@@ -219,7 +210,7 @@ main(int argc, char** argv) {
   }
 
   if (MyRank == 0 && verbose == 2) {
-    printf("size: \t %d \t iterations: \t %d \t threads \t %d \t time: \t %lf \t seconds\n\n", n_size, MAX_ITERATIONS, Numprocs, (solve_end-solve_start));
+    printf("size: \t %d \t iterations: \t %d \t threads \t %d \t time: \t %lf \t seconds\n\n", n_size, Iteration, Numprocs, (solve_end-solve_start));
   }
   MPI_Finalize(); 
 }
@@ -242,6 +233,5 @@ double get_timestamp()
   gettimeofday(&tv, NULL);
   return tv.tv_sec + tv.tv_usec*1e-6;
 }
-
 
 

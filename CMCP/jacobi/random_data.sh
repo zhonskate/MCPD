@@ -10,7 +10,12 @@ do
     INDEXJ=0
     while [ $INDEXJ -lt $1 ]
     do
-        FOO="$FOO$(( ( RANDOM % 10 )  + 1 )) "
+	if [ $INDEX -eq $INDEXJ ]
+	then
+	    FOO="$FOO $(( ( RANDOM % (( $1 * $1 )) )  + 100 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
+	else
+            FOO="$FOO $(( ( RANDOM % 10 )  + 1 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
+	fi
         INDEXJ=$(( $INDEXJ + 1 ))
     done
     echo "$FOO">> matrix-data-jacobi.inp
@@ -21,7 +26,7 @@ INDEX=0
 while [ $INDEX -lt $1 ]
 do
     FOO=''
-    FOO="$FOO$(( ( RANDOM % 10 )  + 1 )) "
+    FOO="$FOO$(( ( RANDOM % 10 )  + 1 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
     echo "$FOO">> vector-data-jacobi.inp
     INDEX=$(($INDEX + 1))
 done
