@@ -12,9 +12,9 @@ do
     do
 	if [ $INDEX -eq $INDEXJ ]
 	then
-	    FOO="$FOO $(( ( RANDOM % (( $1 * $1 )) )  + 100 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
+	    FOO="$FOO $(( ( RANDOM % (( $1 * $1 )) )  + $1 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
 	else
-            FOO="$FOO $(( ( RANDOM % 10 )  + 1 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
+            FOO="$FOO 0.$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
 	fi
         INDEXJ=$(( $INDEXJ + 1 ))
     done
