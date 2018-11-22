@@ -210,7 +210,7 @@ main(int argc, char** argv) {
   }
 
   if (MyRank == 0 && verbose == 2) {
-    printf("size: \t %d \t iterations: \t %d \t threads \t %d \t time: \t %lf \t seconds\n\n", n_size, Iteration, Numprocs, (solve_end-solve_start));
+    printf("size: \t %d \t iterations: \t %d \t threads \t %d \t time: \t %lf \t seconds\n", (n_size*n_size), Iteration, Numprocs, (solve_end-solve_start));
   }
   MPI_Finalize(); 
 }

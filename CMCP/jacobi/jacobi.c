@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
   double solve_start;
 
   if(verbose == 1 || verbose == 3 || verbose == 0){
-    printf("SEQUENTIAL\n");
+    //printf("SEQUENTIAL\n");
     total_start = get_timestamp();
 
     // SEQUENTIAL
@@ -214,14 +214,14 @@ int main(int argc, char *argv[])
     printf(SEPARATOR);
   }
   if (verbose == 3) {
-    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n\n", N, itr, threads, (solve_end-solve_start));
+    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n", (N*N), itr, threads, (solve_end-solve_start));
   }
 
   // PARALLEL
 
   // Initialize data
   if(verbose == 1 || verbose == 2 || verbose == 0){
-    printf("PARALLEL\n");
+    //printf("PARALLEL\n");
     srand(SEED);
     for (int row = 0; row < N; row++)
     {
@@ -269,7 +269,7 @@ int main(int argc, char *argv[])
     printf(SEPARATOR);
   }
   if (verbose == 2) {
-    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n", N, itr, threads, (solve_end-solve_start));
+    printf("size: \t %d \t iterations: \t %d \t threads: \t %d \t time: \t %lf \t seconds\n", (N*N), itr, threads, (solve_end-solve_start));
   }
 
   free(A);

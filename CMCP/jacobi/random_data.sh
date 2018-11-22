@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo "$1 $1"> matrix-data-jacobi.inp
-echo "$1"> vector-data-jacobi.inp
+echo "$1 $1"> $1-matrix-data-jacobi.inp
+echo "$1"> $1-vector-data-jacobi.inp
 
 INDEX=0
 while [ $INDEX -lt $1 ]
@@ -18,7 +18,7 @@ do
 	fi
         INDEXJ=$(( $INDEXJ + 1 ))
     done
-    echo "$FOO">> matrix-data-jacobi.inp
+    echo "$FOO">> $1-matrix-data-jacobi.inp
     INDEX=$(($INDEX + 1))
 done
 
@@ -27,6 +27,6 @@ while [ $INDEX -lt $1 ]
 do
     FOO=''
     FOO="$FOO$(( ( RANDOM % 10 )  + 1 )).$((  (( ( RANDOM % 10000 )  + 1 )) % 1000  )) "
-    echo "$FOO">> vector-data-jacobi.inp
+    echo "$FOO">> $1-vector-data-jacobi.inp
     INDEX=$(($INDEX + 1))
 done

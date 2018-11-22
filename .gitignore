@@ -5,6 +5,7 @@ id_rsa*
 *.log
 *.tar.gz
 *.pem
+*.inp
 node_modules/
 ej9-bis
 requests/
