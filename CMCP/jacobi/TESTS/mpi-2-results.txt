@@ -1,0 +1,27 @@
+
+size: 	 4 	 iterations: 	 2000 	 threads 	 1 	 time: 	 0.000308 	 seconds
+size: 	 4 	 iterations: 	 2000 	 threads 	 2 	 time: 	 0.000688 	 seconds
+Matrix Can not be Striped Evenly ..... 
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[57542,1],0]
+  Exit code:    255
+--------------------------------------------------------------------------
+Matrix Can not be Striped Evenly ..... 
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[58172,1],2]
+  Exit code:    255
+--------------------------------------------------------------------------

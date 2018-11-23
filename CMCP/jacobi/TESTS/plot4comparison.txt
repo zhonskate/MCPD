@@ -1,0 +1,14 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output '4threads.png'
+
+# Key means label...
+set key inside top left
+set logscale x
+set logscale y
+set ylabel 'time(s)'
+set xlabel 'N*N'
+set title 'Jacobi'
+plot  "omp-absolute-results-4.txt" using 2:8 title '4 threads omp' with lines, "mpi-absolute-results-4.txt" using 2:8 title '4 threads mpi' with lines, "seq-absolute-results.txt" using 2:8 title 'sequential' with lines
+#plot  "results-sse-o3.txt" using 2:4 title 'sse o3' with lines, "results-t-o3.txt" using 2:4 title 't o3' with lines

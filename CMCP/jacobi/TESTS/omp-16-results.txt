@@ -1,0 +1,5 @@
+
+size: 	 256 	 iterations: 	 2000 	 threads: 	 1 	 time: 	 0.002972 	 seconds
+size: 	 256 	 iterations: 	 2000 	 threads: 	 2 	 time: 	 0.002993 	 seconds
+size: 	 256 	 iterations: 	 2000 	 threads: 	 4 	 time: 	 0.003244 	 seconds
+size: 	 256 	 iterations: 	 2000 	 threads: 	 8 	 time: 	 0.026288 	 seconds

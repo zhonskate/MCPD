@@ -1,0 +1,18 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'ompseq-su.png'
+
+# Key means label...
+set key inside top left
+set logscale x
+# set logscale y
+set mytics 4
+set ylabel 'speedup'
+set xlabel 'N*N'
+set title 'Jacobi'
+plot  "ompseq-combined.txt" using 2:($8/$17) title '2 threads' with lines, \
+"ompseq-combined.txt" using 2:($8/$26) title '4 threads' with lines, \
+"ompseq-combined.txt" using 2:($8/$35) title '8 threads' with lines
+
+#plot  "results-sse-o3.txt" using 2:4 title 'sse o3' with lines, "results-t-o3.txt" using 2:4 title 't o3' with lines

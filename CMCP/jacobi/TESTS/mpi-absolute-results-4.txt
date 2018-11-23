@@ -1,0 +1,17 @@
+size: 	 64 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.001822 	 seconds
+size: 	 256 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.001340 	 seconds
+size: 	 576 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.003796 	 seconds
+size: 	 1024 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.004529 	 seconds
+size: 	 1600 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.006081 	 seconds
+size: 	 3136 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.005707 	 seconds
+size: 	 6400 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.019017 	 seconds
+size: 	 12544 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.034892 	 seconds
+size: 	 25600 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.041595 	 seconds
+size: 	 50176 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.072262 	 seconds
+size: 	 102400 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.183999 	 seconds
+size: 	 207936 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.283716 	 seconds
+size: 	 409600 	 iterations: 	 2000 	 threads 	 4 	 time: 	 0.550639 	 seconds
+size: 	 817216 	 iterations: 	 2000 	 threads 	 4 	 time: 	 1.107985 	 seconds
+size: 	 1638400 	 iterations: 	 2000 	 threads 	 4 	 time: 	 2.264638 	 seconds
+size: 	 3268864 	 iterations: 	 2000 	 threads 	 4 	 time: 	 4.521427 	 seconds
+size: 	 6553600 	 iterations: 	 2000 	 threads 	 4 	 time: 	 8.945647 	 seconds

@@ -1,0 +1,2 @@
+
+size: 	 102400 	 iterations: 	 2000 	 threads: 	 1 	 time: 	 0.661629 	 seconds
