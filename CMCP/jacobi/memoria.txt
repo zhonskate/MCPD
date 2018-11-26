@@ -1,0 +1,60 @@
+1. Introducción
+
+    Presentación del problema
+
+    Objetivos
+
+    Organización del documento
+
+
+2. Aproximación secuencial
+
+    Algoritmo secuencial que resuelve el problema
+
+    Costes teóricos
+
+    Análisis experimental
+
+
+3. Aproximación paralela
+    
+    Estudio de la dependencia de datos
+
+    Planteamiento paralelo en memoria distribuida y/o compartida
+
+    Algoritmo/s paralelo/s
+
+    Costes teóricos de los algoritmos
+
+
+4. Detalles de implementación
+
+    Información sobre la implementación paralela: estructuras de datos, implementaciones especiales,…
+
+    Soluciones de pequeños problemas de implementación
+
+    Mejoras de los algoritmos paralelos en fase de implementación
+
+5. Análisis de prestaciones
+
+    Speedup, Eficiencia, Velocidad, Escalabilidad,….
+
+    Tablas, gráficas,…
+
+    Comparaciones
+
+    Resultados obtenidos
+
+6. Conclusiones
+
+    Resumen final de las aportaciones y resultados
+
+    Relacionar con los objetivos
+
+7. Referencias
+
+    Material bibliográfico utilizado
+
+8. Apéndices
+
+    Códigos, demostraciones largas, …
