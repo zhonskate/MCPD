@@ -2,6 +2,9 @@
 
     Presentación del problema
 
+        El método de Jacobi es un algoritmo iterativo para la resolución de sistemas 
+        de ecuaciones con N ecuaciones y N incógnitas. 
+
     Objetivos
 
     Organización del documento

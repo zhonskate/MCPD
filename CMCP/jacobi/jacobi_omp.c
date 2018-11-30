@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
 
   if(verbose == 1){
     printf(SEPARADOR);
-    printf("tamaño de matriz:       %dx%d\n", N, N);
+    printf("tamaño de matriz:        %dx%d\n", N, N);
     printf("iteraciones máximas:     %d\n", IT_MAXIMAS);
     printf("límite de convergencia:  %lf\n", CONVERGENCIA);
     printf(SEPARADOR);
@@ -194,9 +194,9 @@ int main(int argc, char *argv[])
 
   if(verbose == 1){
     printf("SECUENCIAL\n");
-    printf("Error = %lf\n", err);
-    printf("Iteraciones     = %d\n", itr);
-    printf("Tiempo total  = %lf seconds\n", (final_abs-inicio_abs));
+    printf("Error =           %lf\n", err);
+    printf("Iteraciones =     %d\n", itr);
+    printf("Tiempo total =    %lf seconds\n", (final_abs-inicio_abs));
     printf("Tiempo solución = %lf seconds\n", (final_sol-inicio_sol));
     if (itr == IT_MAXIMAS)
       printf("NO CONVERGENCIA\n");
@@ -251,9 +251,9 @@ int main(int argc, char *argv[])
 
   if(verbose == 1){
     printf("PARALELO\n");
-    printf("Error = %lf\n", err);
-    printf("Iteraciones     = %d\n", itr);
-    printf("Tiempo total  = %lf seconds\n", (final_abs-inicio_abs));
+    printf("Error =           %lf\n", err);
+    printf("Iteraciones =     %d\n", itr);
+    printf("Tiempo total =    %lf seconds\n", (final_abs-inicio_abs));
     printf("Tiempo solucion = %lf seconds\n", (final_sol-inicio_sol));
     if (itr == IT_MAXIMAS)
       printf("NO CONVERGENCIA\n");
