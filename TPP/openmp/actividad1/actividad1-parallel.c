@@ -38,13 +38,21 @@ int main( int argc, char *argv[] ) {
   /* PRINCIPIO DEL CODIGO A INCLUIR                        */
   double parc;
 
-  #pragma omp parallel for private(v,i,parc) schedule(runtime)
-  for( v=0; v<n_vectores; v++ ) {
-    parc = 0;
-    for( i = 0; i<tam[v]; i++ ) {
-      parc = M[v][i];
+  #pragma omp parallel 
+  {
+    #pragma omp single
+    {
+      for( v=0; v<n_vectores; v++ ) {
+        #pragma omp task firstprivate(v) shared(M) private(parc,i)
+        {
+          parc = 0;
+          for( i = 0; i<tam[v]; i++ ) {
+            parc = M[v][i];
+          }
+          media[v]=parc/tam[v];
+        }
+      }
     }
-    media[v]=parc/tam[v];
   }
 
   #pragma omp parallel for private(v,i,parc) schedule(runtime)

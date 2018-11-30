@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ctimer.h"
+#include <cblas.h>
 
 #define	L(i,j)	L[j*n+i]
 #define	A(i,j)	A[j*n+i]
@@ -73,8 +74,8 @@ int main( int argc, char *argv[] ) {
 
   double t1, t2, ucpu, scpu;
   ctimer( &t1, &ucpu, &scpu );
-  info = cholesky_escalar( n, A );
-  //info = cholesky_bloques( n, b, A );
+  //info = cholesky_escalar( n, A );
+  info = cholesky_bloques( n, b, A );
   //dpotrf_( "L", &n, A, &n, &info ); 
   ctimer( &t2, &ucpu, &scpu );
   if( info != 0 ) {
@@ -130,10 +131,12 @@ int cholesky_bloques( int n, int b, double *C ) {
       fprintf(stderr,"Error = %d en la descomposición de Cholesky de la matriz C\n",info);
       return info;
     }
+    #pragma omp parallel for schedule(runtime)
     for ( i = k + b; i < n; i += b ) {
       m = min( n-i, b );
       dtrsm_( "R", "L", "T", "N", &m, &b, &one, &C(k,k), &n, &C(i,k), &n );
     }
+    #pragma omp parallel for private(j) schedule(runtime)
     for ( i = k + b; i < n; i += b ) {
       m = min( n-i, b );
       for ( j = k + b; j < i ; j += b ) {

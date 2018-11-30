@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "ctimer.h"
 #include "sudoku.h"
+#include <omp.h>
 
 int main( int argc, char *argv[] ) {
   int sol[81];
@@ -44,8 +45,10 @@ int main( int argc, char *argv[] ) {
     for( int i = 0; i<tableros; i++ )
       for( int k = 0; k<81; k++ )
         A[i][k] = B[i][k];
-  } 
+  }
+  printf("Tableros = %d\n",tableros);
 
+  #pragma omp parallel for schedule(runtime)
   for(int tablero = 0; tablero < tableros; tablero++) {
     int mascara[81];
     for ( int i = 0; i < 81; i++ ) mascara[i] = A[tablero][i] != 0;
