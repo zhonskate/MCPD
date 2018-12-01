@@ -1,0 +1,7 @@
+&
+(count = 1)
+(executable = /bin/sh)
+(arguments = compila_y_ejecuta_8.sh)
+(rsl_substitution = (GASS_URL https://javier.ccgc.mastercpd.upv.es:33209/home/ccgc/Evidencias/Grid/04_Programacion/P3))
+(stdout = $(GASS_URL)/miStdout_8)
+(file_stage_in = ( $(GASS_URL)/pi.c pi.c ) ($(GASS_URL)/compila_y_ejecuta_8.sh compila_y_ejecuta_8.sh))
