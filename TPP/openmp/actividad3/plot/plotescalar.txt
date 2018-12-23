@@ -1,0 +1,14 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'act3escalar.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'tiempo(s)'
+set xlabel 'hilos'
+set yrange [0:80]
+set xtics (1,2,4,8,16,32)
+set title 'Actividad 3: escalar con size 2800'
+set logscale x
+plot  "resultsomp" using 1:4 title 'escalar' with lines

@@ -75,8 +75,8 @@ int main( int argc, char *argv[] ) {
 
   double t1, t2, ucpu, scpu;
   ctimer( &t1, &ucpu, &scpu );
-  //info = cholesky_escalar( n, A );
-  info = cholesky_bloques( n, b, A );
+  info = cholesky_escalar( n, A );
+  //info = cholesky_bloques( n, b, A );
   //dpotrf_( "L", &n, A, &n, &info ); 
   ctimer( &t2, &ucpu, &scpu );
   if( info != 0 ) {

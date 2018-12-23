@@ -1,0 +1,18 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'act3final-eff.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'eficiencia'
+set xlabel 'size'
+#set yrange [0:60]
+#set xtics (1,2,5,7,10,12,15,17,20)
+set title 'Actividad 3: estudio por bloques'
+#set logscale y
+plot "2salidafinal" using 1:(($4/$3)/2) title '2 hilos' with lines, \
+"4salidafinal" using 1:(($4/$3)/4) title '4 hilos' with lines, \
+"8salidafinal" using 1:(($4/$3)/8) title '8 hilos' with lines, \
+"16salidafinal" using 1:(($4/$3)/16) title '16 hilos' with lines, \
+"32salidafinal" using 1:(($4/$3)/32) title '32 hilos' with lines
