@@ -1,0 +1,15 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'act2.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'tiempo(s)'
+set xlabel 'profundidad'
+#set yrange [0:40]
+set xtics (1,2,5,7,10,12,15,17,20)
+set title 'Actividad 2'
+# set logscale x
+plot  "salida-dyn" using 2:5 title 'dynamic' with lines, \
+"salida-stat" using 2:5 title 'static' with lines

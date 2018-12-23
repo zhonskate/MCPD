@@ -5,9 +5,5 @@
 #PBS -j oe
 #PBS -o salida
 cat $PBS_NODEFILE
-OMP_NUM_THREADS=32 OMP_SCHEDULE=static ./sudoku_estatico 25 
-OMP_NUM_THREADS=16 OMP_SCHEDULE=static ./sudoku_estatico 25
-OMP_NUM_THREADS=8 OMP_SCHEDULE=static ./sudoku_estatico 25
-OMP_NUM_THREADS=4 OMP_SCHEDULE=static ./sudoku_estatico 25
-OMP_NUM_THREADS=2 OMP_SCHEDULE=static ./sudoku_estatico 25
-OMP_NUM_THREADS=1 OMP_SCHEDULE=static ./sudoku_estatico 25
+OMP_NUM_THREADS=32 OMP_SCHEDULE=static ./sudoku_estatico 22
+OMP_NUM_THREADS=32 OMP_SCHEDULE=static ./sudoku_estatico 25

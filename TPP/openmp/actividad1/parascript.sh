@@ -5,4 +5,4 @@
 #PBS -j oe
 #PBS -o salida
 cat $PBS_NODEFILE
-./seq 40000 40000
+OMP_NUM_THREADS=32 OMP_SCHEDULE=dynamic ./parallel 40000 40000

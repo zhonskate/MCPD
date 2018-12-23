@@ -1,0 +1,6 @@
+1	Tiempo = 33.851319 segundos
+2	Tiempo = 15.584567 segundos
+4	Tiempo = 8.673958 segundos
+8	Tiempo = 4.612754 segundos
+16	Tiempo = 2.816972 segundos
+32	Tiempo = 1.919644 segundos

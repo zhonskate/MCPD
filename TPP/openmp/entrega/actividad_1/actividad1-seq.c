@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ctimer.h"
-#include <omp.h>
 
 int main( int argc, char *argv[] ) {
 
@@ -39,18 +38,14 @@ int main( int argc, char *argv[] ) {
   /* PRINCIPIO DEL CODIGO A INCLUIR                        */
   double parc;
 
-  #pragma omp parallel for private(v,i,parc) schedule(runtime)
   for( v=0; v<n_vectores; v++ ) {
-    {
-      parc = 0;
-      for( i = 0; i<tam[v]; i++ ) {
-        parc = M[v][i];
-      }
-      media[v]=parc/tam[v];
+    parc = 0;
+    for( i = 0; i<tam[v]; i++ ) {
+      parc = M[v][i];
     }
+    media[v]=parc/tam[v];
   }
 
-  #pragma omp parallel for private(v,i,parc) schedule(runtime)
   for( v=0; v<n_vectores; v++ ) {
     parc = 0;
     for( i = 0; i<tam[v]; i++ ) {

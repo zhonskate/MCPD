@@ -7,7 +7,7 @@ int main( int argc, char *argv[] ) {
   int i, j;
 
   printf("sudoku inicial: \n");
-  init_sudoku("normal",sol);
+  init_sudoku("muy dificil",sol);
   prin_sudoku(sol);
 
   for( i = 1; i <= 9; i++ ) {
