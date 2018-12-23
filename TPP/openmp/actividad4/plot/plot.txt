@@ -1,0 +1,16 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'act4.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'time(s)'
+set xlabel 'threads'
+set yrange [0:40]
+set xtics (1,2,4,8,16,32)
+set title 'Actividad 4'
+set logscale x
+plot  "resultsdyn" using 1:4 title 'dynamic' with lines, \
+"resultsstat" using 1:4 title 'static' with lines, \
+"resultsseq" using 1:4 title 'sequential' with lines

@@ -1,0 +1,16 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'act8-32.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'tiempo(s)'
+set xlabel 'size'
+#set yrange [0:60]
+#set xtics (1,2,5,7,10,12,15,17,20)
+set title 'Actividad 8: 32 hilos'
+set logscale y
+plot  "32nd" using 1:3 title 'task no dependency' with lines, \
+"32d" using 1:3 title 'task dependency' with lines, \
+"32salidafinal" using 1:3 title 'thread based' with lines
