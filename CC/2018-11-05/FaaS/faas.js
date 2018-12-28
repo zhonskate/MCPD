@@ -7,6 +7,7 @@ var path = require('path');
 var Loki = require('lokijs');
 var del = require('del');
 var sha256 = require('js-sha256');
+var zmq = require('zeromq');
 
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'functions';
@@ -18,6 +19,8 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 var requestnum = 0;
+var registryIP = 'localhost';
+var registryPort = '5000';
 
 //utils 
 
@@ -44,7 +47,7 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 
     // receive from http
     try {
-
+        // console.log(req);
         // add to database /uploads
         const col = await loadCollection(COLLECTION_NAME, db);
         const data = col.insert(req.file);
@@ -79,10 +82,39 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
                 res.send(error);
             }
         });
+        //.then(function(){
+        var commandline = `\
+        docker \
+        tag \
+        a/${hash} ${registryIP}:${registryPort}/a/${hash}`
+        exec(commandline, function(error, stdout, stderr) {
+            //if (stdout){console.log('stdout: ', stdout);}
+            if (stderr){console.log('stderr: ', stderr);}
+            // res.send(stdout);
+            if (error !== null) {
+                console.log('exec error: ', error);
+                res.send(error); 
+            }
+        });
+        //});
+        var commandline = `\
+        docker \
+        push \
+        ${registryIP}:${registryPort}/a/${hash}`
+        exec(commandline, function(error, stdout, stderr) {
+            //if (stdout){console.log('stdout: ', stdout);}
+            if (stderr){console.log('stderr: ', stderr);}
+            // res.send(stdout);
+            if (error !== null) {
+                console.log('exec error: ', error);
+                res.send(error); 
+            }
+        });
 
         // return the sha
         res.send(hash);
     } catch (err) {
+        console.log(err);
         res.sendStatus(400);
     }
 });
@@ -90,7 +122,7 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 
 // INVOKE FUNCTION
 
-app.post('/invokefunction/:functionSha', function (req, res) {
+app.put('/invokefunction/:functionSha', function (req, res) {
     console.log(req.body);
 
     // create the folder where the requests will be saved
@@ -122,7 +154,7 @@ app.post('/invokefunction/:functionSha', function (req, res) {
     -w /workdir/sum \
     -v ${df_path}/params.json:/data/params.json \
     -v ${df_path}/results.json:/data/results.json \
-    a/${req.params.functionSha} \
+    ${registryIP}:${registryPort}/a/${req.params.functionSha} \
     npm start`;
 
     var exec = require('child_process').exec;
@@ -143,5 +175,13 @@ app.post('/invokefunction/:functionSha', function (req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('FaaS listening on port 3000!');
 });
+
+var sock = zmq.socket('push');
+
+sock.bindSync('tcp://127.0.0.1:2000');
+setInterval(function(){
+    console.log('sending work');
+    sock.send('some work');
+  }, 500);
