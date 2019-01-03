@@ -39,6 +39,7 @@
       "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.0.tgz",
       "version": "1.0.0"
     },
+    "better-queue": "^3.8.10",
     "body-parser": {
       "integrity": "sha1-WykhmP/dVTs6DyDe0FkrlWlVyLQ=",
       "requires": {
@@ -480,6 +481,7 @@
       "resolved": "https://registry.npmjs.org/qs/-/qs-6.5.2.tgz",
       "version": "6.5.2"
     },
+    "queue-fifo": "^0.2.5",
     "range-parser": {
       "integrity": "sha1-9JvmtIeJTdxA3MlKMi9hEJLgDV4=",
       "resolved": "https://registry.npmjs.org/range-parser/-/range-parser-1.2.0.tgz",

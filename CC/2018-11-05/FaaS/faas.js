@@ -1,4 +1,5 @@
 var express = require('express');
+var queue = require('queue-fifo');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -15,6 +16,10 @@ const UPLOAD_PATH = 'uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 
+var jobq = new queue();
+var execq = new queue();
+var workersq = new queue();
+
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -22,7 +27,7 @@ var requestnum = 0;
 var registryIP = 'localhost';
 var registryPort = '5000';
 
-var sock = zmq.socket('push');
+var sock = zmq.socket('rep');
 sock.bindSync('tcp://127.0.0.1:2000');
 
 //utils 
@@ -142,47 +147,59 @@ app.put('/invokefunction/:functionSha', function (req, res) {
         if (err) {
             console.log(err);
         }
+        fs.writeFile(`${df_path}/results.json`, '', function(err) {
+            if (err) {
+                console.log(err);
+            }
+            console.log('enqueuing request nº ' + requestnum);
+            job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body);
+            if (workersq.isEmpty()){
+                jobq.enqueue(job);
+            }
+            else {
+                msg=workersq.dequeue();
+                sendJob(job,msg);
+            }
+            requestnum++;
+            res.sendStatus(200);
+        });
     });
-
-    fs.writeFile(`${df_path}/results.json`, '', function(err) {
-        if (err) {
-            console.log(err);
-        }
-    });
-    
-    console.log('sending work');
-    sock.send(requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body));
-
-    // Run the container
-    //var commandline = `\
-    //docker \
-    //run \
-    //--rm \
-    //-w /workdir/sum \
-    //-v ${df_path}/params.json:/data/params.json \
-    //-v ${df_path}/results.json:/data/results.json \
-    //${registryIP}:${registryPort}/a/${req.params.functionSha} \
-    //npm start`;
-//
-    //var exec = require('child_process').exec;
-    //exec(commandline, function(error, stdout, stderr) {
-    //    if(stdout){
-    //        console.log('stdout: ', stdout);
-    //    }
-    //    if(stderr){
-    //        console.log('stderr: ', stderr);
-    //    }
-    //    res.send(stdout);
-    //    if (error !== null) {
-    //        console.log('exec error: ', error);
-    //    }
-    //});
-//
-
-    requestnum = requestnum + 1;
-
 });
 
 app.listen(3000, function () {
   console.log('FaaS listening on port 3000!');
 });
+
+sock.on("message",function(msg){
+    //dequeue from job queue
+    stMsg = msg.toString();
+    arrMsg = stMsg.split('//');
+    if(arrMsg.length > 1){
+        requestnum = arrMsg[1];
+        content = arrMsg[2];
+        console.log("CONTENT "+content);
+        var df_path = `${__dirname}/requests/${requestnum}`;
+        fs.writeFile(`${df_path}/results.json`, content, function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+
+    }
+
+    if(!jobq.isEmpty()){
+        job = jobq.dequeue();      
+        sendJob(job,msg);
+    }
+    else {workersq.enqueue(msg);}
+
+});
+
+function sendJob (job,msg){
+    console.log("DOING " + job);
+    //add to doing queue
+    execq.enqueue(msg + '//' + job);
+    //set timeout
+    //send work
+    sock.send(job);
+}
