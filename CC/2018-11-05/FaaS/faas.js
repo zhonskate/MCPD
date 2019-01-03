@@ -22,6 +22,9 @@ var requestnum = 0;
 var registryIP = 'localhost';
 var registryPort = '5000';
 
+var sock = zmq.socket('push');
+sock.bindSync('tcp://127.0.0.1:2000');
+
 //utils 
 
 const loadCollection = function (colName, db){
@@ -140,36 +143,42 @@ app.put('/invokefunction/:functionSha', function (req, res) {
             console.log(err);
         }
     });
+
     fs.writeFile(`${df_path}/results.json`, '', function(err) {
         if (err) {
             console.log(err);
         }
     });
+    
+    console.log('sending work');
+    sock.send(requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body));
 
     // Run the container
-    var commandline = `\
-    docker \
-    run \
-    --rm \
-    -w /workdir/sum \
-    -v ${df_path}/params.json:/data/params.json \
-    -v ${df_path}/results.json:/data/results.json \
-    ${registryIP}:${registryPort}/a/${req.params.functionSha} \
-    npm start`;
+    //var commandline = `\
+    //docker \
+    //run \
+    //--rm \
+    //-w /workdir/sum \
+    //-v ${df_path}/params.json:/data/params.json \
+    //-v ${df_path}/results.json:/data/results.json \
+    //${registryIP}:${registryPort}/a/${req.params.functionSha} \
+    //npm start`;
+//
+    //var exec = require('child_process').exec;
+    //exec(commandline, function(error, stdout, stderr) {
+    //    if(stdout){
+    //        console.log('stdout: ', stdout);
+    //    }
+    //    if(stderr){
+    //        console.log('stderr: ', stderr);
+    //    }
+    //    res.send(stdout);
+    //    if (error !== null) {
+    //        console.log('exec error: ', error);
+    //    }
+    //});
+//
 
-    var exec = require('child_process').exec;
-    exec(commandline, function(error, stdout, stderr) {
-        if(stdout){
-            console.log('stdout: ', stdout);
-        }
-        if(stderr){
-            console.log('stderr: ', stderr);
-        }
-        res.send(stdout);
-        if (error !== null) {
-            console.log('exec error: ', error);
-        }
-    });
     requestnum = requestnum + 1;
 
 });
@@ -177,11 +186,3 @@ app.put('/invokefunction/:functionSha', function (req, res) {
 app.listen(3000, function () {
   console.log('FaaS listening on port 3000!');
 });
-
-var sock = zmq.socket('push');
-
-sock.bindSync('tcp://127.0.0.1:2000');
-setInterval(function(){
-    console.log('sending work');
-    sock.send('some work');
-  }, 500);

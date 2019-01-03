@@ -9,5 +9,6 @@ id_rsa*
 node_modules/
 ej9-bis
 requests/
+requestsworker/
 uploads/
 sync_scripts/
