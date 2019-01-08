@@ -1,4 +1,5 @@
 var express = require('express');
+var List = require("collections/list");
 var queue = require('queue-fifo');
 var fs = require('fs');
 var bodyParser = require('body-parser');
@@ -17,7 +18,7 @@ const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 
 var jobq = new queue();
-var execq = new queue();
+var execlist = new List();
 var workersq = new queue();
 
 var app = express();
@@ -173,7 +174,7 @@ app.listen(3000, function () {
 sock.on("message",function(msg){
     //dequeue from job queue
     stMsg = msg.toString();
-    arrMsg = stMsg.split('//');
+    arrMsg = stMsg.split('///');
     if(arrMsg.length > 1){
         requestnum = arrMsg[1];
         content = arrMsg[2];
@@ -183,6 +184,7 @@ sock.on("message",function(msg){
             if (err) {
                 console.log(err);
             }
+            execlist.delete(arrMsg[3]);
         });
 
     }
@@ -198,7 +200,8 @@ sock.on("message",function(msg){
 function sendJob (job,msg){
     console.log("DOING " + job);
     //add to doing queue
-    execq.enqueue(msg + '//' + job);
+    execlist.push(job);  // msg + '//' + job);
+    console.log(execlist);
     //set timeout
     //send work
     sock.send(job);

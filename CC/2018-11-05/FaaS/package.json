@@ -85,6 +85,7 @@
       "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz",
       "version": "3.0.0"
     },
+    "collections": "^5.1.6",
     "concat-map": {
       "integrity": "sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=",
       "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",

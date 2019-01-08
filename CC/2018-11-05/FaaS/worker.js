@@ -67,7 +67,7 @@ sock.on('message', function(msg){
                     // Invoke the next step here however you like
                     console.log(content);   // Put all of the code here (not the best solution)                       
                     console.log("WORKER1 WAITING");
-                    sock.send("worker1" + '//' + requestnum + '//' + content);
+                    sock.send("worker1" + '///' + requestnum + '///' + content + '///' + stMsg);
                 });
             });
         });
