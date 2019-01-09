@@ -137,7 +137,8 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 // INVOKE FUNCTION
 
 app.put('/invokefunction/:functionSha', function (req, res) {
-    console.log(req.body);
+    requestnum = requestnum + 1;
+    //console.log(req.body);
 
     // create the folder where the requests will be saved
     var df_path = `${__dirname}/requests/${requestnum}`;
@@ -166,7 +167,6 @@ app.put('/invokefunction/:functionSha', function (req, res) {
                 msg=workersq.dequeue();
                 sendJob(job,msg);
             }
-            requestnum++;
             res.sendStatus(200);
         });
     });
@@ -181,10 +181,10 @@ sock.on("message",function(msg){
     stMsg = msg.toString();
     arrMsg = stMsg.split('///');
     if(arrMsg.length > 1){
-        requestnum = arrMsg[1];
+        requestnumm = arrMsg[1];
         content = arrMsg[2];
-        console.log("CONTENT "+content);
-        var df_path = `${__dirname}/requests/${requestnum}`;
+        // console.log("CONTENT "+content);
+        var df_path = `${__dirname}/requests/${requestnumm}`;
         fs.writeFile(`${df_path}/results.json`, content, function(err) {
             if (err) {
                 console.log(err);
@@ -206,7 +206,7 @@ function sendJob (job,msg){
     console.log("DOING " + job);
     //add to doing queue
     execlist.push(job);  // msg + '//' + job);
-    console.log(execlist);
+    //console.log(execlist);
     //set timeout
     //send work
     sock.send(job);

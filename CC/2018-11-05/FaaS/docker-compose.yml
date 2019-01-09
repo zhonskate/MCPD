@@ -12,6 +12,9 @@ services:
         build: ./worker/
         environment:
         - ZMQ_CONN_ADDRESS=tcp://broker:2000
+        volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/tmp/requests:/worker/requestsworker"
         links:
         - broker
     registry:
@@ -19,3 +22,5 @@ services:
         image: registry:2
         ports:
             - 5000:5000
+        volumes:
+            - "faasRegistry:/var/lib/registry"    

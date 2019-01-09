@@ -1,0 +1,1 @@
+ g++ -o chhhh cholesky.cpp -llapack -lblas -ltbb ctimer.c

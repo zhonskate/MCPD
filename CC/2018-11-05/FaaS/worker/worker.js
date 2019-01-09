@@ -17,10 +17,11 @@ sock.on('message', function(msg){
     requestnum = arrMsg[0];
     functionSha = arrMsg[1];
     reqJson = arrMsg[2];
-    console.log(reqJson);
+    // console.log(reqJson);
 
     // create the folder where the requests will be saved
-    var df_path = `${__dirname}/requestsworker/${requestnum}`;
+    var df_path = `/worker/requestsworker/${requestnum}`;
+    var local_path = `/tmp/requests/${requestnum}`;
     try{
         fs.mkdirSync(df_path);
     }
@@ -31,20 +32,20 @@ sock.on('message', function(msg){
     // Initialize the data folders
     fs.writeFile(`${df_path}/params.json`, reqJson, function(err) {
         if (err) {
-            console.log(err);
+            console.log(err.stack);
         }
         fs.writeFile(`${df_path}/results.json`, '', function(err) {
             if (err) {
-                console.log(err);
+                console.log(err.stack);
             }
             // Run the container
             var commandline = `\
             docker \
             run \
             --rm \
-            -w /workdir/sum \
-            -v ${df_path}/params.json:/data/params.json \
-            -v ${df_path}/results.json:/data/results.json \
+            -w /workdir \
+            -v ${local_path}/params.json:/data/params.json \
+            -v ${local_path}/results.json:/data/results.json \
             ${registryIP}:${registryPort}/a/${functionSha} \
             npm start`;
 
@@ -66,7 +67,7 @@ sock.on('message', function(msg){
                     content = data;
                 
                     // Invoke the next step here however you like
-                    console.log(content);   // Put all of the code here (not the best solution)                       
+                    // console.log(content);   // Put all of the code here (not the best solution)                       
                     console.log("WORKER1 WAITING");
                     sock.send("worker1" + '///' + requestnum + '///' + content + '///' + stMsg);
                 });
