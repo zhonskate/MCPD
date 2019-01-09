@@ -139,7 +139,6 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 app.put('/invokefunction/:functionSha', function (req, res) {
     requestnum = requestnum + 1;
     //console.log(req.body);
-
     // create the folder where the requests will be saved
     var df_path = `${__dirname}/requests/${requestnum}`;
     try{
@@ -167,7 +166,7 @@ app.put('/invokefunction/:functionSha', function (req, res) {
                 msg=workersq.dequeue();
                 sendJob(job,msg);
             }
-            res.sendStatus(200);
+            res.send({"requestnum":requestnum});
         });
     });
 });

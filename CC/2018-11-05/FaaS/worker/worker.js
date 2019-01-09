@@ -10,7 +10,7 @@ sock.connect(address);
 console.log(`Worker connected to ${address}`);
 
 sock.on('message', function(msg){
-    console.log("WORKER1 EXECUTING");
+    console.log("EXECUTING");
     stMsg = msg.toString();
     console.log('work: %s', stMsg);
     arrMsg = stMsg.split('//');
@@ -68,12 +68,12 @@ sock.on('message', function(msg){
                 
                     // Invoke the next step here however you like
                     // console.log(content);   // Put all of the code here (not the best solution)                       
-                    console.log("WORKER1 WAITING");
+                    console.log("WAITING");
                     sock.send("worker1" + '///' + requestnum + '///' + content + '///' + stMsg);
                 });
             });
         });
     });
   });
-  console.log("WORKER1 WAITING");
+  console.log("WAITING");
   sock.send("worker1");
