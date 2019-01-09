@@ -1,0 +1,14 @@
+version: '0'
+services:
+    broker:
+        build: ./broker/
+        environment:
+        - ZMQ_BIND_ADDRESS=tcp://*:2000
+        ports:
+        - "3333:3333"
+        volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+    worker:
+        build: ./worker/
+        environment:
+        - ZMQ_CONN_ADDRESS=tcp://broker:2000

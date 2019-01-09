@@ -27,9 +27,12 @@ app.use(bodyParser.json());
 var requestnum = 0;
 var registryIP = 'localhost';
 var registryPort = '5000';
+const address = process.env.ZMQ_BIND_ADDRESS || `tcp://*:2000`;
 
 var sock = zmq.socket('rep');
-sock.bindSync('tcp://127.0.0.1:2000');
+sock.bindSync(address);
+
+console.log(`Broker serving on ${address}`);
 
 //utils 
 
@@ -90,38 +93,40 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
                 console.log('exec error: ', error);
                 res.send(error);
             }
-        });
-        //.then(function(){
-        var commandline = `\
-        docker \
-        tag \
-        a/${hash} ${registryIP}:${registryPort}/a/${hash}`
-        exec(commandline, function(error, stdout, stderr) {
-            //if (stdout){console.log('stdout: ', stdout);}
-            if (stderr){console.log('stderr: ', stderr);}
-            // res.send(stdout);
-            if (error !== null) {
-                console.log('exec error: ', error);
-                res.send(error); 
-            }
-        });
-        //});
-        var commandline = `\
-        docker \
-        push \
-        ${registryIP}:${registryPort}/a/${hash}`
-        exec(commandline, function(error, stdout, stderr) {
-            //if (stdout){console.log('stdout: ', stdout);}
-            if (stderr){console.log('stderr: ', stderr);}
-            // res.send(stdout);
-            if (error !== null) {
-                console.log('exec error: ', error);
-                res.send(error); 
-            }
+
+            var commandline = `\
+            docker \
+            tag \
+            a/${hash} ${registryIP}:${registryPort}/a/${hash}`
+            exec(commandline, function(error, stdout, stderr) {
+                //if (stdout){console.log('stdout: ', stdout);}
+                if (stderr){console.log('stderr: ', stderr);}
+                // res.send(stdout);
+                if (error !== null) {
+                    console.log('exec error: ', error);
+                    res.send(error); 
+                }
+
+                var commandline = `\
+                docker \
+                push \
+                ${registryIP}:${registryPort}/a/${hash}`
+                exec(commandline, function(error, stdout, stderr) {
+                    //if (stdout){console.log('stdout: ', stdout);}
+                    if (stderr){console.log('stderr: ', stderr);}
+                    // res.send(stdout);
+                    if (error !== null) {
+                        console.log('exec error: ', error);
+                        res.send(error); 
+                    }
+
+                    // return the sha
+                    res.send(hash);
+
+                });
+            });
         });
 
-        // return the sha
-        res.send(hash);
     } catch (err) {
         console.log(err);
         res.sendStatus(400);
@@ -167,8 +172,8 @@ app.put('/invokefunction/:functionSha', function (req, res) {
     });
 });
 
-app.listen(3000, function () {
-  console.log('FaaS listening on port 3000!');
+app.listen(3333, function () {
+  console.log('FaaS listening on port 3333!');
 });
 
 sock.on("message",function(msg){

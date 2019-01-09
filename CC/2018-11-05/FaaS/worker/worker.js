@@ -4,9 +4,10 @@ var registryIP = 'localhost';
 var registryPort = '5000';
 
 var sock = zmq.socket('req');
+const address = process.env.ZMQ_CONN_ADDRESS || `tcp://127.0.0.1:2000`;
 
-sock.connect('tcp://127.0.0.1:2000');
-console.log('Worker connected to port 2000');
+sock.connect(address);
+console.log(`Worker connected to ${address}`);
 
 sock.on('message', function(msg){
     console.log("WORKER1 EXECUTING");
