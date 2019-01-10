@@ -1,15 +1,26 @@
-version: '0'
+version: '2'
 services:
+    registry:
+        restart: always
+        image: registry:2
+        ports:
+            - 5000:5000
+        volumes:
+            - "faasRegistry:/var/lib/registry"
     broker:
         build: ./broker/
+        image: brokerfaas
         environment:
         - ZMQ_BIND_ADDRESS=tcp://*:2000
         ports:
         - "3333:3333"
         volumes:
         - "/var/run/docker.sock:/var/run/docker.sock"
+        links:
+        - registry
     worker:
         build: ./worker/
+        image: workerfaas
         environment:
         - ZMQ_CONN_ADDRESS=tcp://broker:2000
         volumes:
@@ -17,10 +28,5 @@ services:
         - "/tmp/requests:/worker/requestsworker"
         links:
         - broker
-    registry:
-        restart: always
-        image: registry:2
-        ports:
-            - 5000:5000
-        volumes:
-            - "faasRegistry:/var/lib/registry"    
+volumes:
+  faasRegistry:
