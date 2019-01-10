@@ -2,6 +2,7 @@ var zmq = require('zeromq');
 var fs = require('fs');
 var registryIP = 'localhost';
 var registryPort = '5000';
+const { PerformanceObserver, performance } = require('perf_hooks');
 
 var sock = zmq.socket('req');
 const address = process.env.ZMQ_CONN_ADDRESS || `tcp://127.0.0.1:2000`;
@@ -10,6 +11,7 @@ sock.connect(address);
 console.log(`Worker connected to ${address}`);
 
 sock.on('message', function(msg){
+    var timeStartBusy = performance.now();
     console.log("EXECUTING");
     stMsg = msg.toString();
     console.log('work: %s', stMsg);
@@ -38,6 +40,7 @@ sock.on('message', function(msg){
             if (err) {
                 console.log(err.stack);
             }
+            var timeStartExec = performance.now();
             // Run the container
             var commandline = `\
             docker \
@@ -67,9 +70,13 @@ sock.on('message', function(msg){
                     content = data;
                 
                     // Invoke the next step here however you like
-                    // console.log(content);   // Put all of the code here (not the best solution)                       
+                    // console.log(content);   // Put all of the code here (not the best solution)    
+                    var timeEndExec = performance.now();                  
                     console.log("WAITING");
-                    sock.send("worker1" + '///' + requestnum + '///' + content + '///' + stMsg);
+                    var timeExec = timeEndExec - timeStartExec;
+                    var timeEndBusy = performance.now(); 
+                    var timeBusy = timeEndBusy - timeStartBusy;
+                    sock.send("worker1" + '///' + requestnum + '///' + content + '///' + stMsg + '///' + timeBusy + '///' + timeExec + '///' + arrMsg[3]);
                 });
             });
         });

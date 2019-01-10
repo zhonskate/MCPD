@@ -10,6 +10,7 @@ var Loki = require('lokijs');
 var del = require('del');
 var sha256 = require('js-sha256');
 var zmq = require('zeromq');
+const { PerformanceObserver, performance } = require('perf_hooks');
 
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'functions';
@@ -133,10 +134,23 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
     }
 });
 
+// GET RESULT
+
+app.get('/result/:reqnum', function (req, res) {
+    var df_path = `${__dirname}/requests/${req.params.reqnum}`;
+    fs.readFile(`${df_path}/results.json`, function read(err, data) {
+        if (err) {
+            res.send(err);
+        }
+        res.send(data);
+    });
+});
+
 
 // INVOKE FUNCTION
 
 app.put('/invokefunction/:functionSha', function (req, res) {
+    var timeStartReq = performance.now();
     requestnum = requestnum + 1;
     //console.log(req.body);
     // create the folder where the requests will be saved
@@ -158,7 +172,7 @@ app.put('/invokefunction/:functionSha', function (req, res) {
                 console.log(err);
             }
             console.log('enqueuing request nº ' + requestnum);
-            job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body);
+            job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body) + '//' + timeStartReq ;
             if (workersq.isEmpty()){
                 jobq.enqueue(job);
             }
@@ -189,6 +203,11 @@ sock.on("message",function(msg){
                 console.log(err);
             }
             execlist.delete(arrMsg[3]);
+            console.log("BUSY = " + arrMsg[4]);
+            console.log("EXEC = " + arrMsg[5]);
+            var timeEndReq = performance.now();
+            var timeReq = timeEndReq - arrMsg[6];
+            console.log("REQ = " + timeReq); 
         });
 
     }
@@ -205,6 +224,20 @@ function sendJob (job,msg){
     console.log("DOING " + job);
     //add to doing queue
     execlist.push(job);  // msg + '//' + job);
+    console.log("HEY  " + execlist.get(job));
+    setTimeout(function(){ 
+        if (execlist.get(job)== job){
+            console.log("TOO LONG");
+            execlist.delete(job);
+            if (workersq.isEmpty()){
+                jobq.enqueue(job);
+            }
+            else {
+                msg=workersq.dequeue();
+                sendJob(job,msg);
+            }
+        }
+    }, 10000);
     //console.log(execlist);
     //set timeout
     //send work
