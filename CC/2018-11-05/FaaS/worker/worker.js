@@ -28,7 +28,7 @@ sock.on('message', function(msg){
         fs.mkdirSync(df_path);
     }
     catch(e){
-        console.log("directory already present")
+        //console.log("directory already present")
     }
 
     // Initialize the data folders

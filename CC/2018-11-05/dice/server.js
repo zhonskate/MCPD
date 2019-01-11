@@ -2,8 +2,8 @@ var fs = require("fs");
 
 var mydata = JSON.parse(fs.readFileSync('/data/params.json', 'utf8'));
 
-dices = 1|mydata.num_dices;
-size = 6|mydata.size;
+dices = mydata.num_dices || 1;
+size = mydata.size || 6;
 rollarr = [];
 total = 0;
 
