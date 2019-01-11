@@ -62,6 +62,12 @@ sock.on('message', function(msg){
                 }
                 if (error !== null) {
                     console.log('exec error: ', error);
+                    timeEndExec = performance.now();
+                    timeExec = timeEndExec - timeStartExec;
+                    timeEndBusy = performance.now(); 
+                    timeBusy = timeEndBusy - timeStartBusy;
+                    error = "FUNCTION SHA NOT FOUND. EXECUTION CANCELLED"
+                    sock.send("worker1" + '///' + requestnum + '///' + error + '///' + stMsg + '///' + timeBusy + '///' + timeExec + '///' + arrMsg[3]);
                 }
                 fs.readFile(`${df_path}/results.json`, function read(err, data) {
                     if (err) {

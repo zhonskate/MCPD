@@ -18,7 +18,7 @@ const UPLOAD_PATH = 'uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 
-var jobq = new queue();
+var jobq = new List();
 var execlist = new List();
 var workersq = new queue();
 
@@ -137,13 +137,24 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 // GET RESULT
 
 app.get('/result/:reqnum', function (req, res) {
-    var df_path = `${__dirname}/requests/${req.params.reqnum}`;
-    fs.readFile(`${df_path}/results.json`, function read(err, data) {
-        if (err) {
-            res.send(err);
-        }
-        res.send(data);
-    });
+    if(req.params.reqnum <= requestnum){
+        var df_path = `${__dirname}/requests/${req.params.reqnum}`;
+        fs.readFile(`${df_path}/results.json`, function read(err, data) {
+            if (err) {
+                if(execlist.has(req.params.reqnum + "")){
+                    res.send("REQUEST EXECUTING");
+                }
+                else{
+                    res.send("REQUEST IN QUEUE");
+                }
+                //res.send(err);
+            }
+            res.send(data);
+        });
+    }
+    else{
+        res.send("NON-EXISTING REQUEST");
+    }
 });
 
 
@@ -159,7 +170,7 @@ app.put('/invokefunction/:functionSha', function (req, res) {
         fs.mkdirSync(df_path);
     }
     catch(e){
-        console.log("directory already present")
+        //console.log("directory already present")
     }
 
     // Initialize the data folders
@@ -167,21 +178,21 @@ app.put('/invokefunction/:functionSha', function (req, res) {
         if (err) {
             console.log(err);
         }
-        fs.writeFile(`${df_path}/results.json`, '', function(err) {
-            if (err) {
-                console.log(err);
-            }
-            console.log('enqueuing request nº ' + requestnum);
-            job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body) + '//' + timeStartReq ;
-            if (workersq.isEmpty()){
-                jobq.enqueue(job);
-            }
-            else {
-                msg=workersq.dequeue();
-                sendJob(job,msg);
-            }
-            res.send({"requestnum":requestnum});
-        });
+//        fs.writeFile(`${df_path}/results.json`, '', function(err) {
+//            if (err) {
+//                console.log(err);
+//            }
+        console.log('enqueuing request nº ' + requestnum);
+        job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body) + '//' + timeStartReq ;
+        if (workersq.isEmpty()){
+            jobq.push(job);
+        }
+        else {
+            msg=workersq.dequeue();
+            sendJob(requestnum,job,msg);
+        }
+        res.send({"requestnum":requestnum});
+//        });
     });
 });
 
@@ -202,7 +213,9 @@ sock.on("message",function(msg){
             if (err) {
                 console.log(err);
             }
-            execlist.delete(arrMsg[3]);
+            //console.log("RNNNNNNNNNN " + requestnumm);
+            suc = execlist.delete(requestnumm + "");
+            // console.log ("SUCC 1 " + suc);
             console.log("BUSY = " + arrMsg[4]);
             console.log("EXEC = " + arrMsg[5]);
             var timeEndReq = performance.now();
@@ -212,29 +225,32 @@ sock.on("message",function(msg){
 
     }
 
-    if(!jobq.isEmpty()){
-        job = jobq.dequeue();      
-        sendJob(job,msg);
+    if(jobq.any()){
+        job = jobq.shift();
+        reqn = job.split("//")[0];      
+        sendJob(reqn,job,msg);
     }
     else {workersq.enqueue(msg);}
 
 });
 
-function sendJob (job,msg){
+function sendJob (rn,job,msg){
     console.log("DOING " + job);
     //add to doing queue
-    execlist.push(job);  // msg + '//' + job);
-    console.log("HEY  " + execlist.get(job));
+    execlist.push(rn + "");  // msg + '//' + job);
+    // console.log("HEY  " + execlist.get(job));
     setTimeout(function(){ 
-        if (execlist.get(job)== job){
+        //console.log("EXECLIST  " + rn);
+        if (execlist.has(rn + "")){
             console.log("TOO LONG");
-            execlist.delete(job);
+            execlist.delete(rn + "");
+            //console.log ("SUCC 2 " + suc);
             if (workersq.isEmpty()){
-                jobq.enqueue(job);
+                jobq.unshift(job);
             }
             else {
                 msg=workersq.dequeue();
-                sendJob(job,msg);
+                sendJob(rn,job,msg);
             }
         }
     }, 10000);
