@@ -275,7 +275,16 @@ function scaleUp(){
         docker-compose -f ${compose_file} up \
         --scale worker=${worker_replicas} \
         -d `;
-    
+
+    var commandline = `\
+        docker \
+        run \
+        --rm \
+        --network faas_default \
+        -e ZMQ_CONN_ADDRESS=tcp://broker:2000 \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v /tmp/requests:/worker/requestsworker \
+        workerfaas`;
     //    var commandline = `\
     //    docker run \ 
     //    -e "ZMQ_CONN_ADDRESS=tcp://broker:2000" \
