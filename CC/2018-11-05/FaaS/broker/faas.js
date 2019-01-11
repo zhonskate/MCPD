@@ -275,6 +275,14 @@ function scaleUp(){
         docker-compose -f ${compose_file} up \
         --scale worker=${worker_replicas} \
         -d `;
+    
+    //    var commandline = `\
+    //    docker run \ 
+    //    -e "ZMQ_CONN_ADDRESS=tcp://broker:2000" \
+    //    -v "/var/run/docker.sock:/var/run/docker.sock" \
+    //    -v "/tmp/requests:/worker/requestsworker" \
+    //    workerfaas`;
+    
     var exec = require('child_process').exec;
     exec(commandline, function(error, stdout, stderr) {
         //if (stdout){console.log('stdout: ', stdout);}
