@@ -1,0 +1,9 @@
+{
+  "name": "dice",
+  "version": "1.0.0",
+  "description": "rolling dice tool",
+  "main": "roll.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC"
+}
