@@ -12,6 +12,8 @@ var sha256 = require('js-sha256');
 var zmq = require('zeromq');
 const { PerformanceObserver, performance } = require('perf_hooks');
 
+var scaling_trigger = true;
+
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'functions';
 const UPLOAD_PATH = 'uploads';
@@ -26,6 +28,7 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 var requestnum = 0;
+var worker_replicas = 1;
 var registryIP = 'localhost';
 var registryPort = '5000';
 const address = process.env.ZMQ_BIND_ADDRESS || `tcp://*:2000`;
@@ -186,6 +189,10 @@ app.put('/invokefunction/:functionSha', function (req, res) {
         job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body) + '//' + timeStartReq ;
         if (workersq.isEmpty()){
             jobq.push(job);
+            if(scaling_trigger && jobq.length >=5){
+                scaling_trigger = false;
+                scaleUp();
+            }
         }
         else {
             msg=workersq.dequeue();
@@ -258,4 +265,31 @@ function sendJob (rn,job,msg){
     //set timeout
     //send work
     sock.send(job);
+}
+
+function scaleUp(){
+    worker_replicas = worker_replicas + 1;
+    console.log ("SCALING TO " + worker_replicas + " REPLICAS");
+    compose_file = "/Users/zhon/Documents/MCPD/CC/2018-11-05/FaaS/docker-compose.yml"
+    var commandline = `\
+        docker-compose -f ${compose_file} up \
+        --scale worker=${worker_replicas} \
+        -d `;
+    var exec = require('child_process').exec;
+    exec(commandline, function(error, stdout, stderr) {
+        //if (stdout){console.log('stdout: ', stdout);}
+        if (stderr){console.log('stderr: ', stderr);}
+        // res.send(stdout);
+        if (error !== null) {
+            console.log('exec error: ', error);
+        }
+    });
+    setTimeout(function(){ 
+        if (jobq.length >=5 ){
+            scaleUp();
+        }
+        else {
+            scaling_trigger = true;
+        }
+    }, 30000);
 }
