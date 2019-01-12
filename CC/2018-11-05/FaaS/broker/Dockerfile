@@ -9,6 +9,7 @@ WORKDIR /server
 RUN mkdir requests
 RUN npm install --silent express && \
  npm install --silent collections  && \
+ npm install pug && \
  npm install --silent queue-fifo && \
  npm install --silent multer && \
  npm install --silent cors && \
@@ -19,6 +20,7 @@ RUN npm install --silent express && \
 RUN curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose
 COPY faas.js /server/faas.js
 COPY build /server/build
+COPY views /server/views
 EXPOSE 2000
 EXPOSE 3333
 CMD ["node", "/server/faas.js"]

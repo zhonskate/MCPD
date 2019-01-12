@@ -27,7 +27,9 @@ var workersq = new queue();
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.set('view engine', 'pug');
 var requestnum = 0;
+var worker_replica_num = 1;
 var worker_replicas = 1;
 var registryIP = 'localhost';
 var registryPort = '5000';
@@ -56,8 +58,15 @@ const cleanFolder = function (folderPath) {
 
 cleanFolder(UPLOAD_PATH);
 
+app.get('/', (req, res) => {
+    res.render('index');
+  });
 
-// REGISTER FUNCTION
+app.get('/registerfunction', (req, res) => {
+
+});
+
+// REGISTER FUNCTIO
 
 app.post('/registerfunction',upload.single('module'), async(req, res) =>{
 
@@ -268,23 +277,28 @@ function sendJob (rn,job,msg){
 }
 
 function scaleUp(){
+    worker_replica_num = worker_replica_num + 1;
     worker_replicas = worker_replicas + 1;
-    console.log ("SCALING TO " + worker_replicas + " REPLICAS");
-    compose_file = "/Users/zhon/Documents/MCPD/CC/2018-11-05/FaaS/docker-compose.yml"
-    var commandline = `\
-        docker-compose -f ${compose_file} up \
-        --scale worker=${worker_replicas} \
-        -d `;
+    console.log ("SCALING UP TO " + worker_replicas + " REPLICAS");
+
+    //compose_file = "/Users/zhon/Documents/MCPD/CC/2018-11-05/FaaS/docker-compose.yml"
+    //var commandline = `\
+    //    docker-compose -f ${compose_file} up \
+    //    --scale worker=${worker_replicas} \
+    //    -d `;
 
     var commandline = `\
         docker \
         run \
+        -d \
+        --name faas_worker_${worker_replica_num} \
         --rm \
         --network faas_default \
         -e ZMQ_CONN_ADDRESS=tcp://broker:2000 \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v /tmp/requests:/worker/requestsworker \
         workerfaas`;
+
     //    var commandline = `\
     //    docker run \ 
     //    -e "ZMQ_CONN_ADDRESS=tcp://broker:2000" \
@@ -310,3 +324,51 @@ function scaleUp(){
         }
     }, 30000);
 }
+
+var scaleinRetries = 0;
+setInterval(function(){
+    if(!workersq.isEmpty()){
+        scaleinRetries = scaleinRetries + 1;
+    }
+    else{
+        scaleinRetries = 0;
+    }
+    if (scaleinRetries >= 5){
+        scaleinRetries = 0;
+        scaleDown();
+    }
+},5000);
+
+function scaleDown(){
+    if(worker_replicas>1){
+        worker_replicas=worker_replicas-1;
+        console.log ("SCALING DOWN TO " + worker_replicas + " REPLICAS");
+        sock.send("KILL");
+    }
+    else{
+        console.log("CANNOT SCALE DOWN, ONLY 1 REPLICA");
+    }
+}
+
+process.on('SIGTERM', function() {
+    console.log('Do something useful here.');
+    for(cont_num =2; cont_num<=worker_replica_num; cont_num ++){
+        console.log("killing container faas_worker_" + cont_num);
+        var commandline = `\
+        docker \
+        kill \
+        faas_worker_${cont_num} `;
+        var exec = require('child_process').exec;
+        exec(commandline, function(error, stdout, stderr) {
+            //if (stdout){console.log('stdout: ', stdout);}
+            if (stderr){console.log('stderr: ', stderr);}
+            // res.send(stdout);
+            if (error !== null) {
+                console.log('exec error: ', error);
+            }
+            if (cont_num == worker_replica_num){
+                process.exit();
+            }
+        });
+    }
+});

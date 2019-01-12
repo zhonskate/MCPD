@@ -11,6 +11,11 @@ sock.connect(address);
 console.log(`Worker connected to ${address}`);
 
 sock.on('message', function(msg){
+    if(msg.toString() == "KILL"){
+        console.log("I WAS KILLED");
+        sock.close();
+        process.exit();
+    }
     var timeStartBusy = performance.now();
     console.log("EXECUTING");
     stMsg = msg.toString();
