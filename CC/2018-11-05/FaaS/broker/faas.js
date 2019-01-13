@@ -1,3 +1,5 @@
+// dependencies
+
 var express = require('express');
 var List = require("collections/list");
 var queue = require('queue-fifo');
@@ -12,7 +14,7 @@ var sha256 = require('js-sha256');
 var zmq = require('zeromq');
 const { PerformanceObserver, performance } = require('perf_hooks');
 
-var scaling_trigger = true;
+// Db related declarations
 
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'functions';
@@ -20,27 +22,38 @@ const UPLOAD_PATH = 'uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
 
+// Data structures
+
 var jobq = new List();
 var execlist = new List();
 var workersq = new queue();
+var functions = [];
+
+// Express configuration
 
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// other declarations
+
+var scaling_trigger = true;
 var requestnum = 0;
 var worker_replica_num = 1;
 var worker_replicas = 1;
 var registryIP = 'localhost';
 var registryPort = '5000';
 const address = process.env.ZMQ_BIND_ADDRESS || `tcp://*:2000`;
-var functions = [];
+
+// zmq init
 
 var sock = zmq.socket('rep');
 sock.bindSync(address);
 
 console.log(`Broker serving on ${address}`);
 
-//utils 
+//----------------------------------------------------------------------------------//
+// Upload-related code
 
 const loadCollection = function (colName, db){
     return new Promise(resolve => {
@@ -58,13 +71,13 @@ const cleanFolder = function (folderPath) {
 
 cleanFolder(UPLOAD_PATH);
 
-// REGISTER FUNCTIO
+//----------------------------------------------------------------------------------//
+// REGISTER FUNCTION
 
 app.post('/registerfunction',upload.single('module'), async(req, res, next) =>{
 
     // receive from http
     try {
-        // console.log(req);
         // add to database /uploads
         const col = await loadCollection(COLLECTION_NAME, db);
         const data = col.insert(req.file);
@@ -73,7 +86,6 @@ app.post('/registerfunction',upload.single('module'), async(req, res, next) =>{
         // create the sha of the tgz
         var tarfile = fs.readFileSync(req.file.path, 'utf8');
         var hash = sha256(tarfile);
-        //console.log(hash);
 
         // prepare folder to build the image
         fs.rename(req.file.path,'./build/module.tar.gz',function(error, stdout, stderr){
@@ -91,37 +103,45 @@ app.post('/registerfunction',upload.single('module'), async(req, res, next) =>{
         ${df_path}`;
         var exec = require('child_process').exec;
         exec(commandline, function(error, stdout, stderr) {
-            //if (stdout){console.log('stdout: ', stdout);}
-            if (stderr){console.log('stderr: ', stderr);}
-            // res.send(stdout);
+
+            if (stderr){
+                console.log('stderr: ', stderr);
+            }
+
             if (error !== null) {
                 console.log('exec error: ', error);
                 res.send(error);
                 return next(new Error([error]));
             }
 
+            // tag the docker image to upload it
             var commandline = `\
             docker \
             tag \
             a/${hash} ${registryIP}:${registryPort}/a/${hash}`
             exec(commandline, function(error, stdout, stderr) {
-                //if (stdout){console.log('stdout: ', stdout);}
-                if (stderr){console.log('stderr: ', stderr);}
-                // res.send(stdout);
+
+                if (stderr){
+                    console.log('stderr: ', stderr);
+                }
+
                 if (error !== null) {
                     console.log('exec error: ', error);
                     res.send(error); 
                     return next(new Error([error]));
                 }
-
+                
+                // push the image to the registry
                 var commandline = `\
                 docker \
                 push \
                 ${registryIP}:${registryPort}/a/${hash}`
                 exec(commandline, function(error, stdout, stderr) {
-                    //if (stdout){console.log('stdout: ', stdout);}
-                    if (stderr){console.log('stderr: ', stderr);}
-                    // res.send(stdout);
+
+                    if (stderr){
+                        console.log('stderr: ', stderr);
+                    }
+
                     if (error !== null) {
                         console.log('exec error: ', error);
                         res.send(error); 
@@ -142,11 +162,16 @@ app.post('/registerfunction',upload.single('module'), async(req, res, next) =>{
     }
 });
 
+//----------------------------------------------------------------------------------//
 // GET RESULT
 
 app.get('/result/:reqnum', function (req, res) {
+    
     if(req.params.reqnum <= requestnum){
+
         var df_path = `${__dirname}/requests/${req.params.reqnum}`;
+
+        // read result file 
         fs.readFile(`${df_path}/results.json`, function read(err, data) {
             if (err) {
                 if(execlist.has(req.params.reqnum + "")){
@@ -155,7 +180,6 @@ app.get('/result/:reqnum', function (req, res) {
                 else{
                     res.send("REQUEST IN QUEUE");
                 }
-                //res.send(err);
             }
             res.send(data);
         });
@@ -165,24 +189,29 @@ app.get('/result/:reqnum', function (req, res) {
     }
 });
 
+//----------------------------------------------------------------------------------//
+// GET FUNCTION LIST
+
 app.get('/functionList', function (req, res) {
     res.send(functions);
 });
 
-
+//----------------------------------------------------------------------------------//
 // INVOKE FUNCTION
 
 app.put('/invokefunction/:functionSha', function (req, res) {
+
+    // TODO fix this time
     var timeStartReq = performance.now();
     requestnum = requestnum + 1;
-    //console.log(req.body);
+
     // create the folder where the requests will be saved
     var df_path = `${__dirname}/requests/${requestnum}`;
     try{
         fs.mkdirSync(df_path);
     }
     catch(e){
-        //console.log("directory already present")
+
     }
 
     // Initialize the data folders
@@ -190,10 +219,8 @@ app.put('/invokefunction/:functionSha', function (req, res) {
         if (err) {
             console.log(err);
         }
-//        fs.writeFile(`${df_path}/results.json`, '', function(err) {
-//            if (err) {
-//                console.log(err);
-//            }
+
+        // enqueue or assign the job
         console.log('enqueuing request nº ' + requestnum);
         job = requestnum + '//'+ req.params.functionSha + '//' + JSON.stringify(req.body) + '//' + timeStartReq ;
         if (workersq.isEmpty()){
@@ -207,40 +234,48 @@ app.put('/invokefunction/:functionSha', function (req, res) {
             msg=workersq.dequeue();
             sendJob(requestnum,job,msg);
         }
+        // return request num
         res.send({"requestnum":requestnum});
-//        });
     });
 });
+
+//----------------------------------------------------------------------------------//
+// START EXPRESS
 
 app.listen(3333, function () {
   console.log('FaaS listening on port 3333!');
 });
 
+//----------------------------------------------------------------------------------//
+// MESSAGE HANDLER
+
 sock.on("message",function(msg){
-    //dequeue from job queue
+
+    //read message
     stMsg = msg.toString();
     arrMsg = stMsg.split('///');
+
+    // returns from working
     if(arrMsg.length > 1){
         requestnumm = arrMsg[1];
         content = arrMsg[2];
-        // console.log("CONTENT "+content);
         var df_path = `${__dirname}/requests/${requestnumm}`;
+
+        // write the results file
         fs.writeFile(`${df_path}/results.json`, content, function(err) {
             if (err) {
                 console.log(err);
             }
-            //console.log("RNNNNNNNNNN " + requestnumm);
             suc = execlist.delete(requestnumm + "");
-            // console.log ("SUCC 1 " + suc);
             console.log("BUSY = " + arrMsg[4]);
             console.log("EXEC = " + arrMsg[5]);
-            var timeEndReq = performance.now();
-            var timeReq = timeEndReq - arrMsg[6];
+            var timeReq = performance.now() - arrMsg[6];
             console.log("REQ = " + timeReq); 
         });
 
     }
 
+    // send work or enqueue worker
     if(jobq.any()){
         job = jobq.shift();
         reqn = job.split("//")[0];      
@@ -250,17 +285,21 @@ sock.on("message",function(msg){
 
 });
 
+//----------------------------------------------------------------------------------//
+// SEND JOB
+
 function sendJob (rn,job,msg){
-    console.log("DOING " + job);
+
+    console.log("DOING REQUEST " + rn);
+
     //add to doing queue
-    execlist.push(rn + "");  // msg + '//' + job);
-    // console.log("HEY  " + execlist.get(job));
+    execlist.push(rn + "");  
+
+    // retry if it gets stuck
     setTimeout(function(){ 
-        //console.log("EXECLIST  " + rn);
         if (execlist.has(rn + "")){
-            console.log("TOO LONG");
+            console.log("REQUEST " + rn + " TOOK TOO LONG, RETRYING");
             execlist.delete(rn + "");
-            //console.log ("SUCC 2 " + suc);
             if (workersq.isEmpty()){
                 jobq.unshift(job);
             }
@@ -269,14 +308,17 @@ function sendJob (rn,job,msg){
                 sendJob(rn,job,msg);
             }
         }
-    }, 10000);
-    //console.log(execlist);
-    //set timeout
-    //send work
+    }, 60000);
+
     sock.send(job);
 }
 
+//----------------------------------------------------------------------------------//
+// SCALE UP
+
 function scaleUp(){
+
+    // update variables 
     worker_replica_num = worker_replica_num + 1;
     worker_replicas = worker_replicas + 1;
     console.log ("SCALING UP TO " + worker_replicas + " REPLICAS");
@@ -297,24 +339,18 @@ function scaleUp(){
         -e ZMQ_CONN_ADDRESS=tcp://broker:2000 \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v /tmp/requests:/worker/requestsworker \
-        workerfaas`;
-
-    //    var commandline = `\
-    //    docker run \ 
-    //    -e "ZMQ_CONN_ADDRESS=tcp://broker:2000" \
-    //    -v "/var/run/docker.sock:/var/run/docker.sock" \
-    //    -v "/tmp/requests:/worker/requestsworker" \
-    //    workerfaas`;
+        jrodriguez96/workerfaas`;
     
+    // run the worker container
     var exec = require('child_process').exec;
     exec(commandline, function(error, stdout, stderr) {
-        //if (stdout){console.log('stdout: ', stdout);}
         if (stderr){console.log('stderr: ', stderr);}
-        // res.send(stdout);
         if (error !== null) {
             console.log('exec error: ', error);
         }
     });
+
+    // control the scaling rate
     setTimeout(function(){ 
         if (jobq.length >=5 ){
             scaleUp();
@@ -325,6 +361,10 @@ function scaleUp(){
     }, 30000);
 }
 
+//----------------------------------------------------------------------------------//
+// SCALE DOWN
+
+// scale down policies
 var scaleinRetries = 0;
 setInterval(function(){
     if(!workersq.isEmpty()){
@@ -340,6 +380,7 @@ setInterval(function(){
 },5000);
 
 function scaleDown(){
+
     if(worker_replicas>1){
         worker_replicas=worker_replicas-1;
         console.log ("SCALING DOWN TO " + worker_replicas + " REPLICAS");
@@ -350,8 +391,13 @@ function scaleDown(){
     }
 }
 
+//----------------------------------------------------------------------------------//
+// SIGNAL HANDLING
+
 process.on('SIGTERM', function() {
-    console.log('Do something useful here.');
+    console.log('Received SIGTERM');
+
+    // kill all the workers
     for(cont_num =2; cont_num<=worker_replica_num; cont_num ++){
         console.log("killing container faas_worker_" + cont_num);
         var commandline = `\
@@ -360,9 +406,7 @@ process.on('SIGTERM', function() {
         faas_worker_${cont_num} `;
         var exec = require('child_process').exec;
         exec(commandline, function(error, stdout, stderr) {
-            //if (stdout){console.log('stdout: ', stdout);}
             if (stderr){console.log('stderr: ', stderr);}
-            // res.send(stdout);
             if (error !== null) {
                 console.log('exec error: ', error);
             }

@@ -8,7 +8,6 @@ services:
         volumes:
             - "faasRegistry:/var/lib/registry"
     broker:
-        build: ./broker/
         image: jrodriguez96/brokerfaas
         environment:
         - ZMQ_BIND_ADDRESS=tcp://*:2000
@@ -19,7 +18,6 @@ services:
         links:
         - registry
     worker:
-        build: ./worker/
         image: jrodriguez96/workerfaas
         environment:
         - ZMQ_CONN_ADDRESS=tcp://broker:2000
