@@ -27,13 +27,13 @@ var workersq = new queue();
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.set('view engine', 'pug');
 var requestnum = 0;
 var worker_replica_num = 1;
 var worker_replicas = 1;
 var registryIP = 'localhost';
 var registryPort = '5000';
 const address = process.env.ZMQ_BIND_ADDRESS || `tcp://*:2000`;
+var functions = [];
 
 var sock = zmq.socket('rep');
 sock.bindSync(address);
@@ -58,17 +58,9 @@ const cleanFolder = function (folderPath) {
 
 cleanFolder(UPLOAD_PATH);
 
-app.get('/', (req, res) => {
-    res.render('index');
-  });
-
-app.get('/registerfunction', (req, res) => {
-
-});
-
 // REGISTER FUNCTIO
 
-app.post('/registerfunction',upload.single('module'), async(req, res) =>{
+app.post('/registerfunction',upload.single('module'), async(req, res, next) =>{
 
     // receive from http
     try {
@@ -105,6 +97,7 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
             if (error !== null) {
                 console.log('exec error: ', error);
                 res.send(error);
+                return next(new Error([error]));
             }
 
             var commandline = `\
@@ -118,6 +111,7 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
                 if (error !== null) {
                     console.log('exec error: ', error);
                     res.send(error); 
+                    return next(new Error([error]));
                 }
 
                 var commandline = `\
@@ -131,9 +125,11 @@ app.post('/registerfunction',upload.single('module'), async(req, res) =>{
                     if (error !== null) {
                         console.log('exec error: ', error);
                         res.send(error); 
+                        return next(new Error([error]));
                     }
 
                     // return the sha
+                    functions.add(hash);
                     res.send(hash);
 
                 });
@@ -167,6 +163,10 @@ app.get('/result/:reqnum', function (req, res) {
     else{
         res.send("NON-EXISTING REQUEST");
     }
+});
+
+app.get('/functionList', function (req, res) {
+    res.send(functions);
 });
 
 
