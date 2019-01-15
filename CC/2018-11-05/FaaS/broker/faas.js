@@ -267,10 +267,12 @@ sock.on("message",function(msg){
                 console.log(err);
             }
             suc = execlist.delete(requestnumm + "");
-            console.log("BUSY = " + arrMsg[4]);
-            console.log("EXEC = " + arrMsg[5]);
+            
+            //console.log("BUSY = " + arrMsg[4]);
+            //console.log("EXEC = " + arrMsg[5]);
             var timeReq = performance.now() - arrMsg[6];
-            console.log("REQ = " + timeReq); 
+            //console.log("REQ = " + timeReq); 
+            console.log(requestnumm + "\t" + worker_replicas + "\t" + timeReq + "\t" + arrMsg[4]);
         });
 
     }
@@ -344,7 +346,8 @@ function scaleUp(){
     // run the worker container
     var exec = require('child_process').exec;
     exec(commandline, function(error, stdout, stderr) {
-        if (stderr){console.log('stderr: ', stderr);}
+        if (stderr){console.log('stderr: ', stderr);
+    }
         if (error !== null) {
             console.log('exec error: ', error);
         }

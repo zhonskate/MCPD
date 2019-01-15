@@ -22,7 +22,7 @@
 
 ## 2.- Diseño
 
-// diagramas, etc
+El sistema se compone principalmente de tres piezas interconectadas. Estas piezas son el [registry](https://docs.docker.com/registry/), un almacén de imágenes docker; el *broker*, que administrará tanto el uso del sistema mediante una *API REST* como la repartición de tareas entre los trabajadores o *workers*; y, por último, los propios workers, que serán los encargados de realizar las ejecuciones en última instancia y de etregar el resultado de vuelta al broker.
 
 ## 3.- Implementación
 

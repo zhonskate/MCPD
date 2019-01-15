@@ -20,7 +20,7 @@ sock.on('message', function(msg){
 
     // handle the kill message
     if(msg.toString() == "KILL"){
-        console.log("I WAS KILLED");
+        ////console.log("I WAS KILLED");
         sock.close();
         process.exit();
     }
@@ -28,9 +28,9 @@ sock.on('message', function(msg){
     var timeStartBusy = performance.now();
 
     // message interpretation
-    console.log("EXECUTING");
+    ////console.log("EXECUTING");
     stMsg = msg.toString();
-    console.log('work: %s', stMsg);
+    ////console.log('work: %s', stMsg);
     arrMsg = stMsg.split('//');
     requestnum = arrMsg[0];
     functionSha = arrMsg[1];
@@ -48,11 +48,11 @@ sock.on('message', function(msg){
     // Initialize the data folders
     fs.writeFile(`${df_path}/params.json`, reqJson, function(err) {
         if (err) {
-            console.log(err.stack);
+            ////console.log(err.stack);
         }
         fs.writeFile(`${df_path}/results.json`, '', function(err) {
             if (err) {
-                console.log(err.stack);
+                ////console.log(err.stack);
             }
             var timeStartExec = performance.now();
 
@@ -70,10 +70,10 @@ sock.on('message', function(msg){
             var exec = require('child_process').exec;
             exec(commandline, function(error, stdout, stderr) {
                 if(stderr){
-                    console.log('stderr: ', stderr);
+                    ////console.log('stderr: ', stderr);
                 }
                 if (error !== null) {
-                    console.log('exec error: ', error);
+                    ////console.log('exec error: ', error);
                     timeEndExec = performance.now();
                     timeExec = timeEndExec - timeStartExec;
                     timeEndBusy = performance.now(); 
@@ -90,7 +90,7 @@ sock.on('message', function(msg){
                     content = data;
                    
                     var timeEndExec = performance.now();                  
-                    console.log("WAITING");
+                    ////console.log("WAITING");
                     var timeExec = timeEndExec - timeStartExec;
                     var timeEndBusy = performance.now(); 
                     var timeBusy = timeEndBusy - timeStartBusy;
@@ -102,5 +102,5 @@ sock.on('message', function(msg){
         });
     });
   });
-console.log("WAITING");
+////console.log("WAITING");
 sock.send("worker1");

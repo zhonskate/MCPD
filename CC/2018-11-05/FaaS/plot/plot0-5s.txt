@@ -1,0 +1,19 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output '0-5sec.png'
+
+# Key means label...
+set key inside top left
+#set logscale x
+#set logscale y
+set ylabel 'time(s)'
+set ytics 2 nomirror
+set y2tics 1 nomirror 
+set y2label 'replicas' 
+set y2range [0:8]
+set xlabel 'request'
+set title '0.5 second interval'
+plot  "0.5-sec.txt" using 3:4 title 'worker replicas' with lines axes x1y2, \
+"0.5-sec.txt" using 3:(($5)/1000) title 'request time' with lines, \
+"0.5-sec.txt" using 3:(($6)/1000) title 'exec time' with lines
