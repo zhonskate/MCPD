@@ -39,9 +39,9 @@ then
             else
                 if [ "$4" = "" ]
                 then
-                    ./scripts/invoke.sh $2 $3 1
+                    ./scripts/invoke.sh $2 $3 1 $5
                 else                    
-                    ./scripts/invoke.sh $2 $3 $4
+                    ./scripts/invoke.sh $2 $3 $4 $5
                 fi
             fi
         fi
