@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "ctimer.h"
 #include <cmath>
+#include <tbb/task_scheduler_init.h>
+#include "tbb/blocked_range.h"
+#include "tbb/parallel_for.h"
 
 int main( int argc, char *argv[] ) {
 
@@ -48,11 +51,25 @@ int main( int argc, char *argv[] ) {
   double *media = (double *) malloc (n_vectores*sizeof(double));
   double *desvt = (double *) malloc (n_vectores*sizeof(double));
   ctimer(&elapsed,&ucpu,&scpu);
-  /****************************************/
-  /* CODIGO PARALELO                      */
-  /* Calcular la media en el vector media */
-  /* y la desviación típica en desvt      */
-  /****************************************/
+ 
+  parallel_for( blocked_range<int>(0,n_vectores), 
+      [&]( const blocked_range<int> &r ) {
+        for ( int ii = r.begin(); ii != r.end(); ii++ ) {
+          suma = 0.0;
+          for( int i = 0; i<tam[v]; i++ ) {
+            suma += M[v][i];
+          }
+          media[v] = suma / tam[v];
+          suma = 0.0;
+          for( int i = 0; i<tam[v]; i++ ) {
+            suma += ((M[v][i]-media[v])*(M[v][i]-media[v]));
+          }
+          desvt[v] = sqrt( suma / tam[v] );
+        }
+      }
+    );
+  }
+
   ctimer(&elapsed,&ucpu,&scpu);
   printf("Tiempo = %f segundos\n",elapsed);
 

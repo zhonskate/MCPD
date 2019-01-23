@@ -37,7 +37,7 @@ int main () {
     long int n = 10;
     double *A = (double *) malloc(n*sizeof(double));
     for(size_t i=0; i<n; ++i) A[i] = 1.0;
-    serialApplyFoo(A,n);
+    parallelApplyFoo(A,n);
     for (size_t i=0; i<n; ++i)
         cout << A[i] << endl;
 }
