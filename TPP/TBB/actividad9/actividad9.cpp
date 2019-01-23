@@ -13,27 +13,34 @@ double Foo( double f ) {
   return a;
 }
 
-double SerialSumFoo( double a[], size_t n ) { 
+/*double SerialSumFoo( double a[], size_t n ) { 
   double sum = 0;
   for( size_t i=0; i!=n; ++i ) 
     sum += Foo(a[i]);
   return sum;
-}
+}*/
 
-class MinIndexFoo {
-const float *const my_a;
-public:
-float value_of_min;
-long index_of_min;
-void operator()( const blocked_range<size_t>& r ) {
-const float *a = my_a;
-for( size_t i=r.begin(); i!=r.end(); ++i ) {
-float value = Foo(a[i]);
-if( value<value_of_min ) {
-value_of_min = value;
-index_of_min = i;
-}
-}
+Class SumFoo {
+
+  double* my_a;
+
+  public:
+    double sum;
+    void operator()(const blocked_range<size_t>& r){
+      double *a = my_a;
+      for( size_t i=r.begin(); i!=r.end(); ++i ){
+        sum = sum + Foo(a[i]);
+      }
+    }
+    SumFoo( SumFoo m, split) : my_a(m.my_a),sum(0){}
+    void join( const SumFoo& n){sum = sum + y.sum;}
+    SumFoo(double a[]) : my_a(a), sum(0){}
+};
+
+double ParaSumFoo(double a[], size_t n ) {
+  SumFoo sf(a);
+  parallel_reduce( blocked_range<size_t>(0,n,1000),sf);	
+  return sf.sum;	
 }
 
 int main( )  {
@@ -41,7 +48,7 @@ int main( )  {
   long int n = 1000000;
   double *A = (double *) malloc( n*sizeof(double) );
   for( size_t i=0; i<n; ++i ) A[i] = i;
-  double suma = SerialSumFoo( A, n );
+  double suma = ParaSumFoo( A, n );
   cout << "Suma = " << suma << endl;
 
 }

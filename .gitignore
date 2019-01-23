@@ -12,3 +12,4 @@ requests/
 requestsworker/
 uploads/
 sync_scripts/
+ign.*
