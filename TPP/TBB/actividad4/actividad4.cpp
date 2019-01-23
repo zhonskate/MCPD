@@ -202,20 +202,21 @@ class functor{
 int main( int argc, char *argv[] ) {
   
   Complejo<double> a,b,c;
-  vector< Complejo<double> > v;
+  vector< Complejo<double> > vec;
 
-  a(1.0,3.0);
-  	
-  b(-11.0,0);
+  a(5.0,7.0);	
+  b(2.0,-6.0);
   c = a + b;
-  v.push_back(a);
-  v.push_back(b);
-  v.push_back(c);
-  vector< Complejo<double> >::iterator it;
-  for_each (v.begin(),v.end(),modul);
+
+  vec.push_back(a);
+  vec.push_back(b);
+  vec.push_back(c);
+
+  vector< Complejo<double> >::iterator i;
+  for_each (vec.begin(),vec.end(),modul);
   
-  for(it = v.begin();it!=v.end();it++){
-	  cout << *it << endl;
+  for(i = vec.begin();i!=vec.end();i++){
+	  cout << *i << endl;
 	}
   	
 }
