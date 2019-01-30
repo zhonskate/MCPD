@@ -13,3 +13,4 @@ requestsworker/
 uploads/
 sync_scripts/
 ign.*
+*.template
