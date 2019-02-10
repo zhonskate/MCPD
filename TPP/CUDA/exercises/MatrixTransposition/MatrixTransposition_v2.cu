@@ -26,20 +26,41 @@
 /* Inefficient kernel: bad access to memory */
 __global__ void compute_kernel( unsigned int m, unsigned int n, float *d_A, float *d_B ) {
     /* Index of thread in x dimension */
+    unsigned int xthread = threadIdx.x;
     /* Index of thread in y dimension */
+    unsigned int ythread = threadIdx.y;
     /* Index of block in x dimension */ 
+    unsigned int BLOCK_X = blockIdx.x;
     /* Index of block in y dimension */ 
+    unsigned int BLOCK_Y = blockIdx.y;
     /* Global index to a row of A */
+    unsigned int r_A = BLOCK_X*BLOCKSIZE+xthread;
     /* Global index to a col of A */
+    unsigned int c_A = BLOCK_Y*BLOCKSIZE+ythread;
     /* Global index to a row of B */
+    unsigned int r_B = BLOCK_Y*BLOCKSIZE+ythread;
     /* Global index to a col of B */
-
+    unsigned int c_B = BLOCK_X*BLOCKSIZE+xthread;
     /* Declare a shared memory tile of size BLOCKSIZExBLOCKSIZE */
+
+    __shared__ float block[BLOCKSIZE*BLOCKSIZE];
 
     /* Copy Element d_A( r_A, c_A ) to shared memory and 
        from shared_memory to element d_B( r_B, c_B ) 
        Prevent access to non-existing elements of A
        Remember synchronize threads upon data has been saved into shared memory */
+
+    if(r_A<m && c_A<n){
+      block[xthread*BLOCKSIZE+ythread] = d_A(r_A,c_A);
+    }
+
+    __syncthreads();
+
+    if(r_B<m && c_B<n){
+      d_B(r_B,c_B)=block[xthread*BLOCKSIZE+ythread];
+    }
+
+
 
 }
 

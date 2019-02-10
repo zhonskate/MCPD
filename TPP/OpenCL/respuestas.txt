@@ -1,0 +1,150 @@
+1.-
+    a) Compila y ejecuta el programa DeviceInfo.c. Comprueba la informaci´on 
+    que te muestra. No te preocupes si no entiendes todav´ıa alguno de los 
+    datos mostrados.
+
+        Adjunto info.txtx
+
+    b) Revisa el c´odigo y averigua qu´e funciones se utilizan para obtener 
+    la lista de plataformas y la lista de dispositivos de cada una de ellas. 
+    Consulta en la gu´ıa de referencia o en la p´agina 
+    https://www.khronos.org/opencl/ el significado de los argumentos de ambas 
+    funciones ¿Por qu´e se llama dos veces a ambas funciones?
+
+
+
+    c) ¿Qu´e funciones se utilizan para obtener informaci´on de las 
+    plataformas? ¿y de los dispositivos? Averigua el significado de los 
+    argumentos de ambas funciones
+
+
+
+    d) Modifica el programa para que por cada dispositivo se muestre tambi´en 
+    su m´axima frecuencia de reloj.
+
+
+
+
+-------------------------------------------------------------------------------------
+
+2.- 
+    a) Revisa el código del programa vadd.c y localiza las principales 
+    etapas del mismo y las llamadas a la API que se realizan en cada una 
+    de ellas.
+
+        Las llamadas están indicadas sobre el código con comentarios.    
+
+    b) ¿Cómo elegimos el tipo de dispositivo sobre el que vamos a 
+    ejecutar el código?
+
+        #define DEVICE_TYPE CL_DEVICE_TYPE_ALL
+
+        err = clGetDeviceIDs(platform, DEVICE_TYPE, 1, &device, NULL);
+        checkError(err, "Finding a device");
+    
+    c) ¿C´omo procesamos los posibles errores de las llamadas a la API?
+
+        con el método checkError
+
+    d) ¿C´omo medimos el tiempo empleado por el kernel y nos aseguramos 
+    de que este haya acabado?
+
+        Con una función auxiliar llamada wtime() y esperando a que acabe 
+        con la llamada clFinish(commands) a la API
+
+    e) ¿D´onde est´a el c´odigo del kernel a ejecutar y c´omo construimos 
+    el programa a partir de ´el?
+
+        En el archivo vadd.cl. Se construye el programa mediante las llamadas:
+
+        char * filename="vadd.cl";
+
+        char *kernelSource = getKernelSource(filename);
+        program = clCreateProgramWithSource(context, 1, (const char **) &kernelSource, NULL, &err);
+
+        De esta manera se pasa al programa el código del kernel como una cadena.
+
+
+-------------------------------------------------------------------------------------
+
+3.-
+    a) Modifica el c´odigo del kernel para que cada work-item sume uno de los 
+    elementos de los tres vectores.
+
+        Adjunto vadd_abc.cl
+
+
+
+    b) Modifica el c´odigo del host para que el programa gestione la suma de tres 
+    vectores generados aleatoriamente usando la nueva versi´on del kernel.
+
+        Adjunto vadd_abc.c
+
+
+-------------------------------------------------------------------------------------
+
+4.-
+    a) Revisa el c´odigo del programa matmul.c y averigua qu´e hacen las funciones 
+    auxiliares parseArguments, getDeviceList y getDeviceName
+
+        parseArguments asigna a deviceIndex el valor de un argumento pasado 
+        al llamar al programa (--device X)
+
+        getDeviceList devuelve el numero de dispositivos
+
+        getDeviceName devuelve el nombre del dispositivo 
+
+    b) Revisa el c´odigo de creaci´on de los buffers. ¿C´omo se transfieren las 
+    matrices de entrada al dispositivo? Modifica el c´odigo para que las matrices 
+    A y B se transfieran de otra forma
+
+
+
+    c) Prueba el c´odigo y observa el resultado obtenido para distintos tama˜nos de 
+    matrices. ¿C´omo evolucionan las prestaciones con el tama˜no de las matrices?
+
+
+
+
+    d) ¿Qu´e tama˜no global de dominio se utiliza para lanzar el kernel? ¿Qu´e 
+    tama˜no  de workgroup? Modifica el c´odigo para que se use un tama˜no de 
+    work-group introducido en la l´ınea de ´ordenes
+
+
+
+    e) Comprueba el efecto sobre las prestaciones de mantener un tama˜no de 
+    matriz e ir variando el tama˜no de work-group. ¿Obtienes en alg´un caso mejores 
+    prestaciones que cuando no especificabas el tama˜no del work-group?
+
+    global: 128,256,512,1024,2048
+    local: 4x4
+
+    global: 1024
+    local: 1x, 2x, 4x, 8x
+
+
+
+    f) ¿Puedes usar cualquier tama˜no de work-group? ¿Por qu´e?
+
+
+
+-------------------------------------------------------------------------------------
+
+5.-
+    a) Escribe el kernel row.cl en el que cada work-item calcula una fila de la 
+    matriz resultado C. Las matrices se guardar´an en memoria global.
+
+
+
+    b) Modificar el c´odigo del programa matmul.c para que, despu´es de realizar las 
+    dos primeras versiones del producto utilice el nuevo kernel para calcular el 
+    producto.
+
+
+
+    c) Compara las prestaciones de las tres versiones modificando el tama˜no de las 
+    matrices y del work-group.
+
+
+
+

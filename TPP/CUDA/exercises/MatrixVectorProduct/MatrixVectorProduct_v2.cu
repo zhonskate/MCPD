@@ -32,22 +32,47 @@ __global__ void compute_kernel( unsigned int m, unsigned int n, float *d_A, floa
 
   /* Obtain the global index to a matrix row (variable i). Note that there is only one dimension in the grid
      so blockIdx.x and blockDim.x are the only existing variables */
+  unsigned int i;
+  unsigned int j;
+  i = blockIdx.x * BLOCKSIZE;
+  j = blockIdx.y * BLOCKSIZE;
+
+  __syncthreads();
+
 
   /* Declare share memory space of a piece of array d_x of size BLOCKSIZE */
-
+  __shared__ float b[BLOCKSIZE];
   /* Declare share memory space of a square block of order BLOCKSIZE */
+  __shared__ float a[BLOCKSIZE*BLOCKSIZE];
+  
+  __syncthreads();
+
 
   if( i < m ) { /* Prevent work on positions beyond m */
  
+    b[threadIdx.x] = d_x[i + threadIdx.x];
+    __syncthreads();
+
      /* Implement Part 1 here */
      /* Loop (threadIdx.x:BLOCKSIZE:n-1) */
         /* Copy subvector x in shared memory */
         /* Perform the add+product on a local variable */
+      float sum = 0.0f;
+      for(int k=threadIdx.x;k<n-1;k+=BLOCKSIZE){
+        sum += d_A(j,k)*b[k];
+      }
 
      /* Save local variable in shared memory */
+     a[i+BLOCKSIZE*j] = sum;
 
      /* Implement Part 2 here */
      /* Only if threadIdx.x==0 */
+     if(threadIdx.x==0){
+       for(int l = 0;l<BLOCKSIZE;l++){
+         d_y(i)+=a[i + BLOCKSIZE*l];
+       }
+     }
+
        /* Add all column elements along a row of the shared memory square block */
        /* Save result in d_y */
 

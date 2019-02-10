@@ -1,0 +1,46 @@
+
+Number of OpenCL platforms: 2
+
+-------------------------
+Platform: Intel(R) OpenCL
+Vendor: Intel(R) Corporation
+Version: OpenCL 1.2 LINUX
+Number of devices: 1
+	-------------------------
+		Name:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+		Version: OpenCL C 1.2 
+		Max. Compute Units: 48
+		Local Memory Size: 32 KB
+		Global Memory Size: 128855 MB
+		Max Alloc Size: 32213 MB
+		Max Work-group Total Size: 8192
+		Max Work-group Dims: ( 8192 8192 8192 )
+	-------------------------
+
+-------------------------
+Platform: NVIDIA CUDA
+Vendor: NVIDIA Corporation
+Version: OpenCL 1.2 CUDA 9.1.83
+Number of devices: 2
+	-------------------------
+		Name: Tesla K20Xm
+		Version: OpenCL C 1.2 
+		Max. Compute Units: 14
+		Local Memory Size: 48 KB
+		Global Memory Size: 5699 MB
+		Max Alloc Size: 1424 MB
+		Max Work-group Total Size: 1024
+		Max Work-group Dims: ( 1024 1024 64 )
+	-------------------------
+	-------------------------
+		Name: Tesla K20Xm
+		Version: OpenCL C 1.2 
+		Max. Compute Units: 14
+		Local Memory Size: 48 KB
+		Global Memory Size: 5699 MB
+		Max Alloc Size: 1424 MB
+		Max Work-group Total Size: 1024
+		Max Work-group Dims: ( 1024 1024 64 )
+	-------------------------
+
+-------------------------

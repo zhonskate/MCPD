@@ -31,6 +31,15 @@ __global__ void compute_kernel( unsigned int m, unsigned int n, float *d_A, floa
     /* Each thread computes the ith component of array d_y by multiplying the ith row of d_A by array d_x */
     /* Pay attention again to if the component accessed by the thread falls within the bound */
 
+    float Cvalue = 0; 
+    int row = blockIdx.x * BLOCKSIZE + threadIdx.x; 
+    if(row<n){
+      for (int e = 0; e < m; ++e)
+        Cvalue += d_A(row,e) * d_x(e);
+      d_y(row) = Cvalue;
+    }
+
+
 }
 
 int cu_matrix_vector( unsigned int m, unsigned int n, float *h_A, float *h_x, float *h_y ) {
