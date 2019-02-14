@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
     float *h_B;             // B matrix
     float *h_C;             // C = A*B matrix
     int N;                  // A[N][N], B[N][N], C[N][N]
+    int BUFFER;                  
     int size;               // number of elements in each matrix
-
     cl_mem d_a, d_b, d_c;   // Matrices in device memory
 
     double start_time;      // Starting time
@@ -53,6 +53,8 @@ int main(int argc, char *argv[])
       exit(0);
     }
     N = atoi(argv[1]);
+
+    BUFFER = atoi(argv[2]);
 
     size = N * N;
 
@@ -174,11 +176,12 @@ int main(int argc, char *argv[])
         // group size is set to NULL ... so I'm telling the OpenCL runtime to
         // figure out a local work group size for me.
         const size_t global[2] = {N, N};
+        const size_t local[2] = {BUFFER, BUFFER};
         err = clEnqueueNDRangeKernel(
             commands,
             kernel,
             2, NULL,
-            global, NULL,
+            global, local,
             0, NULL, NULL);
         checkError(err, "Enqueueing kernel");
 

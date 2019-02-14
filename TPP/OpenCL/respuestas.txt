@@ -118,11 +118,51 @@
     matrices de entrada al dispositivo? Modifica el código para que las matrices 
     A y B se transfieran de otra forma
 
-
+        Las matrices de entrada al dispositivo se transfieren mediante la instrucción:
+        clCreateBuffer
 
     c) Prueba el código y observa el resultado obtenido para distintos tamaños de 
     matrices. ¿Cómo evolucionan las prestaciones con el tamaño de las matrices?
 
+        Ejecuciones entre tamaños 10 y 1000:
+
+        ===== Sequential, matrix mult (dot prod), order 10 on host CPU ======
+        0.00 seconds at 1000.0 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 10 ======
+        0.00 seconds at 18.2 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 50 on host CPU ======
+        0.00 seconds at 2155.2 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 50 ======
+        0.00 seconds at 1543.2 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 100 on host CPU ======
+        0.00 seconds at 3937.0 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 100 ======
+        0.00 seconds at 8771.9 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 500 on host CPU ======
+        0.11 seconds at 2319.7 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 500 ======
+        0.00 seconds at 94768.8 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 1000 on host CPU ======
+        1.14 seconds at 1751.0 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1000 ======
+        0.09 seconds at 22833.9 MFLOPS 
 
 
 
@@ -130,21 +170,101 @@
     tamaño  de workgroup? Modifica el código para que se use un tamaño de 
     work-group introducido en la línea de órdenes
 
+        Al utilizar null es un tamaño elgido por OpenCL.
+
+        int BUFFER;
+        BUFFER = atoi(argv[2]);
+        const size_t local[2] = {BUFFER, BUFFER};
+        err = clEnqueueNDRangeKernel(
+            commands,
+            kernel,
+            2, NULL,
+            global, local,
+            0, NULL, NULL);
+        checkError(err, "Enqueueing kernel");
 
 
     e) Comprueba el efecto sobre las prestaciones de mantener un tamaño de 
     matriz e ir variando el tamaño de work-group. ¿Obtienes en algún caso mejores 
     prestaciones que cuando no especificabas el tamaño del work-group?
 
-    global: 128,256,512,1024,2048
-    local: 4x4
+        global: 128,256,512,1024,2048
+        local: 4x4
 
-    global: 1024
-    local: 1x, 2x, 4x, 8x
+        ===== Sequential, matrix mult (dot prod), order 128 on host CPU ======
+        0.00 seconds at 1691.3 MFLOPS 
 
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 128 ======
+        0.00 seconds at 12192.7 MFLOPS 
 
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 256 on host CPU ======
+        0.03 seconds at 977.4 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 256 ======
+        0.00 seconds at 46028.0 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 512 on host CPU ======
+        0.31 seconds at 873.9 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 512 ======
+        0.00 seconds at 65809.1 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 1024 on host CPU ======
+        2.22 seconds at 969.0 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1024 ======
+        0.05 seconds at 41072.7 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 2048 on host CPU ======
+        16.40 seconds at 1047.2 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 2048 ======
+        0.23 seconds at 75988.2 MFLOPS
+
+        global: 1024
+        local: 1x, 2x, 4x, 8x
+
+        ===== Sequential, matrix mult (dot prod), order 1024 on host CPU ======
+        2.27 seconds at 947.8 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1024 ======
+        0.20 seconds at 10583.7 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 1024 on host CPU ======
+        2.24 seconds at 959.8 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1024 ======
+        0.05 seconds at 40840.7 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 1024 on host CPU ======
+        2.31 seconds at 927.9 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1024 ======
+        0.05 seconds at 40036.6 MFLOPS 
+
+        Using OpenCL device:       Intel(R) Xeon(R) CPU E5-2697 v2 @ 2.70GHz
+
+        ===== Sequential, matrix mult (dot prod), order 1024 on host CPU ======
+        2.27 seconds at 944.0 MFLOPS 
+
+        ===== OpenCL, matrix mult, C(i,j) per work item, order 1024 ======
+        0.05 seconds at 41223.2 MFLOPS 
 
     f) ¿Puedes usar cualquier tamaño de work-group? ¿Por qué?
+
+        TODO
 
 
 
