@@ -1,26 +1,46 @@
 1.-
-    a) Compila y ejecuta el programa DeviceInfo.c. Comprueba la informaci´on 
+    a) Compila y ejecuta el programa DeviceInfo.c. Comprueba la información 
     que te muestra. No te preocupes si no entiendes todav´ıa alguno de los 
     datos mostrados.
 
         Adjunto info.txtx
 
-    b) Revisa el c´odigo y averigua qu´e funciones se utilizan para obtener 
+    b) Revisa el código y averigua qué funciones se utilizan para obtener 
     la lista de plataformas y la lista de dispositivos de cada una de ellas. 
-    Consulta en la gu´ıa de referencia o en la p´agina 
+    Consulta en la guía de referencia o en la página 
     https://www.khronos.org/opencl/ el significado de los argumentos de ambas 
-    funciones ¿Por qu´e se llama dos veces a ambas funciones?
+    funciones ¿Por qué se llama dos veces a ambas funciones?
 
+        Obtener el numero de plataformas:
+        clGetPlatformIDs(num_platforms, platform, NULL);
 
+        Obtener el nombre de cada plataforma:
+        clGetPlatformInfo(platform[i], CL_PLATFORM_NAME, sizeof(string), &string, NULL);
+        
+        Obtener el numero de dispositivos:
+        clGetDeviceIDs(platform[i], CL_DEVICE_TYPE_ALL, 0, NULL, &num_devices) 
 
-    c) ¿Qu´e funciones se utilizan para obtener informaci´on de las 
+        Obtener los IDs de dispositivos:
+        clGetDeviceIDs(platform[i], CL_DEVICE_TYPE_ALL, num_devices, device, NULL);
+
+    c) ¿Qué funciones se utilizan para obtener información de las 
     plataformas? ¿y de los dispositivos? Averigua el significado de los 
     argumentos de ambas funciones
 
+        clGetPlatformInfo y clGetDeviceInfo
 
+        Parámetros en:
+        https://www.khronos.org/registry/OpenCL/sdk/1.0/docs/man/xhtml/clGetDeviceInfo.html ,
+        https://www.khronos.org/registry/OpenCL/sdk/1.0/docs/man/xhtml/clGetPlatformInfo.html
 
-    d) Modifica el programa para que por cada dispositivo se muestre tambi´en 
-    su m´axima frecuencia de reloj.
+    d) Modifica el programa para que por cada dispositivo se muestre también 
+    su máxima frecuencia de reloj.
+
+        // Get device frequency
+        cl_uint freq;
+        err = clGetDeviceInfo(device[j], CL_DEVICE_MAX_CLOCK_FREQUENCY, sizeof(cl_uint), &freq, NULL);
+        checkError(err, "Getting device name");
+        printf("\t\tFreq: %d\n", string);
 
 
 
@@ -42,18 +62,18 @@
         err = clGetDeviceIDs(platform, DEVICE_TYPE, 1, &device, NULL);
         checkError(err, "Finding a device");
     
-    c) ¿C´omo procesamos los posibles errores de las llamadas a la API?
+    c) ¿Cómo procesamos los posibles errores de las llamadas a la API?
 
         con el método checkError
 
-    d) ¿C´omo medimos el tiempo empleado por el kernel y nos aseguramos 
+    d) ¿Cómo medimos el tiempo empleado por el kernel y nos aseguramos 
     de que este haya acabado?
 
         Con una función auxiliar llamada wtime() y esperando a que acabe 
         con la llamada clFinish(commands) a la API
 
-    e) ¿D´onde est´a el c´odigo del kernel a ejecutar y c´omo construimos 
-    el programa a partir de ´el?
+    e) ¿Dónde está el código del kernel a ejecutar y cómo construimos 
+    el programa a partir de él?
 
         En el archivo vadd.cl. Se construye el programa mediante las llamadas:
 
@@ -68,15 +88,15 @@
 -------------------------------------------------------------------------------------
 
 3.-
-    a) Modifica el c´odigo del kernel para que cada work-item sume uno de los 
+    a) Modifica el código del kernel para que cada work-item sume uno de los 
     elementos de los tres vectores.
 
         Adjunto vadd_abc.cl
 
 
 
-    b) Modifica el c´odigo del host para que el programa gestione la suma de tres 
-    vectores generados aleatoriamente usando la nueva versi´on del kernel.
+    b) Modifica el código del host para que el programa gestione la suma de tres 
+    vectores generados aleatoriamente usando la nueva versión del kernel.
 
         Adjunto vadd_abc.c
 
@@ -84,7 +104,7 @@
 -------------------------------------------------------------------------------------
 
 4.-
-    a) Revisa el c´odigo del programa matmul.c y averigua qu´e hacen las funciones 
+    a) Revisa el código del programa matmul.c y averigua qué hacen las funciones 
     auxiliares parseArguments, getDeviceList y getDeviceName
 
         parseArguments asigna a deviceIndex el valor de un argumento pasado 
@@ -94,27 +114,27 @@
 
         getDeviceName devuelve el nombre del dispositivo 
 
-    b) Revisa el c´odigo de creaci´on de los buffers. ¿C´omo se transfieren las 
-    matrices de entrada al dispositivo? Modifica el c´odigo para que las matrices 
+    b) Revisa el código de creación de los buffers. ¿Cómo se transfieren las 
+    matrices de entrada al dispositivo? Modifica el código para que las matrices 
     A y B se transfieran de otra forma
 
 
 
-    c) Prueba el c´odigo y observa el resultado obtenido para distintos tama˜nos de 
-    matrices. ¿C´omo evolucionan las prestaciones con el tama˜no de las matrices?
+    c) Prueba el código y observa el resultado obtenido para distintos tamaños de 
+    matrices. ¿Cómo evolucionan las prestaciones con el tamaño de las matrices?
 
 
 
 
-    d) ¿Qu´e tama˜no global de dominio se utiliza para lanzar el kernel? ¿Qu´e 
-    tama˜no  de workgroup? Modifica el c´odigo para que se use un tama˜no de 
-    work-group introducido en la l´ınea de ´ordenes
+    d) ¿Qué tamaño global de dominio se utiliza para lanzar el kernel? ¿Qué 
+    tamaño  de workgroup? Modifica el código para que se use un tamaño de 
+    work-group introducido en la línea de órdenes
 
 
 
-    e) Comprueba el efecto sobre las prestaciones de mantener un tama˜no de 
-    matriz e ir variando el tama˜no de work-group. ¿Obtienes en alg´un caso mejores 
-    prestaciones que cuando no especificabas el tama˜no del work-group?
+    e) Comprueba el efecto sobre las prestaciones de mantener un tamaño de 
+    matriz e ir variando el tamaño de work-group. ¿Obtienes en algún caso mejores 
+    prestaciones que cuando no especificabas el tamaño del work-group?
 
     global: 128,256,512,1024,2048
     local: 4x4
@@ -124,7 +144,7 @@
 
 
 
-    f) ¿Puedes usar cualquier tama˜no de work-group? ¿Por qu´e?
+    f) ¿Puedes usar cualquier tamaño de work-group? ¿Por qué?
 
 
 
@@ -132,17 +152,17 @@
 
 5.-
     a) Escribe el kernel row.cl en el que cada work-item calcula una fila de la 
-    matriz resultado C. Las matrices se guardar´an en memoria global.
+    matriz resultado C. Las matrices se guardarán en memoria global.
 
 
 
-    b) Modificar el c´odigo del programa matmul.c para que, despu´es de realizar las 
+    b) Modificar el código del programa matmul.c para que, después de realizar las 
     dos primeras versiones del producto utilice el nuevo kernel para calcular el 
     producto.
 
 
 
-    c) Compara las prestaciones de las tres versiones modificando el tama˜no de las 
+    c) Compara las prestaciones de las tres versiones modificando el tamaño de las 
     matrices y del work-group.
 
 
