@@ -1,0 +1,19 @@
+Rolled Double Precision Linpack (10000)
+
+Tue Feb 19 18:33:28 2019
+
+     norm. resid      resid           machep         x[0]-1        x[n-1]-1
+       nan                   nan  2.22044605e-16             nan            -nan
+    times are reported for matrices of order   200
+      dgefa      dgesl      total       kflops     unit      ratio
+ times for array with leading dimension of  201
+       0.00       0.00       0.00        inf       0.00       0.00
+       0.00       0.00       0.00    1353333       0.00       0.07
+       0.00       0.00       0.00        inf       0.00       0.00
+       0.00       0.00       0.00    8479532       0.00       0.01
+ times for array with leading dimension of 200
+       0.00       0.00       0.00        inf       0.00       0.00
+       0.00       0.00       0.00        inf       0.00       0.00
+       0.00       0.00       0.00        inf       0.00       0.00
+       0.00       0.00       0.00    8495501       0.00       0.01
+Rolled Double  Precision 8479532 Kflops ; 10000 Reps 
