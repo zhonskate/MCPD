@@ -9,7 +9,7 @@ function [y] = DiagonalMultCols(A,d,m,n,b)
         for j = 1:n_diag
             ccol = d(j) + i;
             if ccol > 0 && ccol <= n 
-                y(i) = y(i) + A(j,i)*b(i);
+                y(i) = y(i) + A(j,i)*b(ccol);
             end
         end
     end
