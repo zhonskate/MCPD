@@ -1,0 +1,14 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'sistemas.png'
+set style boxplot outliers pointtype 7
+set style data boxplot
+
+# Key means label...
+set key inside top left
+set ylabel 'tiempo(s)'
+set xlabel 'algoritmo'
+set xtics ('Pcg' 1, 'Gmres' 2, 'Bicg' 3, 'Cgs' 4)
+set title 'Sistemas de Ecuaciones'
+plot for [i=1:4] 'results.txt' using (i):i notitle

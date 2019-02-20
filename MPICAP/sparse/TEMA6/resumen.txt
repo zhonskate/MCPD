@@ -1,0 +1,7 @@
+La práctica sobre SLEPc ha servido para conocer la plataforma y como una introducción
+a la paralelización de operaciones sobre matrices dispersas haciendo uso de librerías 
+científicas. 
+También he aprendido sobre la complejidad de dichas plataformas, así como algunos 
+conceptos como el de solver, para resolver los sistemas de ecuaciones.
+La práctica ha sido exitosa, pues se han conseguido obtener los valores propios
+del problema.

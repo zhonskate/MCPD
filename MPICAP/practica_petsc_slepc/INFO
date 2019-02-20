@@ -1,5 +1,0 @@
-Los ficheros contienen las siguientes matrices: L11, L22, L21, M11, M12.
-
-ringhals1  Reactor Ringhals (dpol=1), n=20844, nnz=140854
-ringhals2  Reactor Ringhals (dpol=2), n=83376, nnz=928500
-
