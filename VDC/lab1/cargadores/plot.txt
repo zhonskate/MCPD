@@ -1,0 +1,17 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 1000,800 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'compare.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'voltaje (V)'
+set xlabel 'tiempo (s)'
+set xrange [0:5]
+set xtics (0,1,2,3,4,5)
+set ytics add (4.7,5.3,5.1,4.9)
+set title 'Comparacion cargadores'
+plot  "v.txt" using 1:2 title 'V1' with lines linecolor rgb "purple" , \
+"v.txt" using 1:5 title 'V4' with lines linecolor rgb "green" , \
+"v.txt" using 1:4 title 'V3' with lines linecolor rgb "blue" , \
+"v.txt" using 1:3 title 'V2' with lines linecolor rgb "red" 
