@@ -1,0 +1,15 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 1000,800 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'V3.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'voltaje (V)'
+set xlabel 'tiempo (s)'
+set xrange [0:5]
+set ytics add (4.95,5.05)
+set yrange [4:6]
+set xtics (0,1,2,3,4,5)
+set title 'Cargador V3'
+plot  "v.txt" using 1:4 title 'V3' with lines linecolor rgb "blue"

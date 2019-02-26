@@ -1,0 +1,59 @@
+FORMACIÓN BÁSICA
+    		                                                    CRDTS		CURSO / CONV.		CALIFICACIÓN	
+Fundamentos de organización de empresas                         6,00		14/15 Unica B		7,0 (ARA)	
+Estadística   	                                                6,00		14/15 Unica B		7,0 (ARA)	
+Fundamentos Físicos de la Informática                           6,00		14/15 Unica A		7,3 (ARA)	
+Fundamentos de computadores   		                            6,00		14/15 Unica A		9,5 (ARA)	
+Introducción a la informática y a la programación               6,00		14/15 Unica A		9,0 (ARA)	
+Programación   		                                            6,00		14/15 Unica B		9,1 M.H. (ARA)	
+Tecnología de computadores   		                            6,00		14/15 Unica B		7,3 (ARA)	
+Algebra   		                                                6,00		14/15 Unica B		6,7 (ARA)	
+Análisis matemático   		                                    6,00		14/15 Unica A		8,7 (ARA)	
+Matemática discreta   		                                    6,00		14/15 Unica A		9,3 (ARA)
+
+OBLIGATORIO
+		                                                        CRDTS		CURSO / CONV.		CALIFICACIÓN	
+Bases de datos y sistemas de información               	        6,00		16/17 Unica A		7,8 (ARA)	
+Computación paralela                                   	        4,50		16/17 Unica A		7,8 (ARA)	
+Deontología y profesionalismo                          	        4,50		15/16 Unica B		7,9 (ARA)	
+Estructuras de datos y algoritmos                      	        6,00		15/16 Unica B		8,2 (ARA)	
+Arquitectura e ingeniería de computadores              	        6,00		16/17 Unica A		8,1 (ARA)	
+Estructura de computadores                             	        9,00		15/16 Unica		    6,7 (ARA)	
+Gestión de proyectos                                   	        4,50		16/17 Unica B		8,4	
+Ingeniería del software                                	        6,00		16/17 Unica A		7,2 (ARA)	
+Interfaces persona computador                          	        4,50		15/16 Unica B		7,1 (ARA)	
+Lenguajes, tecnologías y paradigmas de la programación 	        6,00		15/16 Unica A		7,7 (ARA)	
+Redes de computadores                                  	        9,00		15/16 Unica		    7,0 (ARA)	
+Sistemas inteligentes                                  	        4,50		16/17 Unica A		9,4 (ARA)	
+Concurrencia y sistemas distribuidos                   	        6,00		15/16 Unica B		7,0 (ARA)	
+Fundamentos de sistemas operativos                     	        6,00		15/16 Unica A		7,5 (ARA)	
+Tecnología de sistemas de información en la red        	        6,00		16/17 Unica A		7,0 (ARA)	
+Teoría de autómatas y lenguajes formales               	        4,50		15/16 Unica A		9,3 M.H. (ARA)
+
+OPTATIVO
+		                                                        CRDTS		CURSO / CONV.		CALIFICACIÓN	
+Técnicas de optimización                                        4,50		16/17 Unica B		8,6	
+Agentes inteligentes                                            4,50		16/17 Unica B		8,3	
+Algorítmica                                                     4,50		17/18 Unica A		9,0	
+Aprendizaje automático                                          4,50		17/18 Unica A		9,4	
+Computabilidad y complejidad                                    4,50		16/17 Unica B		8,8	
+Introducción a los sistemas gráficos interactivos               6,00		17/18 Unica A		9,5 M.H.	
+Lenguajes de programación y procesadores de lenguajes           6,00		17/18 Unica A		9,4	
+Percepción                                                      4,50		16/17 Unica B		8,6	
+Sistemas de almacenamiento y recuperación de información        4,50		16/17 Unica B		9,8	
+Técnicas, entornos y aplicaciones de inteligencia artificial    4,50		17/18 Unica A		9,1	
+Alemán - A1                                                     4,50		15/16 Unica A		8,0	
+Francés - A1                                                    4,50		17/18 Unica A		7,0
+Prácticas externas curriculares                                 13,0        17/18               9,0	
+
+TRABAJO FIN TITULACIÓN		
+                                                                CRDTS		CURSO / CONV.		CALIFICACIÓN	
+Trabajo de fin de Grado   		                                12,00		17/18 Julio		    9,8	
+
+ACTIVIDADES UNIVERSITARIAS
+                                                        		CRDTS		CURSO		        CALIFICACIÓN	
+Solidarias y de cooperación   Programa Integra      		    1,00		2015		        Apto	
+Universitarias culturales   Banda Sinfónica Upv     		    3,00		2016		        Apto	
+Universitarias culturales   Club  de Debate de la Upv           2,00		2016		        Apto
+                                                 
+
