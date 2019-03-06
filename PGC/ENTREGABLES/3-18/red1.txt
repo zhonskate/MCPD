@@ -1,0 +1,51 @@
+[
+    {
+        "Name": "red1",
+        "Id": "33d7ec268acab13ed73686be2691aa467308efb2c5a5fde1f741d2f2ba1b4945",
+        "Created": "2019-03-05T18:27:55.14110647+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.20.0.0/24"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "1e3b3b19f22adbe609e9a05626a05bfead05c2a878adeef7618d2bbef1628340": {
+                "Name": "proxy",
+                "EndpointID": "5ce193e001373f7eb4af8d2def1bf85a3f99e1c33234223a43367e9e48f42d53",
+                "MacAddress": "02:42:ac:14:00:02",
+                "IPv4Address": "172.20.0.2/24",
+                "IPv6Address": ""
+            },
+            "471e99dbd57f77844e387b989fe4dac474592e6cc27d7ddf6e3fd2e0519aa1d8": {
+                "Name": "web",
+                "EndpointID": "51a8ef784e9c55b58d817c07433f502ca32417a3a5dffa4348cd3e31bf876e26",
+                "MacAddress": "02:42:ac:14:00:03",
+                "IPv4Address": "172.20.0.3/24",
+                "IPv6Address": ""
+            },
+            "c0a3f1e126d265b1db0d6a3d6f1466152445c45128d2129c709c162d15b3b6ef": {
+                "Name": "server",
+                "EndpointID": "2204203ff832d410628d4f00f87471070404ecc0a6f64ea7697abc224c619779",
+                "MacAddress": "02:42:ac:14:00:04",
+                "IPv4Address": "172.20.0.4/24",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]

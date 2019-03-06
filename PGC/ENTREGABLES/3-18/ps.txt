@@ -1,0 +1,5 @@
+CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                  NAMES
+e5dd7c57518d        alpine                       "/bin/sh"                25 minutes ago      Up 25 minutes                              db
+c0a3f1e126d2        alpine                       "/bin/sh"                26 minutes ago      Up 26 minutes                              server
+471e99dbd57f        nginx                        "nginx -g 'daemon of…"   27 minutes ago      Up 27 minutes       80/tcp                 web
+1e3b3b19f22a        ajoergensen/openssh-server   "/init"                  32 minutes ago      Up 32 minutes       0.0.0.0:2367->22/tcp   proxy
