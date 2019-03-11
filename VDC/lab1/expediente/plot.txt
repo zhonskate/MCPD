@@ -1,0 +1,15 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 1000,800 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'expediente.png'
+
+# Key means label...
+set key inside top left
+set ylabel 'Nota'
+set xlabel 'Curso'
+set xrange [13:18]
+set yrange [5:10]
+set key off
+set xtics (14,15,16,17)
+set title 'Expediente'
+plot sin(x) with line linecolor rgb"#ffffff"
