@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ipwn 
+spec:
+    selector:
+        matchLabels:
+            app: ipwn
+    replicas: 2
+    template:
+        metadata:
+            labels:
+                app: ipwn
+        spec:
+            containers:
+            - name: ipwn
+              image: mucpdpgc/ipython:javier
+              command: [ "/bin/sh" ]
+              args: ["-c","while true;do sleep 20;done"]
+              volumeMounts:
+              - mountPath: /root/.ipython/profile_default/security/
+                name: volumewn
+            volumes:
+            - name: volumewn
+              configMap:
+                name: ipythonconf
+                items:
+                - key: ipcontroller-engine.json
+                  path: ipcontroller-engine.json

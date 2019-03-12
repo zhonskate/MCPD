@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: ipfe
+spec:
+    containers:
+    - name: ipfe
+      image: mucpdpgc/ipython:javier
+      command: [ "tail" ]
+      args: [ "-f", "/dev/null" ]

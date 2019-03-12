@@ -1,0 +1,4 @@
+NAME                    READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+ipfe                    1/1     Running   0          26m     172.17.0.5   minikube   <none>           <none>
+ipwn-596ffdf7f6-g9rxn   1/1     Running   0          7m14s   172.17.0.6   minikube   <none>           <none>
+ipwn-596ffdf7f6-kq2bt   1/1     Running   0          7m14s   172.17.0.7   minikube   <none>           <none>
