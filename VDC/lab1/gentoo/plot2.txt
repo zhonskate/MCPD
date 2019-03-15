@@ -1,0 +1,16 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'gentooBar.png'
+set style fill solid
+
+# Key means label...
+set key inside top left
+set boxwidth 0.5
+set ylabel 'nidos'
+set yrange [0:3000]
+set xrange [1979:2018]
+set xtics out 5
+set xlabel 'anyo'
+set title 'Poblacion del pinguino Gentoo (Pygoscelis papua)'
+plot 'average.txt' using 1:2 with boxes notitle

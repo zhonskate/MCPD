@@ -1,0 +1,825 @@
+Barrientos Island (Aitcho Islands)	----	2017	1704
+Brown Bluff	----	2017	793
+Brown Bluff	----	2017	695
+Brown Station	----	2017	181
+Brown Station	----	2017	174
+Bryde Island East	----	2017	527
+Bryde Island East	----	2017	525
+Bryde Island East	----	2017	520
+Bryde Island South	----	2017	740
+Cuverville Island	----	2017	6903
+Danco Island	----	2017	2746
+Danco Island	----	2017	2623
+Danco Island	----	2017	2242
+Dorian Bay/Damoy Point	----	2017	2029
+Dorian Bay/Damoy Point	----	2017	1989
+Dorian Bay/Damoy Point	----	2017	1835
+Dorian Beacon	----	2017	176
+Fort Point (Greenwich Island)	----	2017	1006
+Fort Point (Greenwich Island)	----	2017	837
+Hope Bay	----	2017	467
+Jougla Point	----	2017	1089
+Jougla Point	----	2017	986
+Madder Cliff (Joinville Island)	----	2017	550
+Madder Cliff Island	----	2017	220
+Mikkelsen Harbor (Trinity Island)	----	2017	1192
+Mikkelsen Harbor (Trinity Island)	----	2017	1153
+Neko Harbor (Andvord Bay)	----	2017	973
+Petermann Island	----	2017	3516
+Pleneau Island	----	2017	3027
+Port Charcot	----	2017	1484
+Selvick Cove	----	2017	618
+Skottsberg Point	----	2017	444
+Skottsberg Point	----	2017	382
+Spigot Peak Tripod	----	2017	16
+Spigot Peak Tripod	----	2017	11
+Brittannia's Figleaf	----	2016	396
+Brown Bluff	----	2016	711
+Brown Bluff	----	2016	640
+Brown Station	----	2016	173
+Brown Station	----	2016	170
+Bryde Island East	----	2016	515
+Bryde Island East	----	2016	510
+Bryde Island South	----	2016	719
+d'Urville Monument	----	2016	962
+Danco Island	----	2016	2717
+Danco Island	----	2016	2680
+Dorian Bay/Damoy Point	----	2016	2209
+Dorian Beacon	----	2016	200
+Dorian Beacon	----	2016	197
+Fort Point (Greenwich Island)	----	2016	654
+Georges Point (Ronge Island)	----	2016	3949
+Georges Point (Ronge Island)	----	2016	3187
+Jonassen Island	----	2016	45
+Jougla Point	----	2016	1133
+Jougla Point	----	2016	1030
+Mikkelsen Harbor (Trinity Island)	----	2016	1262
+Mikkelsen Harbor (Trinity Island)	----	2016	1104
+Neko Harbor (Andvord Bay)	----	2016	1174
+Neko Harbor (Andvord Bay)	----	2016	1145
+Orne Islands	----	2016	483
+Port Charcot	----	2016	1585
+Port Lockroy	----	2016	548
+Prime Head	----	2016	565
+Robert Point (Robert Island)	----	2016	917
+Ronge Island East	----	2016	392
+Selvick Cove	----	2016	614
+Selvick Cove	----	2016	604
+Selvick Cove	----	2016	595
+Skottsberg Point	----	2016	482
+Spigot Peak Point	----	2016	1
+Spigot Peak Tripod	----	2016	13
+Spigot Peak Tripod	----	2016	7
+Spigot Peak Tripod	----	2016	7
+Waterboat Point	----	2016	3180
+Waterboat Point	----	2016	3134
+Waterboat Point	----	2016	3115
+Yankee Harbor	----	2016	5677
+Yankee Harbor	----	2016	5466
+Barrientos Island (Aitcho Islands)	----	2015	1828
+Beneden Head	----	2015	1311
+Brash Island	----	2015	2270
+Brown Bluff	----	2015	806
+Brown Bluff	----	2015	676
+Brown Bluff	----	2015	440
+Brown Station	----	2015	204
+Brown Station	----	2015	191
+Brown Station	----	2015	171
+Bryde Island East	----	2015	556
+Bryde Island East	----	2015	527
+Bryde Island South	----	2015	784
+Bryde Island South	----	2015	733
+Cape Lookout	----	2015	209
+Cape Lookout	----	2015	178
+Cape Tuxen	----	2015	302
+Cuverville Island	----	2015	9648
+Danco Island	----	2015	3476
+Danco Island	----	2015	3409
+Dorian Bay/Damoy Point	----	2015	2079
+Dorian Beacon	----	2015	181
+Dorian Beacon	----	2015	12
+Earle Island	----	2015	847
+Georges Point (Ronge Island)	----	2015	3354
+Heroina Island	----	2015	999
+Jougla Point	----	2015	1116
+Madder Cliff (Joinville Island)	----	2015	539
+Mikkelsen Harbor (Trinity Island)	----	2015	1201
+Mikkelsen Harbor (Trinity Island)	----	2015	1142
+Mikkelsen Harbor (Trinity Island)	----	2015	898
+Mikkelsen Harbor (Trinity Island)	----	2015	860
+Neko Harbor (Andvord Bay)	----	2015	1507
+Neko Harbor (Andvord Bay)	----	2015	1322
+Neko Harbor (Andvord Bay)	----	2015	1149
+Noble Rocks	----	2015	35
+Noble Rocks	----	2015	28
+North Point	----	2015	1315
+Orne Islands	----	2015	348
+Peine Island (Comb Island)	----	2015	186
+Plato Island (Platter Island)	----	2015	223
+Pleneau Island	----	2015	2786
+Pleneau Island	----	2015	2540
+Ronge Island East	----	2015	458
+Ronge Island East	----	2015	389
+Selvick Cove	----	2015	737
+Skottsberg Point	----	2015	398
+Skottsberg Point	----	2015	365
+Spigot Peak Tripod	----	2015	14
+Spigot Peak Tripod	----	2015	10
+Spigot Peak Tripod	----	2015	7
+Useful Island	----	2015	1810
+Waterboat Point	----	2015	3963
+Yankee Harbor	----	2015	2521
+Barrientos Island (Aitcho Islands)	----	2014	1916
+Beneden Head	----	2014	694
+Brown Bluff	----	2014	355
+Brown Bluff	----	2014	350
+Brown Bluff	----	2014	308
+Brown Station	----	2014	204
+Brown Station	----	2014	193
+Brown Station	----	2014	126
+Bryde Island East	----	2014	626
+Bryde Island East	----	2014	599
+Bryde Island South	----	2014	884
+Cape Lookout	----	2014	265
+Cape Tuxen	----	2014	342
+Cierva Point	----	2014	3303
+Cuverville Island	----	2014	9176
+Danco Island	----	2014	3248
+Danco Island	----	2014	2999
+Danco Island	----	2014	2868
+Dorian Bay/Damoy Point	----	2014	2560
+Dorian Bay/Damoy Point	----	2014	2354
+Dorian Bay/Damoy Point	----	2014	1954
+Dorian Beacon	----	2014	183
+Fort Point (Greenwich Island)	----	2014	837
+Galindez Island East	----	2014	391
+Georges Point (Ronge Island)	----	2014	3443
+Georges Point (Ronge Island)	----	2014	3187
+Glandaz Point	----	2014	199
+Hope Bay	----	2014	519
+Humphries Heights	----	2014	58
+Humphries Heights	----	2014	28
+Jougla Point	----	2014	1345
+Jougla Point	----	2014	1228
+Madder Cliff (Joinville Island)	----	2014	336
+Mikkelsen Harbor (Trinity Island)	----	2014	1262
+Mikkelsen Harbor (Trinity Island)	----	2014	1139
+Mikkelsen Harbor (Trinity Island)	----	2014	921
+Mikkelsen Harbor (Trinity Island)	----	2014	855
+Mikkelsen Harbor (Trinity Island)	----	2014	700
+Moot Point	----	2014	558
+Neko Harbor (Andvord Bay)	----	2014	1660
+Neko Harbor (Andvord Bay)	----	2014	1595
+Neko Harbor (Andvord Bay)	----	2014	1508
+Orne Islands	----	2014	222
+Petermann Island	----	2014	3085
+Pleneau Island	----	2014	3026
+Pleneau Island	----	2014	2953
+Pleneau Island	----	2014	2750
+Port Charcot	----	2014	1805
+Port Lockroy	----	2014	613
+Port Lockroy	----	2014	521
+Robert Point (Robert Island)	----	2014	1054
+Robert Point (Robert Island)	----	2014	910
+Ronge Island East	----	2014	400
+Selvick Cove	----	2014	658
+Selvick Cove	----	2014	582
+Skottsberg Point	----	2014	373
+Skottsberg Point	----	2014	335
+Spigot Peak Point	----	2014	3
+Spigot Peak Tripod	----	2014	12
+Vernadsky Station	----	2014	236
+Waterboat Point	----	2014	3915
+Barton Peninsula	----	2013	2378
+Beneden Head	----	2013	706
+Brown Bluff	----	2013	145
+Brown Station	----	2013	197
+Brown Station	----	2013	164
+Brown Station	----	2013	150
+Brown Station	----	2013	129
+Bryde Island East	----	2013	477
+Bryde Island East	----	2013	397
+Bryde Island South	----	2013	820
+Bryde Island South	----	2013	625
+Cape Tuxen	----	2013	188
+Cuverville Island	----	2013	7007
+Danco Island	----	2013	2778
+Danco Island	----	2013	2707
+Dorian Bay/Damoy Point	----	2013	2299
+Dorian Beacon	----	2013	193
+Duthiers Point	----	2013	291
+Galindez Island East	----	2013	588
+Georges Point (Ronge Island)	----	2013	2824
+Jougla Point	----	2013	1265
+Llano Point	----	2013	6123
+Mikkelsen Harbor (Trinity Island)	----	2013	1262
+Moot Point	----	2013	463
+Neko Harbor (Andvord Bay)	----	2013	1311
+Neko Harbor (Andvord Bay)	----	2013	1013
+Neko Harbor (Andvord Bay)	----	2013	822
+Neko Harbor (Andvord Bay)	----	2013	785
+Neko Harbor (Andvord Bay)	----	2013	688
+O'Neill Point	----	2013	342
+Orne Islands	----	2013	164
+Petermann Island	----	2013	3561
+Petermann Island	----	2013	3057
+Pleneau Island	----	2013	3246
+Pleneau Island	----	2013	2706
+Pleneau Island	----	2013	2702
+Pleneau Island	----	2013	2628
+Point Wordie	----	2013	1242
+Port Charcot	----	2013	1534
+Port Charcot	----	2013	1435
+Port Charcot	----	2013	1333
+Port Charcot	----	2013	1257
+Port Lockroy	----	2013	517
+Port Lockroy	----	2013	381
+Ronge Island East	----	2013	161
+Selvick Cove	----	2013	472
+Selvick Cove	----	2013	422
+Skottsberg Point	----	2013	371
+Tuxen Rocks	----	2013	19
+Waterboat Point	----	2013	3118
+Yalour Islands	----	2013	25
+Yankee Harbor	----	2013	5499
+Yankee Harbor	----	2013	4711
+Barton Peninsula	----	2012	2496
+Biscoe Point	----	2012	3197
+Brown Bluff	----	2012	598
+Brown Bluff	----	2012	230
+Brown Station	----	2012	188
+Brown Station	----	2012	183
+Brown Station	----	2012	162
+Brown Station	----	2012	159
+Bryde Island East	----	2012	620
+Bryde Island East	----	2012	223
+Bryde Island South	----	2012	882
+Bryde Island South	----	2012	586
+Cape Lookout	----	2012	238
+Cape Tuxen	----	2012	282
+Cuverville Island	----	2012	5950
+Danco Island	----	2012	2665
+Danco Island	----	2012	2379
+Dorian Bay/Damoy Point	----	2012	2355
+Dorian Bay/Damoy Point	----	2012	2240
+Dorian Beacon	----	2012	167
+Galindez Island East	----	2012	369
+Galindez Island East	----	2012	273
+Galindez Island South	----	2012	49
+Galindez Island South	----	2012	48
+Georges Point (Ronge Island)	----	2012	3296
+Georges Point (Ronge Island)	----	2012	2948
+Glandaz Point	----	2012	145
+Humphries Heights	----	2012	57
+Jougla Point	----	2012	1264
+Jougla Point	----	2012	1178
+Loubat Point	----	2012	569
+Mikkelsen Harbor (Trinity Island)	----	2012	1320
+Mikkelsen Harbor (Trinity Island)	----	2012	792
+Mikkelsen Harbor (Trinity Island)	----	2012	647
+Moot Point	----	2012	479
+Neko Harbor (Andvord Bay)	----	2012	1402
+Neko Harbor (Andvord Bay)	----	2012	1302
+Neko Harbor (Andvord Bay)	----	2012	1264
+Neko Harbor (Andvord Bay)	----	2012	1135
+Orne Islands	----	2012	155
+Orne Islands	----	2012	141
+Petermann Island	----	2012	3300
+Pleneau Island	----	2012	2795
+Point Wordie	----	2012	1507
+Port Charcot	----	2012	1484
+Port Lockroy	----	2012	554
+Port Lockroy	----	2012	524
+Principal Point	----	2012	567
+Robert Point (Robert Island)	----	2012	916
+Robert Point (Robert Island)	----	2012	902
+Robert Point (Robert Island)	----	2012	711
+Ronge Island East	----	2012	271
+Selvick Cove	----	2012	292
+Selvick Cove	----	2012	224
+Skottsberg Point	----	2012	398
+Skottsberg Point	----	2012	237
+Skottsberg Point	----	2012	227
+Truant Island	----	2012	921
+Vernadsky Station	----	2012	206
+Waterboat Point	----	2012	3154
+Waterboat Point	----	2012	1808
+Yalour Islands	----	2012	28
+Yankee Harbor	----	2012	4803
+Barrientos Island (Aitcho Islands)	----	2011	2213
+Barton Peninsula	----	2011	2212
+Beneden Head	----	2011	1088
+Biscoe Point	----	2011	3081
+Brown Station	----	2011	189
+Brown Station	----	2011	158
+Bryde Island East	----	2011	558
+Bryde Island South	----	2011	925
+Bryde Island South	----	2011	745
+Cuverville Island	----	2011	6336
+Cuverville Island	----	2011	4170
+Danco Island	----	2011	2558
+Danco Island	----	2011	2347
+Danco Island	----	2011	696
+Dorian Bay/Damoy Point	----	2011	2091
+Duthiers Point	----	2011	185
+Fort Point (Greenwich Island)	----	2011	720
+Georges Point (Ronge Island)	----	2011	2408
+Jougla Point	----	2011	1172
+Jougla Point	----	2011	1056
+Neko Harbor (Andvord Bay)	----	2011	1325
+Neko Harbor (Andvord Bay)	----	2011	1097
+Point Wordie	----	2011	1652
+Port Lockroy	----	2011	596
+Port Lockroy	----	2011	487
+Selvick Cove	----	2011	416
+Waterboat Point	----	2011	2509
+Waterboat Point	----	2011	1242
+Barrientos Island (Aitcho Islands)	----	2010	1319
+Barton Peninsula	----	2010	2351
+Biscoe Point	----	2010	2404
+Biscoe Point	----	2010	2372
+Bryde Island East	----	2010	505
+Bryde Island South	----	2010	722
+Cape Shirreff	----	2010	834
+Charles Point	----	2010	795
+Charles Point	----	2010	746
+Cierva Point	----	2010	2680
+Cuverville Island	----	2010	990
+Danco Island	----	2010	2115
+Dorian Bay/Damoy Point	----	2010	1823
+Dorian Bay/Damoy Point	----	2010	1735
+Dorian Bay/Damoy Point	----	2010	131
+Dorian Beacon	----	2010	148
+Dorian Beacon	----	2010	109
+Duthiers Point	----	2010	485
+Georges Point (Ronge Island)	----	2010	1158
+Glandaz Point	----	2010	63
+Humphries Heights	----	2010	16
+Hurd Peninsula (west)	----	2010	0
+Jougla Point	----	2010	1147
+Jougla Point	----	2010	1094
+Jougla Point	----	2010	1091
+Jougla Point	----	2010	1090
+Jougla Point	----	2010	984
+Jougla Point	----	2010	543
+Lautaro Neck	----	2010	206
+Lions Rump	----	2010	3004
+Llano Point	----	2010	4814
+Mikkelsen Harbor (Trinity Island)	----	2010	673
+Moot Point	----	2010	371
+Neko Harbor (Andvord Bay)	----	2010	1310
+Neko Harbor (Andvord Bay)	----	2010	1271
+Neko Harbor (Andvord Bay)	----	2010	1211
+Neko Harbor (Andvord Bay)	----	2010	442
+Noble Rocks	----	2010	24
+O'Neill Point	----	2010	221
+Orne Islands	----	2010	103
+Pleneau Island	----	2010	2386
+Pleneau Island	----	2010	731
+Point Wordie	----	2010	905
+Port Charcot	----	2010	1181
+Port Charcot	----	2010	1180
+Port Charcot	----	2010	1117
+Port Charcot	----	2010	814
+Port Charcot	----	2010	248
+Port Lockroy	----	2010	627
+Port Lockroy	----	2010	430
+San Eliado Point	----	2010	245
+Sterneck Island	----	2010	3305
+Sterneck Island	----	2010	2795
+Barrientos Island (Aitcho Islands)	----	2009	1900
+Barton Peninsula	----	2009	2289
+Biscoe Point	----	2009	2401
+Brown Bluff	----	2009	538
+Brown Bluff	----	2009	276
+Brown Bluff	----	2009	269
+Brown Station	----	2009	165
+Bryde Island East	----	2009	560
+Bryde Island South	----	2009	917
+Cape Shirreff	----	2009	802
+Cuverville Island	----	2009	6468
+Danco Island	----	2009	3632
+Dorian Bay/Damoy Point	----	2009	2148
+Dorian Bay/Damoy Point	----	2009	1928
+Dorian Beacon	----	2009	183
+Dorian Beacon	----	2009	173
+Georges Point (Ronge Island)	----	2009	2555
+Jougla Point	----	2009	1521
+Jougla Point	----	2009	1461
+Jougla Point	----	2009	1402
+Jougla Point	----	2009	1352
+Lions Rump	----	2009	2699
+Llano Point	----	2009	3485
+Madder Cliff Island	----	2009	290
+Moot Point	----	2009	323
+Neko Harbor (Andvord Bay)	----	2009	1294
+Neko Harbor (Andvord Bay)	----	2009	1270
+Neko Harbor (Andvord Bay)	----	2009	1257
+Petermann Island	----	2009	3020
+Pleneau Island	----	2009	2301
+Pleneau Island	----	2009	2041
+Point Wordie	----	2009	915
+Port Charcot	----	2009	1954
+Port Charcot	----	2009	1518
+Port Charcot	----	2009	640
+Port Lockroy	----	2009	667
+Port Lockroy	----	2009	576
+Py Point	----	2009	2355
+Ronge Island East	----	2009	319
+Selvick Cove	----	2009	429
+Yalour Islands	----	2009	23
+Barrientos Island (Aitcho Islands)	----	2008	2210
+Barton Peninsula	----	2008	1573
+Brown Bluff	----	2008	554
+Brown Bluff	----	2008	532
+Brown Bluff	----	2008	516
+Brown Bluff	----	2008	508
+Brown Bluff	----	2008	432
+Brown Station	----	2008	192
+Brown Station	----	2008	163
+Brown Station	----	2008	153
+Brown Station	----	2008	140
+Bryde Island East	----	2008	528
+Bryde Island South	----	2008	979
+Bryde Island South	----	2008	784
+Bryde Island South	----	2008	753
+Cape Shirreff	----	2008	879
+Cuverville Island	----	2008	6878
+Danco Island	----	2008	2213
+Dorian Bay/Damoy Point	----	2008	2158
+Dorian Bay/Damoy Point	----	2008	1934
+Dorian Beacon	----	2008	186
+Dorian Beacon	----	2008	157
+Galindez Island East	----	2008	93
+Georges Point (Ronge Island)	----	2008	2196
+Georges Point (Ronge Island)	----	2008	1973
+Glandaz Point	----	2008	49
+Humphries Heights	----	2008	20
+Jougla Point	----	2008	1479
+Jougla Point	----	2008	1386
+Jougla Point	----	2008	1341
+Jougla Point	----	2008	1310
+Jougla Point	----	2008	1304
+Jougla Point	----	2008	1144
+Lions Rump	----	2008	2996
+Loubat Point	----	2008	170
+Moot Point	----	2008	224
+Neko Harbor (Andvord Bay)	----	2008	1431
+Neko Harbor (Andvord Bay)	----	2008	1357
+Neko Harbor (Andvord Bay)	----	2008	1168
+Neko Harbor (Andvord Bay)	----	2008	1130
+Neko Harbor (Andvord Bay)	----	2008	904
+Neko Harbor (Andvord Bay)	----	2008	892
+Orne Islands	----	2008	58
+Petermann Island	----	2008	2897
+Pleneau Island	----	2008	2251
+Pleneau Island	----	2008	2169
+Port Charcot	----	2008	893
+Port Charcot	----	2008	842
+Py Point	----	2008	2804
+Ronge Island East	----	2008	155
+Selvick Cove	----	2008	258
+Useful Island	----	2008	1464
+Vernadsky Station	----	2008	51
+Waterboat Point	----	2008	2681
+Barrientos Island (Aitcho Islands)	----	2007	1383
+Barton Peninsula	----	2007	1684
+Beneden Head	----	2007	1098
+Brown Station	----	2007	123
+Cape Shirreff	----	2007	610
+Danco Island	----	2007	2084
+Danco Island	----	2007	1581
+Dorian Bay/Damoy Point	----	2007	2055
+Dorian Beacon	----	2007	165
+Georges Point (Ronge Island)	----	2007	1200
+Glandaz Point	----	2007	133
+Humphries Heights	----	2007	400
+Jougla Point	----	2007	1276
+Loubat Point	----	2007	750
+Mikkelsen Harbor (Trinity Island)	----	2007	907
+Neko Harbor (Andvord Bay)	----	2007	1129
+Neko Harbor (Andvord Bay)	----	2007	957
+Orne Islands	----	2007	58
+Petermann Island	----	2007	2719
+Pleneau Island	----	2007	1994
+Port Charcot	----	2007	1233
+Port Charcot	----	2007	992
+Ronge Island East	----	2007	328
+Selvick Cove	----	2007	362
+Spigot Peak Point	----	2007	1
+Useful Island	----	2007	1432
+Vernadsky Station	----	2007	21
+Yankee Harbor	----	2007	4817
+Barrientos Island (Aitcho Islands)	----	2006	1639
+Barton Peninsula	----	2006	1719
+Beneden Head	----	2006	640
+Beneden Head	----	2006	450
+Biscoe Point	----	2006	977
+Brown Bluff	----	2006	444
+Brown Station	----	2006	128
+Bryde Island East	----	2006	486
+Bryde Island South	----	2006	818
+Cape Shirreff	----	2006	781
+Cuverville Island	----	2006	4420
+Danco Island	----	2006	2506
+Glandaz Point	----	2006	100
+Humphries Heights	----	2006	50
+Jougla Point	----	2006	1282
+Loubat Point	----	2006	400
+Moot Point	----	2006	106
+Moot Point	----	2006	101
+Neko Harbor (Andvord Bay)	----	2006	1153
+Paradise Harbor Beacon (Paradise Bay)	----	2006	3
+Petermann Island	----	2006	2293
+Pleneau Island	----	2006	1574
+Yalour Islands	----	2006	15
+Ardley Island	----	2005	4635
+Barrientos Island (Aitcho Islands)	----	2005	1998
+Biscoe Point	----	2005	902
+Brown Bluff	----	2005	247
+Brown Bluff	----	2005	63
+Brown Station	----	2005	111
+Cape Shirreff	----	2005	807
+Cuverville Island	----	2005	6294
+Dorian Bay/Damoy Point	----	2005	2273
+Dorian Beacon	----	2005	181
+Georges Point (Ronge Island)	----	2005	2464
+Jougla Point	----	2005	1409
+Moot Point	----	2005	74
+Neko Harbor (Andvord Bay)	----	2005	1301
+Neko Harbor (Andvord Bay)	----	2005	1101
+Orne Islands	----	2005	41
+Petermann Island	----	2005	2438
+Port Charcot	----	2005	1151
+Saxum Nunatak	----	2005	540
+Ardley Island	----	2004	4798
+Biscoe Point	----	2004	753
+Brown Bluff	----	2004	370
+Brown Bluff	----	2004	369
+Brown Bluff	----	2004	351
+Brown Bluff	----	2004	267
+Cape Shirreff	----	2004	818
+Dorian Bay/Damoy Point	----	2004	2022
+Dorian Beacon	----	2004	132
+Georges Point (Ronge Island)	----	2004	1995
+Hannah Point	----	2004	1885
+Jougla Point	----	2004	1306
+Llano Point	----	2004	2729
+Madder Cliff (Joinville Island)	----	2004	304
+Neko Harbor (Andvord Bay)	----	2004	1096
+Neko Harbor (Andvord Bay)	----	2004	1009
+Neko Harbor (Andvord Bay)	----	2004	869
+Petermann Island	----	2004	2265
+Pleneau Island	----	2004	2135
+Useful Island	----	2004	1861
+Waterboat Point	----	2004	2456
+Waterboat Point	----	2004	2122
+Ardley Island	----	2003	4957
+Barrientos Island (Aitcho Islands)	----	2003	1486
+Biscoe Point	----	2003	644
+Brown Bluff	----	2003	200
+Cape Shirreff	----	2003	751
+Cuverville Island	----	2003	5990
+Jougla Point	----	2003	1540
+Llano Point	----	2003	2423
+Neko Harbor (Andvord Bay)	----	2003	1088
+Petermann Island	----	2003	2145
+Pleneau Island	----	2003	2170
+Pleneau Island	----	2003	2164
+Yalour Islands	----	2003	0
+Yankee Harbor	----	2003	4918
+Ardley Island	----	2002	5131
+Biscoe Point	----	2002	639
+Brown Bluff	----	2002	490
+Dorian Bay/Damoy Point	----	2002	1928
+Jougla Point	----	2002	1556
+Jougla Point	----	2002	1473
+Llano Point	----	2002	2499
+Neko Harbor (Andvord Bay)	----	2002	1072
+Neko Harbor (Andvord Bay)	----	2002	1042
+Pleneau Island	----	2002	1639
+Point Thomas	----	2002	50
+Yankee Harbor	----	2002	3804
+Ardley Island	----	2001	4444
+Barton Peninsula	----	2001	1441
+Biscoe Point	----	2001	288
+Brown Bluff	----	2001	450
+Cape Shirreff	----	2001	907
+Jade Point	----	2001	1
+Jonassen Island	----	2001	120
+Jougla Point	----	2001	837
+Llano Point	----	2001	2142
+Ardley Island	----	2000	4472
+Barton Peninsula	----	2000	1333
+Biscoe Point	----	2000	296
+Brown Bluff	----	2000	756
+Cape Shirreff	----	2000	1043
+Jougla Point	----	2000	1934
+Llano Point	----	2000	2247
+Pleneau Island	----	2000	1579
+Port Charcot	----	2000	1200
+Yankee Harbor	----	2000	3974
+Ardley Island	----	1999	3911
+Barrientos Island (Aitcho Islands)	----	1999	1177
+Biscoe Point	----	1999	149
+Brown Bluff	----	1999	617
+Brown Bluff	----	1999	567
+Cape Shirreff	----	1999	922
+Danco Island	----	1999	2300
+Fort Point (Greenwich Island)	----	1999	282
+Jougla Point	----	1999	1681
+Jougla Point	----	1999	1501
+Llano Point	----	1999	1908
+Neko Harbor (Andvord Bay)	----	1999	864
+Orne Islands	----	1999	3
+Pleneau Island	----	1999	1577
+Vernadsky Station	----	1999	0
+Yankee Harbor	----	1999	4751
+Ardley Island	----	1998	3349
+Biscoe Point	----	1998	26
+Cape Shirreff	----	1998	830
+Dorian Bay/Damoy Point	----	1998	2041
+Jougla Point	----	1998	1437
+Llano Point	----	1998	1629
+Ardley Island	----	1997	3146
+Biscoe Point	----	1997	56
+Brown Station	----	1997	8
+Brown Station	----	1997	6
+Cape Shirreff	----	1997	810
+Charles Point	----	1997	390
+Cierva Point	----	1997	593
+Gourdin Island	----	1997	568
+Hannah Point	----	1997	1350
+Jougla Point	----	1997	1545
+Jougla Point	----	1997	1405
+Llano Point	----	1997	1693
+North Point	----	1997	726
+Sterneck Island	----	1997	905
+Waterboat Point	----	1997	1455
+Ardley Island	----	1996	2974
+Biscoe Point	----	1996	45
+Brown Station	----	1996	9
+Cape Shirreff	----	1996	682
+Cierva Point	----	1996	1041
+Hannah Point	----	1996	1115
+Heroina Island	----	1996	215
+Jougla Point	----	1996	1595
+Lions Rump	----	1996	1759
+Llano Point	----	1996	1611
+Llano Point	----	1996	1406
+North Point	----	1996	677
+Yankee Harbor	----	1996	2500
+Ardley Island	----	1995	2985
+Biscoe Point	----	1995	33
+Brown Station	----	1995	8
+Brown Station	----	1995	6
+Brown Station	----	1995	6
+Brown Station	----	1995	6
+Cierva Point	----	1995	1014
+Harmony Point	----	1995	3347
+Jonassen Island	----	1995	300
+Lions Rump	----	1995	2207
+Llano Point	----	1995	1547
+Llano Point	----	1995	1426
+Mikkelsen Harbor (Trinity Island)	----	1995	595
+Point Thomas	----	1995	229
+Point Thomas	----	1995	205
+Ardley Island	----	1994	3772
+Barton Peninsula	----	1994	1001
+Biscoe Point	----	1994	14
+Cierva Point	----	1994	1025
+Cuverville Island	----	1994	4818
+Danco Island	----	1994	1637
+Georges Point (Ronge Island)	----	1994	1752
+Lions Rump	----	1994	2642
+Llano Point	----	1994	2168
+Llano Point	----	1994	1947
+Point Thomas	----	1994	340
+Ronge Island East	----	1994	445
+Watson Peninsula (east coast)	----	1994	10
+Cierva Point	----	1993	1009
+Cuverville Island	----	1993	4421
+Llano Point	----	1993	2484
+Llano Point	----	1993	2200
+Barton Peninsula	----	1992	500
+Cierva Point	----	1992	1044
+Cierva Point	----	1992	890
+Cuverville Island	----	1992	4294
+Danco Island	----	1992	1573
+Georges Point (Ronge Island)	----	1992	1631
+Llano Point	----	1992	2357
+Llano Point	----	1992	2279
+Point Thomas	----	1992	294
+Ronge Island East	----	1992	384
+Cierva Point	----	1991	800
+Llano Point	----	1991	3195
+Llano Point	----	1991	2261
+Point Thomas	----	1991	190
+Point Wordie	----	1991	1929
+Cape Leguillou	----	1990	6
+Dorian Bay/Damoy Point	----	1990	1658
+Joubin Islands	----	1990	104
+Llano Point	----	1990	2235
+Llano Point	----	1990	2215
+Point Thomas	----	1990	166
+Yankee Harbor	----	1990	4000
+Barton Peninsula	----	1989	682
+Llano Point	----	1989	2278
+Llano Point	----	1989	2221
+Point Thomas	----	1989	136
+Cuverville Island	----	1988	3200
+Cuverville Island	----	1988	2535
+Dorian Bay/Damoy Point	----	1988	1663
+Georges Point (Ronge Island)	----	1988	1100
+Harmony Point	----	1988	3957
+Jougla Point	----	1988	1616
+Llano Point	----	1988	2387
+Llano Point	----	1988	2118
+Petermann Island	----	1988	755
+Point Thomas	----	1988	121
+Point Wordie	----	1988	2192
+Ronge Island East	----	1988	214
+San Eliado Point	----	1988	150
+Stranger Point	----	1988	2325
+Barnard Point (Livingston Island)	----	1987	600
+Hannah Point	----	1987	1016
+Hurd Peninsula (east)	----	1987	100
+Hurd Peninsula (west)	----	1987	10
+Johnson's Dock	----	1987	66
+Llano Point	----	1987	2636
+O'Neill Point	----	1987	100
+Point Wordie	----	1987	1879
+Stranger Point	----	1987	2584
+Weddell Island	----	1987	376
+Ardley Island	----	1986	3410
+Barton Peninsula	----	1986	425
+Cape Conway	----	1986	400
+Charles Point	----	1986	130
+Llano Point	----	1986	2609
+Principal Point	----	1986	200
+Skottsberg Point	----	1986	300
+Sterneck Island	----	1986	450
+Ardley Island	----	1985	3522
+Barton Peninsula	----	1985	600
+Bryde Island East	----	1985	173
+Ketley Point	----	1985	200
+Llano Point	----	1985	2733
+Stranger Point	----	1985	2500
+Ardley Island	----	1984	3105
+Barton Peninsula	----	1984	500
+Biscoe Point	----	1984	0
+Gerlache Island	----	1984	1023
+Joubin Islands	----	1984	61
+Llano Point	----	1984	2370
+Stranger Point	----	1984	1900
+Ardley Island	----	1983	1656
+Christoffersen Island	----	1983	324
+Dorian Bay/Damoy Point	----	1983	828
+Gosling Islands	----	1983	874
+Joubin Islands	----	1983	50
+Jougla Point	----	1983	786
+Mikkelsen Harbor (Trinity Island)	----	1983	300
+Powell Island	----	1983	2599
+Quinton Point (north)	----	1983	42
+Useful Island	----	1983	150
+Watson Peninsula (east coast)	----	1983	28
+Dorian Bay/Damoy Point	----	1982	619
+Glandaz Point	----	1982	75
+Humphries Heights	----	1982	30
+Joubin Islands	----	1982	41
+Jougla Point	----	1982	627
+Llano Point	----	1982	1922
+Loubat Point	----	1982	208
+Petermann Island	----	1982	375
+Pleneau Island	----	1982	500
+Port Charcot	----	1982	318
+Py Point	----	1982	1030
+Ardley Island	----	1981	2580
+Lions Rump	----	1981	1348
+Llano Point	----	1981	2058
+Llano Point	----	1981	1842
+Point Thomas	----	1981	760
+Ardley Island	----	1980	3809
+Lions Rump	----	1980	1105
+Llano Point	----	1980	2133
+Llano Point	----	1980	1510
+Point Thomas	----	1980	623
+Stranger Point	----	1980	2584
+Ardley Island	----	1979	3508
+Llano Point	----	1979	3008
+Point Thomas	----	1979	695
+Joubin Islands	----	1974	54
+Brittannia's Figleaf	----	1970	400
+Georges Rib	----	1970	500
+Hut Bluff	----	1970	120
+Muckle Bluff	----	1970	500
+Point Wild	----	1970	20
+Point Wordie	----	1970	1000
+The Green Glen	----	1970	60
+Barnard Point (Livingston Island)	----	1965	264
+Duroch Islands	----	1965	None
+Rip Point	----	1965	10000
+Stackpole Rocks	----	1965	4
+Triangle Point	----	1965	45
+Knobble Head, Bransfield Island	----	1960	800
+Patella Island	----	1960	200

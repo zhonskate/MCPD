@@ -1,0 +1,14 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'gentoo.png'
+set style boxplot outliers pointtype 7
+set style data boxplot
+
+# Key means label...
+set key inside top left
+set ylabel 'nidos'
+set xlabel 'año'
+set xtics ('1980' 1, '1990' 11, '2000' 21, '2010' 31)
+set title 'Gentoo'
+plot for [i=1:38] 'parsedData2' using (i):i notitle
