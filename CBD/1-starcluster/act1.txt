@@ -1,0 +1,18 @@
+1.- He descargado y modificado el .c de la fuente. La modificaci�n ha sido descomentar la linea 27 poniendo:
+	printf("Process %d on %s\n", myid, processor_name);
+
+2.- He descomentado las lineas de la configuraci�n de starcluster y he corrido:
+	starcluster runplugin mpich2 smallcluster105
+
+3.- He compilado el c�digo con:
+	mpicc -o cpi cpi.c
+    Como la carpeta host está compartida, la copia es autom�tica. Todos los nodos dependen del binario.
+
+4.- He a�adido el trabajo a la cola con:
+	qsub -b y -cwd -pe orte 2 mpirun ./cpi
+
+5.- el resultado de la ejecuci�n (mpirun.o*) es:
+	Process 0 on master
+	Process 1 on node001
+	pi is approximately 3.1416009869231241, Error is 0.0000083333333309
+	wall clock time = 0.002128

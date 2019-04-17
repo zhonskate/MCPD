@@ -1,0 +1,8 @@
+1.- Descomentar la l�nea "Experimental" en la configuraci�n de starcluster:
+	ENABLE_EXPERIMENTAL=True
+
+2.- Ejecutar loadbalance:
+	starcluster loadbalance -m 4 -i 10 -w 100 -a 1 smallcluster$ID
+
+3.- Dentro de una instancia encolar muchos trabajos:
+	for i in `seq 1 1000`; do qsub -b y -cwd sleep 1000 ; done
