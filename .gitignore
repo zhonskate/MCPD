@@ -16,4 +16,4 @@ ign.*
 *.template
 *.m~
 matrices-transitorio/
-*.mat
+biblis/
