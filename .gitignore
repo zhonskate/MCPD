@@ -15,3 +15,5 @@ sync_scripts/
 ign.*
 *.template
 *.m~
+matrices-transitorio/
+*.mat
