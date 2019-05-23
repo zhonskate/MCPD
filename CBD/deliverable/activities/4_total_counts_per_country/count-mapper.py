@@ -13,20 +13,20 @@ for line in sys.stdin:
         if site_id == 'site_id':
             continue 
         if float(longitude) >= -74.0 and float(longitude) <= -25.0:
-            print "{0}\t{1}".format('Argentina', penguin_count)
+            print "{0}\t{1}".format('Argentina', 1)
 	if float(longitude) >= 142.2 and float(longitude) <= 160.0:
-            print "{0}\t{1}".format('Australia', penguin_count)
+            print "{0}\t{1}".format('Australia', 1)
         if float(longitude) >= 44.38 and float(longitude) <= 136.11:
-            print "{0}\t{1}".format('Australia', penguin_count)
+            print "{0}\t{1}".format('Australia', 1)
         if float(longitude) >= -90.0 and float(longitude) <= -53.0:
-            print "{0}\t{1}".format('Chile', penguin_count)
+            print "{0}\t{1}".format('Chile', 1)
         if float(longitude) >= 136.11 and float(longitude) <= 142.2:
-            print "{0}\t{1}".format('France', penguin_count)
+            print "{0}\t{1}".format('France', 1)
         if float(longitude) >= 160.0 or float(longitude) <= -150.0:
-            print "{0}\t{1}".format('New Zealand', penguin_count)
+            print "{0}\t{1}".format('New Zealand', 1)
         if float(longitude) >= -20.0 and float(longitude) <= 44.38:
-            print "{0}\t{1}".format('Norway', penguin_count)
+            print "{0}\t{1}".format('Norway', 1)
         if float(longitude) >= -80.0 and float(longitude) <= -20.0:
-            print "{0}\t{1}".format('United Kingdom', penguin_count)
-	if float(longitude) >= -150.0 and float(longitude) <= -90.0:
-            print "{0}\t{1}".format('Unclaimed', penguin_count)
+            print "{0}\t{1}".format('United Kingdom', 1)
+        if float(longitude) >= -150.0 and float(longitude) <= -90.0:
+            print "{0}\t{1}".format('Unclaimed', 1)

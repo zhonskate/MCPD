@@ -1,0 +1,17 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output '1-chart.png'
+set style fill solid
+
+# Key means label...
+set key inside top left
+set format y "%10.0f"
+set boxwidth 0.5
+set ylabel 'pinguinos por sitio'
+#set yrange [0:3000]
+#set xrange [1979:2018]
+set xtics out 5
+set xlabel 'especie'
+set title 'Poblacion pinguinos 2000-2010'
+plot "total-output" using ($3/$6):xtic(1) with boxes notitle
