@@ -1,0 +1,451 @@
+runnn
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 1 	 7.063905e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 2 	 2.858633e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 3 	 7.762731e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 4 	 7.709366e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 5 	 3.232423e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 6 	 6.740787e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 7 	 6.136974e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 8 	 4.276084e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 9 	 3.163089e-03
+cgs converged at iteration 2 to a solution with relative residual 2.2e-11.
+cgs converged at iteration 3 to a solution with relative residual 8.2e-08.
+[myproduct biblis2] 10 	 2.574557e-03
+---------------
+[myproduct biblis2] AVERAGE 5.151855e-03
+---------------
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 1 	 6.798449e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 2 	 3.945734e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 3 	 5.182864e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 4 	 4.768420e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 5 	 1.966442e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 6 	 7.185035e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 7 	 4.792248e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 8 	 2.126784e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 9 	 1.310694e-03
+cgs converged at iteration 9 to a solution with relative residual 2.4e-08.
+cgs converged at iteration 12 to a solution with relative residual 4.9e-08.
+[CGS biblis2] 10 	 3.560149e-03
+---------------
+[CGS biblis2] AVERAGE 4.163682e-03
+---------------
+[inverso biblis2] 1 	 1.395254e-03
+[inverso biblis2] 2 	 1.148857e-03
+[inverso biblis2] 3 	 1.025512e-03
+[inverso biblis2] 4 	 8.507170e-04
+[inverso biblis2] 5 	 1.592097e-03
+[inverso biblis2] 6 	 7.578240e-04
+[inverso biblis2] 7 	 7.642040e-04
+[inverso biblis2] 8 	 7.284720e-04
+[inverso biblis2] 9 	 8.012200e-04
+[inverso biblis2] 10 	 7.902190e-04
+---------------
+[inverso biblis2] AVERAGE 9.854376e-04
+---------------
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 1 	 7.492429e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 2 	 6.462308e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 3 	 6.251010e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 4 	 6.173193e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 5 	 8.093788e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 6 	 5.319284e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 7 	 6.210561e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 8 	 6.826759e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 9 	 5.551895e-03
+cgs converged at iteration 4 to a solution with relative residual 1.6e-08.
+cgs converged at iteration 15 to a solution with relative residual 8.3e-08.
+[myproduct biblis5] 10 	 5.523310e-03
+---------------
+[myproduct biblis5] AVERAGE 6.390454e-03
+---------------
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 1 	 6.266540e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 2 	 4.941281e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 3 	 4.944169e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 4 	 5.671126e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 5 	 5.583961e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 6 	 4.935254e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 7 	 4.916304e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 8 	 4.988012e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 9 	 4.345849e-03
+cgs converged at iteration 18 to a solution with relative residual 1e-07.
+cgs converged at iteration 49 to a solution with relative residual 4.4e-08.
+[CGS biblis5] 10 	 4.821680e-03
+---------------
+[CGS biblis5] AVERAGE 5.141418e-03
+---------------
+[inverso biblis5] 1 	 1.059586e-02
+[inverso biblis5] 2 	 8.341103e-03
+[inverso biblis5] 3 	 7.581892e-03
+[inverso biblis5] 4 	 8.547723e-03
+[inverso biblis5] 5 	 8.993245e-03
+[inverso biblis5] 6 	 7.978064e-03
+[inverso biblis5] 7 	 9.576846e-03
+[inverso biblis5] 8 	 1.075721e-02
+[inverso biblis5] 9 	 1.534696e-02
+[inverso biblis5] 10 	 1.419684e-02
+---------------
+[inverso biblis5] AVERAGE 1.019158e-02
+---------------
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 1 	 4.897856e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 2 	 5.504165e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 3 	 5.413881e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 4 	 5.387130e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 5 	 5.914025e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 6 	 5.520377e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 7 	 5.515727e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 8 	 5.387517e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 9 	 5.355185e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[myproduct 10cm] 10 	 5.332743e-02
+---------------
+[myproduct 10cm] AVERAGE 5.422860e-02
+---------------
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 1 	 5.432147e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 2 	 5.400103e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 3 	 5.338307e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 4 	 5.327047e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 5 	 5.389268e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 6 	 5.446236e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 7 	 5.431386e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 8 	 5.431007e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 9 	 5.489317e-02
+cgs converged at iteration 12 to a solution with relative residual 8.1e-08.
+cgs converged at iteration 26 to a solution with relative residual 7.8e-08.
+[CGS 10cm] 10 	 5.588973e-02
+---------------
+[CGS 10cm] AVERAGE 5.427379e-02
+---------------
+[inverso 10cm] 1 	 1.704261e+01
+[inverso 10cm] 2 	 1.673913e+01
+[inverso 10cm] 3 	 1.644435e+01
+[inverso 10cm] 4 	 1.652798e+01
+[inverso 10cm] 5 	 1.636599e+01
+[inverso 10cm] 6 	 1.620036e+01
+[inverso 10cm] 7 	 1.620660e+01
+[inverso 10cm] 8 	 1.625669e+01
+[inverso 10cm] 9 	 1.608884e+01
+[inverso 10cm] 10 	 1.621762e+01
+---------------
+[inverso 10cm] AVERAGE 1.640902e+01
+---------------
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 1 	 1.356900e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 2 	 1.344748e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 3 	 1.345038e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 4 	 1.332100e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 5 	 1.338543e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 6 	 1.346234e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 7 	 1.352724e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 8 	 1.330702e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 9 	 1.343369e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[myproduct 5cm] 10 	 1.327176e+00
+---------------
+[myproduct 5cm] AVERAGE 1.341753e+00
+---------------
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 1 	 1.338201e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 2 	 1.338645e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 3 	 1.335572e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 4 	 1.336137e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 5 	 1.353915e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 6 	 1.335737e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 7 	 1.342878e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 8 	 1.357662e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 9 	 1.349876e+00
+cgs converged at iteration 14 to a solution with relative residual 7.1e-08.
+cgs converged at iteration 32 to a solution with relative residual 5.3e-08.
+[CGS 5cm] 10 	 1.371588e+00
+---------------
+[CGS 5cm] AVERAGE 1.346021e+00
+---------------
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 1 	 3.976148e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 2 	 3.866982e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 3 	 4.156391e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 4 	 4.209242e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 5 	 4.306839e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 6 	 4.234730e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 7 	 4.210383e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 8 	 3.961238e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 9 	 4.094797e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[myproduct 11cm] 10 	 4.279651e+00
+---------------
+[myproduct 11cm] AVERAGE 4.129640e+00
+---------------
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 1 	 4.125471e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 2 	 4.179551e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 3 	 4.026278e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 4 	 4.111295e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 5 	 4.074600e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 6 	 3.962196e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 7 	 3.914151e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 8 	 3.851753e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 9 	 3.885368e+00
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+cgs stopped at iteration 100 without converging to the desired tolerance 1e-07
+because the maximum number of iterations was reached.
+The iterate returned (number 0) has relative residual 1.
+[CGS 11cm] 10 	 3.894162e+00
+---------------
+[CGS 11cm] AVERAGE 4.002482e+00
+---------------
+diary off

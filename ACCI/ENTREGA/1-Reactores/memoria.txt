@@ -1,0 +1,17 @@
+Para la realización de la primera actividad, sobre el cálculo de los modos lambda de las matrices obtenidas en un reactor nuclear, he seguido los siguientes pasos:
+
+1.- He programado los algoritmos para el cálculo de los autovalores, se pueden encontrar en la carpeta código. Concretamente he programado el método inverso, pues el código directo se nos daba, y el que hace uso de cgs lo he obtenido de las prácticas de mpicap.
+
+2.- He realizado pruebas con las matrices que se nos daban: biblis2, biblis5, 10cm, 5cm y 11cm. El código que se nos daba no funcionaba bien para matrices grandes, pues se obtenia un error en el uso del comando ichol. El error era el siguiente:
+
+    Error using ichol
+    Encountered nonpositive pivot.
+
+Como no sabía arreglarlo, modifiqué el código para que no se tuviera en cuenta en el caso de matrices grandes.
+
+3.- Para la realización de pruebas preparé un script que automatizara el proceso. Se puede encontrar en la capeta código (runnn.m). El script se ajusta a mi topografía de directorios en concreto, por lo que puede que no funcione si se prueba en otro entorno. Más tarde procedí a ejecutarlo y obtener los datos. Se puede ver que el método inverso no se ejecuta con la matriz más grande, pues tardaba demasiado.
+
+4.- Del archivo obtenido en el paso anterior (plot/solution.txt) se sacaron las medias de tiempo de cada algoritmo con cada matriz. Este conjunto de datos es el representado en la gráfica plot.png, que se encuentra en la carpeta plot. En esta carpeta se encuentra también el script de gnuplot utilizado para la representación.
+
+En la gráfica podemos ver que, el algoritmo directo (myproduct) y el cgs tienen comportamientos similares, mientras que el inverso escala bastante peor, siendo su rendimiento varios órdenes de magnitud peor que el de los anteriores.
+

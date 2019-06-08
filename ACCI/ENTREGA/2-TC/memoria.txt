@@ -1,0 +1,26 @@
+Para la realización de la práctica 2-TC haciendo uso de las librerías PetsC y SlepC se han seguido los siguientes pasos:
+
+1.- Se ha realizado la implementación de ambos programas (svd.c y lsqr.c). Para ello se han seguido los comentarios marcados en los archivos que se nos daban, rellenándolos con las instrucciones adecuadas.
+
+2.- A continuación se han ejecutado en el servidor kahan, haciendo uso de su sistema de colas. La ejecución del caso de svd en matrices de 128x128 daba timeout, por eso no se encuentran los resultados de ese caso en concreto. Los tiempos obtenidos han sido los siguientes (en segundos):
+
+		32	64	128
+	lsqr	0.506	2.133	9.033
+	svd	23.143	431.978	-
+
+Tal y como se observa en la tabla, las ejecuciones de lsqr son varios órdenes de magnitud más rápidas que las de svd.
+
+3.- Una vez obtenidos los vectores (los archivos con extensión '.m'), se han llevado a matlab, donde han sido cargados y redimensionados con las siguientes instrucciones:
+
+	run('lsqr64.m')
+	s64 = reshape(Vec_0xfdca80_0, 64, 64);
+
+4.- A continuación, se han mostrado en forma de figura y se han guardado como imágenes (archivos con extensión '.jpg')
+
+5.- Por último se han utilizado las métricas ssim y psnr para comparar su exactitud con las imágenes de referencia. se han obtenido los siguientes resultados:
+
+		lsqr32	lsqr64	lsqr128	svd32	svd64
+	ssim	0.9999	0.9975	0.5203	1.0000	1.0000
+	psnr	66.130	50.391	23.725	214.91	218.94
+
+Como podemos observar, las pruebas realizadas con svd nos ofrecen unos resultados mucho mejores que las realizadas con lsqr. Sin embargo, su coste computacional es mucho mayor.

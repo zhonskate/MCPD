@@ -1,0 +1,17 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 600,500 enhanced fname 'arial' 
+set term png medium background '#ffffff'
+set output 'plot.png'
+
+# Key means label...
+set key inside top left
+set xtics rotate
+set xtics ( "biblis2 (219)" 219, "biblis5 (1095)" 1095, "10cm (4040)" 4040, "5cm (23176)" 23176, "11cm (39945)" 39945)
+set logscale x
+set logscale y
+set ylabel 'time(s)'
+set xlabel 'N'
+set title '1- Reactores'
+plot  "data.txt" using 2:3 title 'myproduct' with lines, \
+"data.txt" using 2:4 title 'cgs' with lines, \
+"data.txt" using 2:5 title 'inverso' with lines
